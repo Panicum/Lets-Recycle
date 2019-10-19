@@ -8,5 +8,5 @@ key_trigger {
 }
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
-  action: "click"
+  action: "touch"
 }

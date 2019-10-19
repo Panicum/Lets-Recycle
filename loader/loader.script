@@ -1,0 +1,25 @@
+local function load_menu(self)
+	msg.post("go#main-menu", "load")
+	msg.post("go#main-menu", "enable")
+end
+
+local function unload_menu(self)
+	msg.post("go#main-menu", "unload")
+end
+
+local function load_main(self)
+	msg.post("go#main", "load")
+	msg.post("go#main", "enable")
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	load_menu(self)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("start_game") then
+		unload_menu(self)
+		load_main(self)
+	end
+end
