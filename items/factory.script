@@ -1,5 +1,5 @@
 local frequency = 0.3
-local min_x = -300
+local min_x = 0
 local max_x = 300
 
 function init(self)
