@@ -1,6 +1,6 @@
-local frequency = 0.3
-local min_x = 0
-local max_x = 300
+local frequency = 0.5
+local min_x = -240
+local max_x = 240
 
 function init(self)
 	self.timer = 1/frequency
