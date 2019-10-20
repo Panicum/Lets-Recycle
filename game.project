@@ -59,6 +59,8 @@ input_method = HiddenInputField
 shared_state = 1
 
 [physics]
-gravity_y = -1000.0
-scale = 0.01
+gravity_y = -10.0
+scale = 1.0
+debug = 0
+gravity_x = 0.0
 
