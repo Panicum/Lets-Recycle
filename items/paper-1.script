@@ -6,12 +6,14 @@ function update(self, dt)
 	p.y = p.y + speed * dt
 	if p.y < -320 then
 		go.delete()
+		msg.post("main#gui", "add_live", {amount = -1})
 	end 
 	go.set_position(p)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("collision_response") then
+	print(message.other_id)
+	if message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan") then
 		msg.post("main#gui", "add_score", {amount = score})
 		--particlefx.play("#pickup")
 		go.delete()

@@ -1,6 +1,8 @@
 function init(self)
 	self.score = 0
+	self.lives = 10
 	self.score_node = gui.get_node("score")
+	self.lives_node = gui.get_node("lives")
 end
 
 local function scale_down(self, node)
@@ -14,5 +16,11 @@ function on_message(self, message_id, message, sender)
 		self.score = self.score + message.amount
 		gui.set_text(self.score_node, tostring(self.score))
 		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+	end
+	if message_id == hash("add_live") then
+		local s = 1.2
+		self.lives = self.lives + message.amount
+		gui.set_text(self.lives_node, tostring(self.lives))
+		gui.animate(self.lives_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 	end
 end
