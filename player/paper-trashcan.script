@@ -28,7 +28,6 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
-	local pos = go.get_position()
 	if action_id == hash("MOVE_RIGHT") then
 		self.speed.x = self.runSpeed
 		--sprite.set_hflip("#sprite", false)
