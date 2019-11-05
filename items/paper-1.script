@@ -2,13 +2,13 @@ local score = 100
 local speed = -150
 
 function update(self, dt)
-	local p = go.get_position()
-	p.y = p.y + speed * dt
-	if p.y < -320 then
+	local pos = go.get_position()
+	pos.y = pos.y + speed * dt
+	if pos.y < -320 then
 		go.delete()
 		msg.post("main#gui", "add_live", {amount = -1})
 	end 
-	go.set_position(p)
+	go.set_position(pos)
 end
 
 function on_message(self, message_id, message, sender)

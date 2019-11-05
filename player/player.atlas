@@ -4,7 +4,47 @@ animations {
     image: "/Enviroment/trashcan_paper.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 5
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "trashcan-glass"
+  images {
+    image: "/Enviroment/trashcan_glass.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "trashcan-mixed"
+  images {
+    image: "/Enviroment/trashcan_mixed.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "trashcan-organic"
+  images {
+    image: "/Enviroment/trashcan_organic.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "trashcan-plastic-metal"
+  images {
+    image: "/Enviroment/trashcan_plastic_metal.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
   flip_horizontal: 0
   flip_vertical: 0
 }
