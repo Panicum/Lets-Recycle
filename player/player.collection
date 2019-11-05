@@ -4,7 +4,7 @@ embedded_instances {
   id: "paper-trashcan"
   data: "components {\n"
   "  id: \"paper-trashcan1\"\n"
-  "  component: \"/player/paper-trashcan.script\"\n"
+  "  component: \"/player/trashcan.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

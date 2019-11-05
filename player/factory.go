@@ -1,6 +1,6 @@
 components {
   id: "paper-trashcan"
-  component: "/player/paper-trashcan.script"
+  component: "/player/trashcan.script"
   position {
     x: 0.0
     y: 0.0
@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "factory"
   type: "factory"
-  data: "prototype: \"/player/paper-trashcan.go\"\n"
+  data: "prototype: \"/player/trashcan.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

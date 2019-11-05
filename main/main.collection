@@ -44,7 +44,7 @@ instances {
 }
 instances {
   id: "paper-trashcan"
-  prototype: "/player/paper-trashcan.go"
+  prototype: "/player/trashcan.go"
   position {
     x: 0.0
     y: 0.0

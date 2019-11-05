@@ -1,6 +1,6 @@
 components {
   id: "paper-trashcan1"
-  component: "/player/paper-trashcan.script"
+  component: "/player/trashcan.script"
   position {
     x: 0.0
     y: 0.0
