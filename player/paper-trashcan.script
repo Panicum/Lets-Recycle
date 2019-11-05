@@ -1,13 +1,26 @@
 local min_x = -240
 local max_x = 240
+local actual_can = 1
+local level = 3
+local can_table = {"#glass-trashcan", "#paper-trashcan", "#plastic-metal-trashcan", "#organic-trashcan", "#mixed-trashcan"}
+-- 1 -glass
+-- 2 -paper
+-- 3 -plastic/metal
+-- 4 -organic
+-- 5 -mixed 
 
 --What this code do? https://www.youtube.com/watch?v=VFh2mfqmiRU 36:30
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.runSpeed = 150
 	self.curAnim = "idle"
-	--msg.post("#sprite", "play_animation", {id = hash("idle")})
+	--msg.post("#paper-trashcan", "play_animation", {id = hash("trashcan_organic")})
 	self.speed = vmath.vector3()
+	for i = 1,5,1
+	do
+		msg.post(can_table[i], "disable")
+	end
+	msg.post(can_table[actual_can], "enable")
 end
 
 
@@ -28,12 +41,37 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
+	-- ARROW RIGHT - MOVE RIGHT
 	if action_id == hash("MOVE_RIGHT") then
 		self.speed.x = self.runSpeed
 		--sprite.set_hflip("#sprite", false)
 	end
+	-- ARROW LEFT - MOVE LEFT
 	if action_id == hash("MOVE_LEFT") then
 		self.speed.x = self.runSpeed * -1
 		--sprite.set_hflip("#sprite", true)
+
+	end
+	-- ARROW UP - CHANGE CAN, INCREMENT INDEX
+	if action_id == hash("CAN_UP") then
+		msg.post(can_table[actual_can], "disable")
+		actual_can = actual_can + 1
+		if actual_can > level or actual_can > 5 then
+			actual_can = 1
+		end
+		msg.post(can_table[actual_can], "enable")
+	end
+	-- ARROW DOWN - CHANGE CAN, DECREMENT INDEX
+	if action_id == hash("CAN_DOWN") then
+		msg.post(can_table[actual_can], "disable")
+		actual_can = actual_can - 1
+		if actual_can < 1 then
+			if level > 5 then
+				actual_can = 5
+			else
+				actual_can = level
+			end
+		end
+		msg.post(can_table[actual_can], "enable")
 	end
 end

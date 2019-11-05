@@ -6,6 +6,14 @@ key_trigger {
   input: KEY_LEFT
   action: "MOVE_LEFT"
 }
+key_trigger {
+  input: KEY_UP
+  action: "CAN_UP"
+}
+key_trigger {
+  input: KEY_DOWN
+  action: "CAN_DOWN"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "touch"
