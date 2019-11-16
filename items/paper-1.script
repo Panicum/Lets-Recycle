@@ -1,4 +1,5 @@
 local score = 100
+local bad_score = -(score / 2)
 local speed = -150
 
 function update(self, dt)
@@ -12,8 +13,14 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan") then
+	if (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan") 
+	and actual_can == 2) then --paper trashcan
 		msg.post("main#gui", "add_score", {amount = score})
+		--particlefx.play("#pickup")
+		go.delete()
+	elseif (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan")) then
+		msg.post("main#gui", "add_score", {amount = bad_score})
+		msg.post("main#gui", "add_live", {amount = -1})
 		--particlefx.play("#pickup")
 		go.delete()
 	end

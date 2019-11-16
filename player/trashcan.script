@@ -1,6 +1,6 @@
 local min_x = -240
 local max_x = 240
-local actual_can = 1
+actual_can = 1
 local level = 7
 local can_table = {"#glass-trashcan", "#paper-trashcan", "#plastic-metal-trashcan", "#organic-trashcan", "#mixed-trashcan"}
 -- 1 -glass
@@ -63,6 +63,7 @@ function on_input(self, action_id, action)
 			actual_can = 1
 		end
 		msg.post(can_table[actual_can], "enable")
+		msg.post("main#gui", "change_can")
 	end
 	
 	-- ARROW DOWN - CHANGE CAN, DECREMENT INDEX
@@ -77,5 +78,16 @@ function on_input(self, action_id, action)
 			end
 		end
 		msg.post(can_table[actual_can], "enable")
+		msg.post("main#gui", "change_can")
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") then
+		print("=== TRASHCAN ===")
+		print(message_id)
+		pprint(message)
+		print(sender)
+		print("===============")
 	end
 end
