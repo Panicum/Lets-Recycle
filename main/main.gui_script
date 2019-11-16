@@ -18,6 +18,8 @@ function update_scroll_bar(self)
 end
 
 function init(self)
+	msg.post(".", "acquire_input_focus")
+	
 	self.score = 0
 	self.lives = 10
 	self.score_node = gui.get_node("score")
@@ -27,6 +29,7 @@ function init(self)
 	self.plasmet_node = gui.get_node("plasmet_prev")
 	self.organic_node = gui.get_node("organic_prev")
 	self.mixed_node = gui.get_node("mixed_prev")
+	
 	update_scroll_bar(self)
 	
 end
@@ -51,5 +54,21 @@ function on_message(self, message_id, message, sender)
 	end
 	if message_id == hash("change_can") then
 		update_scroll_bar(self)
+	end
+end
+
+function on_input(self, action_id, action)
+	if(action_id == hash("touch") and action.released == true) then
+		local can_node = gui.get_node("touch_can")
+		local left_node = gui.get_node("touch_left")
+		local right_node = gui.get_node("touch_right")
+		
+		if(gui.pick_node(can_node, action.x, action.y)) then
+			msg.post("paper-trashcan", "CAN_CHANGE")
+		elseif(gui.pick_node(left_node, action.x, action.y)) then
+			msg.post("paper-trashcan", "CAN_LEFT")
+		elseif(gui.pick_node(right_node, action.x, action.y)) then
+			msg.post("paper-trashcan", "CAN_RIGHT")
+		end
 	end
 end
