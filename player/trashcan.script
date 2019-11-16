@@ -81,13 +81,3 @@ function on_input(self, action_id, action)
 		msg.post("main#gui", "change_can")
 	end
 end
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("collision_response") then
-		print("=== TRASHCAN ===")
-		print(message_id)
-		pprint(message)
-		print(sender)
-		print("===============")
-	end
-end
