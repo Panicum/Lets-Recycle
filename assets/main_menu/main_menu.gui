@@ -97,9 +97,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.8
+    x: 0.101960786
     y: 0.2
-    z: 0.2
+    z: 0.6
     w: 1.0
   }
   type: TYPE_TEXT
@@ -159,9 +159,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.8
-    y: 0.2
-    z: 0.2
+    x: 0.2
+    y: 0.3019608
+    z: 0.7019608
     w: 1.0
   }
   type: TYPE_TEXT
@@ -252,7 +252,7 @@ nodes {
 }
 nodes {
   position {
-    x: 323.0
+    x: 326.0
     y: 927.0
     z: 0.0
     w: 1.0
@@ -276,9 +276,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.0
+    x: 0.2
     y: 0.0
-    z: 0.0
+    z: 0.2
     w: 1.0
   }
   type: TYPE_TEXT
@@ -305,7 +305,7 @@ nodes {
   line_break: false
   layer: ""
   inherit_alpha: true
-  alpha: 1.0
+  alpha: 0.8
   outline_alpha: 1.0
   shadow_alpha: 1.0
   template_node_child: false

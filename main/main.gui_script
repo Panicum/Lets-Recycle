@@ -1,9 +1,9 @@
 function update_scroll_bar(self)
-	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
-	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
-	gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
-	gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
-	gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
+	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
 	if actual_can == 1 then
 		gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
 	elseif actual_can == 2 then
