@@ -6,7 +6,7 @@ local paper2prob = 30
 function init(self)
 	self.timer = 1/frequency
 	-- make the game deterministic
-	math.randomseed(0)
+	math.randomseed(os.time())
 end
 
 function update(self, dt)
