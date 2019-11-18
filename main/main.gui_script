@@ -1,8 +1,37 @@
+function update_scroll_bar(self)
+	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
+	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
+	gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
+	gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
+	gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0.5), gui.EASING_OUT, 0)
+	if actual_can == 1 then
+		gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
+	elseif actual_can == 2 then
+		gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
+	elseif actual_can == 3 then
+		gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
+	elseif actual_can == 4 then
+		gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
+	elseif actual_can == 5 then
+		gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
+	end
+end
+
 function init(self)
+	msg.post(".", "acquire_input_focus")
+	
 	self.score = 0
 	self.lives = 10
 	self.score_node = gui.get_node("score")
 	self.lives_node = gui.get_node("lives")
+	self.glass_node = gui.get_node("glass_prev")
+	self.paper_node = gui.get_node("paper_prev")
+	self.plasmet_node = gui.get_node("plasmet_prev")
+	self.organic_node = gui.get_node("organic_prev")
+	self.mixed_node = gui.get_node("mixed_prev")
+	
+	update_scroll_bar(self)
+	
 end
 
 local function scale_down(self, node)
@@ -22,5 +51,24 @@ function on_message(self, message_id, message, sender)
 		self.lives = self.lives + message.amount
 		gui.set_text(self.lives_node, tostring(self.lives))
 		gui.animate(self.lives_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+	end
+	if message_id == hash("change_can") then
+		update_scroll_bar(self)
+	end
+end
+
+function on_input(self, action_id, action)
+	if(action_id == hash("touch") and action.released == true) then
+		local can_node = gui.get_node("touch_can")
+		local left_node = gui.get_node("touch_left")
+		local right_node = gui.get_node("touch_right")
+		
+		if(gui.pick_node(can_node, action.x, action.y)) then
+			msg.post("paper-trashcan", "CAN_CHANGE")
+		elseif(gui.pick_node(left_node, action.x, action.y)) then
+			msg.post("paper-trashcan", "CAN_LEFT")
+		elseif(gui.pick_node(right_node, action.x, action.y)) then
+			msg.post("paper-trashcan", "CAN_RIGHT")
+		end
 	end
 end
