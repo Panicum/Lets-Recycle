@@ -1,0 +1,27 @@
+local score = 100
+local bad_score = -(score / 2)
+local speed = -150
+
+function update(self, dt)
+	local pos = go.get_position()
+	pos.y = pos.y + speed * dt
+	if pos.y < -320 then
+		go.delete()
+		msg.post("main#gui", "add_live", {amount = -1})
+	end 
+	go.set_position(pos)
+end
+
+function on_message(self, message_id, message, sender)
+	if (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan") 
+	and actual_can == 4) then --organic trashcan
+		msg.post("main#gui", "add_score", {amount = score})
+		--particlefx.play("#pickup")
+		go.delete()
+	elseif (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan")) then
+		msg.post("main#gui", "add_score", {amount = bad_score})
+		msg.post("main#gui", "add_live", {amount = -1})
+		--particlefx.play("#pickup")
+		go.delete()
+	end
+end
