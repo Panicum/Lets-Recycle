@@ -1,9 +1,22 @@
 function update_scroll_bar(self)
 	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
-	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
-	gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
-	gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
-	gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	if level > 1 then
+		gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	end
+	if level > 2 then
+		gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	end
+	if level > 3 then
+		gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	end
+	if level > 4 then
+		gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	end
+	
 	if actual_can == 1 then
 		gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.5)
 	elseif actual_can == 2 then
@@ -24,6 +37,7 @@ function init(self)
 	self.lives = 10
 	self.score_node = gui.get_node("score")
 	self.lives_node = gui.get_node("lives")
+	self.level_node = gui.get_node("level")
 	self.glass_node = gui.get_node("glass_prev")
 	self.paper_node = gui.get_node("paper_prev")
 	self.plasmet_node = gui.get_node("plasmet_prev")
@@ -45,6 +59,12 @@ function on_message(self, message_id, message, sender)
 		self.score = self.score + message.amount
 		gui.set_text(self.score_node, tostring(self.score))
 		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+		if self.score >= (level * 200) then
+			level = level + 1
+			gui.set_text(self.level_node, tostring(level))
+			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+			update_scroll_bar(self)
+		end
 	end
 	if message_id == hash("add_live") then
 		local s = 1.2
