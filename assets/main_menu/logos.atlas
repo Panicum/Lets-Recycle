@@ -1,0 +1,6 @@
+images {
+  image: "/assets/main_menu/loho_ohope.png"
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0

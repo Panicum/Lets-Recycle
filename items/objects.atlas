@@ -1,0 +1,18 @@
+images {
+  image: "/Enviroment/glass_broken.png"
+}
+images {
+  image: "/Enviroment/mixed_fish.png"
+}
+images {
+  image: "/Enviroment/paper_gazette.png"
+}
+images {
+  image: "/Enviroment/plastic_metal_bottle.png"
+}
+images {
+  image: "/Enviroment/organic_banana.png"
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0

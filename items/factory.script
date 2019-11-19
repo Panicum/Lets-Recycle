@@ -1,23 +1,38 @@
-local frequency = 0.5
+local frequency = 0.25
 local min_x = -240
 local max_x = 240
-local paper2prob = 30
 
 function init(self)
 	self.timer = 1/frequency
 	-- make the game deterministic
-	math.randomseed(0)
+	math.randomseed(os.time())
 end
 
 function update(self, dt)
+	local range = 100
+	if level > 5 then
+		range = range / 5
+	else
+		range = range / level
+	end
+		
 	self.timer = self.timer - dt
 	if self.timer <= 0 then
 		self.timer = 1/frequency
 		local p = go.get_position()
 		p.x = vmath.lerp(math.random(), min_x, max_x)
-		local component = "#paper-1-factory"
-		if math.random(0,100) < paper2prob then
-		 component = "#paper-2-factory"
+		rand = math.random(0,100)
+		local component = "#glass-factory"
+		if rand < range then
+			-- do nothing, glass
+		elseif rand < (2 * range) then
+			component = "#paper-factory"
+		elseif rand < (3 * range) then
+			component = "#plastic_metal-factory"
+		elseif rand < (4 * range) then
+			component = "#organic-factory"
+		else
+			component = "#mixed-factory"
 		end
 		factory.create(component, p)
 	end

@@ -1,6 +1,6 @@
 components {
-  id: "script-paper-2"
-  component: "/items/paper-2.script"
+  id: "script-glass"
+  component: "/items/glass.script"
   position {
     x: 0.0
     y: 0.0
@@ -17,8 +17,8 @@ embedded_components {
   id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
-  "mass: 0.0\n"
+  "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
+  "mass: 1.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"default\"\n"
@@ -59,10 +59,10 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "paper-2"
+  id: "paper"
   type: "sprite"
-  data: "tile_set: \"/main/objects.atlas\"\n"
-  "default_animation: \"paper_2\"\n"
+  data: "tile_set: \"/items/objects.atlas\"\n"
+  "default_animation: \"glass_broken\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
