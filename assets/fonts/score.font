@@ -1,6 +1,6 @@
 font: "/assets/fonts/BoogalooOne-Regular.ttf"
 material: "/builtins/fonts/font.material"
-size: 84
+size: 50
 antialias: 1
 alpha: 1.0
 outline_alpha: 1.0
