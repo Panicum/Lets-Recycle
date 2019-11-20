@@ -61,7 +61,7 @@ function on_message(self, message_id, message, sender)
 		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 		if self.score >= (level * 200) then
 			level = level + 1
-			gui.set_text(self.level_node, tostring(level))
+			gui.set_text(self.level_node, tostring(self.level))
 			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 			update_scroll_bar(self)
 		end
