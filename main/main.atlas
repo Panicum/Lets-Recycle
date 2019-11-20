@@ -4,6 +4,9 @@ images {
 images {
   image: "/assets/background.png"
 }
+images {
+  image: "/assets/heart.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
