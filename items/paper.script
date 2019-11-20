@@ -1,6 +1,6 @@
-local score = 120
-local bad_score = -(score / 2)
-local speed = -180
+local score = 100
+-- local bad_score = -(score / 2)
+local speed = -150
 
 function update(self, dt)
 	local pos = go.get_position()
