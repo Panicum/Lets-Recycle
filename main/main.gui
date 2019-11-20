@@ -121,7 +121,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "10"
+  text: "1"
   font: "score"
   id: "lives"
   xanchor: XANCHOR_NONE

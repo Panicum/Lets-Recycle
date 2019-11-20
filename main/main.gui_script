@@ -34,7 +34,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	
 	self.score = 0
-	self.lives = 10
+	self.lives = 1
 	self.score_node = gui.get_node("score")
 	self.lives_node = gui.get_node("lives")
 	self.level_node = gui.get_node("level")
@@ -43,7 +43,6 @@ function init(self)
 	self.plasmet_node = gui.get_node("plasmet_prev")
 	self.organic_node = gui.get_node("organic_prev")
 	self.mixed_node = gui.get_node("mixed_prev")
-	
 	update_scroll_bar(self)
 	
 end
@@ -71,6 +70,9 @@ function on_message(self, message_id, message, sender)
 		self.lives = self.lives + message.amount
 		gui.set_text(self.lives_node, tostring(self.lives))
 		gui.animate(self.lives_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+		if self.lives == 0 then
+			msg.post("end_game#gui", "player_lost", {final_score = self.score})
+		end
 	end
 	if message_id == hash("change_can") then
 		update_scroll_bar(self)

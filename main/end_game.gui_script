@@ -1,0 +1,47 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.score = 0
+	self.game_finished = false
+	self.score_node = gui.get_node("score")
+	gui.set_enabled(self.score_node,false)
+	self.you_lost_node = gui.get_node("you_lost")
+	gui.set_enabled(self.you_lost_node,false)
+	self.your_score_node = gui.get_node("your_score")
+	gui.set_enabled(self.your_score_node,false)
+	self.play_again_node = gui.get_node("play_again")
+	gui.set_enabled(self.play_again_node,false)
+	self.go_to_menu_node = gui.get_node("go_to_menu")
+	gui.set_enabled(self.go_to_menu_node,false)
+end
+
+function on_message(self, message_id, message, sender)
+	local s = 1.2
+	if message_id == hash("player_lost") then
+		self.game_finished = true
+		self.score = message.final_score
+		gui.set_text(self.score_node, tostring(self.score))
+		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+		gui.set_enabled(self.score_node,true)
+		gui.set_enabled(self.you_lost_node,true)
+		gui.set_enabled(self.your_score_node,true)
+		gui.set_enabled(self.play_again_node,true)
+		gui.set_enabled(self.go_to_menu_node,true)
+	end
+end
+
+function on_input(self, action_id, action)
+	if self.game_finished == true then
+		if(action_id == hash("touch") and action.released == true) then
+			local go_to_menu = gui.get_node("go_to_menu")
+			if(gui.pick_node(go_to_menu, action.x, action.y)) then
+				msg.post("loader:/go#loader", "open_menu")
+			end
+		end
+		if(action_id == hash("touch") and action.released == true) then
+			local play_again = gui.get_node("play_again")
+			if(gui.pick_node( play_again, action.x, action.y)) then
+				msg.post("loader:/go#loader", "play_again")
+			end
+		end
+	end
+end
