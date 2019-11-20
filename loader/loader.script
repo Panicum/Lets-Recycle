@@ -12,6 +12,17 @@ local function load_main(self)
 	msg.post("go#main", "enable")
 end
 
+local function unload_main(self)
+	msg.post("go#main", "unload")
+end
+
+local function restart_main(self)
+	msg.post("go#main","reset")
+	--msg.post("go#main", "unload")
+	--msg.post("go#main", "load")
+	--msg.post("go#main", "enable")
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	load_menu(self)
@@ -21,5 +32,12 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("start_game") then
 		unload_menu(self)
 		load_main(self)
+	end
+	if message_id == hash("open_menu") then
+		unload_main(self)
+		load_menu(self)
+	end
+	if message_id == hash("play_again") then
+		restart_main(self)
 	end
 end
