@@ -8,7 +8,7 @@ images {
   image: "/assets/heart.png"
 }
 images {
-  image: "/assets/Unknown.png"
+  image: "/assets/help_ic.png"
 }
 margin: 0
 extrude_borders: 0

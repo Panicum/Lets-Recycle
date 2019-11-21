@@ -3,30 +3,6 @@ function init(self)
 	self.paused = false
 	self.help_dialog = gui.get_node("help_dialog")
 	gui.set_enabled(self.help_dialog, false)
-	-- self.help_title_node = gui.get_node("help_title")
-	-- gui.set_enabled(self.you_lost_node,false)
-	-- self.unpause_node = gui.get_node("unpause")
-	-- gui.set_enabled(self.your_score_node,false)
-	-- self.glass_can_node = gui.get_node("glass_can")
-	-- gui.set_enabled(self.glass_can_node,false)
-	-- self.paper_can_node = gui.get_node("paper_can")
-	-- gui.set_enabled(self.paper_can_node,false)
-	-- self.plastmet_can_node = gui.get_node("plastmet_can")
-	-- gui.set_enabled(self.glass_can_node,false)
-	-- self.organic_can_node = gui.get_node("organic_can")
-	-- gui.set_enabled(self.organic_can_node,false)
-	-- self.mixed_can_node = gui.get_node("mixed_can")
-	-- gui.set_enabled(self.mixed_can_node,false)
-	-- self.broken_glass_node = gui.get_node("broken_glass_icon")
-	-- gui.set_enabled(self.broken_glass_node,false)
-	-- self.magazine_node = gui.get_node("magazine_icon")
-	-- gui.set_enabled(self.magazine_node,false)
-	-- self.bottle_node = gui.get_node("bottle_icon")
-	-- gui.set_enabled(self.bottle_node,false)
-	-- self.banana_node = gui.get_node("banana_icon")
-	-- gui.set_enabled(self.banana_node,false)
-	-- self.fish_node = gui.get_node("fish_icon")
-	-- gui.set_enabled(self.fish_node,false)
 end
 
 function on_message(self, message_id, message, sender)
@@ -34,18 +10,9 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("pause") then
 		self.game_finished = true
 		gui.set_enabled(self.help_dialog, true)
-		-- gui.set_enabled(self.you_lost_node,true)
-		-- gui.set_enabled(self.your_score_node,true)
-		-- gui.set_enabled(self.glass_can_node,true)
-		-- gui.set_enabled(self.paper_can_node,true)
-		-- gui.set_enabled(self.glass_can_node,true)
-		-- gui.set_enabled(self.organic_can_node,true)
-		-- gui.set_enabled(self.mixed_can_node,true)
-		-- gui.set_enabled(self.broken_glass_node,true)
-		-- gui.set_enabled(self.magazine_node,true)
-		-- gui.set_enabled(self.bottle_node,true)
-		-- gui.set_enabled(self.banana_node,true)
-		-- gui.set_enabled(self.fish_node,true)
+	end
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
 	end
 end
 
@@ -55,7 +22,7 @@ function on_input(self, action_id, action)
 			local unpause_game_node = gui.get_node("unpause")
 			if(gui.pick_node(unpause_game_node, action.x, action.y)) then
 				gui.set_enabled(self.help_dialog, false)
-				self.paused = not self.paused
+				self.paused = true
 				if self.paused then
 					msg.post("#gameproxy", "set_time_step", {factor = 0, mode = 1})
 				else

@@ -27,8 +27,8 @@ background_color {
 }
 nodes {
   position {
-    x: -197.0
-    y: 1160.0
+    x: 72.0
+    y: 1083.0
     z: 0.0
     w: 1.0
   }
@@ -709,27 +709,27 @@ nodes {
 }
 nodes {
   position {
-    x: 106.0
-    y: 1071.0
-    z: 1.0
+    x: 532.0
+    y: 949.0
+    z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
-    y: 0.0
+    y: 0.459
     z: 0.0
     w: 1.0
   }
   scale {
     x: 0.3
     y: 0.3
-    z: 2.0
+    z: 0.3
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 200.0
-    z: 0.0
+    x: 240.0
+    y: 240.0
+    z: 1.0
     w: 1.0
   }
   color {
@@ -740,7 +740,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "main/Unknown"
+  texture: "main/help_ic"
   id: "help"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -759,7 +759,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
