@@ -1,4 +1,4 @@
-script: "/main/main.gui_script"
+script: "/main/end_game.gui_script"
 fonts {
   name: "score"
   font: "/assets/fonts/score.font"
@@ -19,6 +19,14 @@ textures {
   name: "main"
   texture: "/main/main.atlas"
 }
+textures {
+  name: "particle_blob2"
+  texture: "/builtins/graphics/particle_blob.tilesource"
+}
+textures {
+  name: "objects"
+  texture: "/items/objects.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -27,8 +35,8 @@ background_color {
 }
 nodes {
   position {
-    x: 77.0
-    y: 1079.0
+    x: 315.0
+    y: 1047.0
     z: 0.0
     w: 1.0
   }
@@ -58,10 +66,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0\n"
+  text: "Help\n"
   ""
   font: "score"
-  id: "score"
+  id: "help_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -90,8 +98,8 @@ nodes {
 }
 nodes {
   position {
-    x: 588.0
-    y: 1079.0
+    x: 314.0
+    y: 93.0
     z: 0.0
     w: 1.0
   }
@@ -121,9 +129,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "1"
+  text: "UNPAUSE"
   font: "score"
-  id: "lives"
+  id: "unpause"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -152,8 +160,8 @@ nodes {
 }
 nodes {
   position {
-    x: 204.0
-    y: 1023.0
+    x: 118.0
+    y: 847.0
     z: 0.0
     w: 1.0
   }
@@ -164,9 +172,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.35
-    y: 0.35
-    z: 1.0
+    x: 0.5
+    y: 0.5
+    z: 0.5
     w: 1.0
   }
   size {
@@ -184,7 +192,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-glass"
-  id: "glass_prev"
+  id: "glass_can"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -206,8 +214,8 @@ nodes {
 }
 nodes {
   position {
-    x: 261.0
-    y: 1025.0
+    x: 118.0
+    y: 724.0
     z: 0.0
     w: 1.0
   }
@@ -218,9 +226,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.35
-    y: 0.35
-    z: 1.0
+    x: 0.5
+    y: 0.5
+    z: 0.5
     w: 1.0
   }
   size {
@@ -238,7 +246,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-paper"
-  id: "paper_prev"
+  id: "paper_can"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -260,8 +268,8 @@ nodes {
 }
 nodes {
   position {
-    x: 316.0
-    y: 1025.0
+    x: 118.0
+    y: 600.0
     z: 0.0
     w: 1.0
   }
@@ -272,9 +280,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.35
-    y: 0.35
-    z: 1.0
+    x: 0.5
+    y: 0.5
+    z: 0.5
     w: 1.0
   }
   size {
@@ -292,7 +300,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-plastic-metal"
-  id: "plasmet_prev"
+  id: "plastmet_can"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -314,8 +322,8 @@ nodes {
 }
 nodes {
   position {
-    x: 374.0
-    y: 1025.0
+    x: 118.0
+    y: 477.0
     z: 0.0
     w: 1.0
   }
@@ -326,9 +334,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.35
-    y: 0.35
-    z: 1.0
+    x: 0.5
+    y: 0.5
+    z: 0.5
     w: 1.0
   }
   size {
@@ -346,7 +354,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-organic"
-  id: "organic_prev"
+  id: "organic_can"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -368,8 +376,8 @@ nodes {
 }
 nodes {
   position {
-    x: 433.0
-    y: 1024.0
+    x: 118.0
+    y: 356.0
     z: 0.0
     w: 1.0
   }
@@ -380,9 +388,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.35
-    y: 0.35
-    z: 1.0
+    x: 0.5
+    y: 0.5
+    z: 0.5
     w: 1.0
   }
   size {
@@ -400,7 +408,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-mixed"
-  id: "mixed_prev"
+  id: "mixed_can"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -422,116 +430,8 @@ nodes {
 }
 nodes {
   position {
-    x: -65.0
-    y: 497.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 3.796
-    y: 10.546
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.9019608
-    y: 0.9019608
-    z: 0.9019608
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "touch_left"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 742.0
-    y: 493.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 4.253
-    y: 10.569
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.8
-    y: 0.8
-    z: 0.8
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "touch_right"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 400.0
-    y: 1098.0
+    x: 237.0
+    y: 847.0
     z: 0.0
     w: 1.0
   }
@@ -548,71 +448,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "1\n"
-  ""
-  font: "score"
-  id: "level"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 527.0
-    y: 1077.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.03
-    y: 0.03
-    z: 0.03
-    w: 1.0
-  }
-  size {
-    x: 915.0
-    y: 818.0
+    x: 50.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -624,8 +461,8 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "main/heart"
-  id: "box"
+  texture: "objects/glass_broken"
+  id: "broken_glass_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -647,8 +484,8 @@ nodes {
 }
 nodes {
   position {
-    x: 291.0
-    y: 1098.0
+    x: 237.0
+    y: 723.0
     z: 0.0
     w: 1.0
   }
@@ -665,70 +502,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "Level"
-  font: "score"
-  id: "level_title"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 595.0
-    y: 983.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.3
-    y: 0.3
-    z: 0.3
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 200.0
+    x: 50.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -740,8 +515,170 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "main/Unknown"
-  id: "help"
+  texture: "objects/paper_gazette"
+  id: "magazine_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 237.0
+    y: 605.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "objects/plastic_metal_bottle"
+  id: "bottle_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 237.0
+    y: 476.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "objects/organic_banana"
+  id: "banana_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 237.0
+    y: 353.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "objects/mixed_fish"
+  id: "fish_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
