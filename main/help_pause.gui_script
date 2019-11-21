@@ -8,8 +8,9 @@ end
 function on_message(self, message_id, message, sender)
 	local s = 1.2
 	if message_id == hash("pause") then
-		self.game_finished = true
+		self.pause = true
 		gui.set_enabled(self.help_dialog, true)
+		msg.post("main#gui", "set_time_step", {factor = 1, mode = 1})
 	end
 	if message_id == hash("proxy_loaded") then
 		msg.post(sender, "enable")
@@ -23,11 +24,7 @@ function on_input(self, action_id, action)
 			if(gui.pick_node(unpause_game_node, action.x, action.y)) then
 				gui.set_enabled(self.help_dialog, false)
 				self.paused = true
-				if self.paused then
-					msg.post("#gameproxy", "set_time_step", {factor = 0, mode = 1})
-				else
-					msg.post("#gameproxy", "set_time_step", {factor = 1, mode = 1})
-				end
+				msg.post("main#gui", "set_time_step", {factor = 0, mode = 1})
 			end
 		end
 end

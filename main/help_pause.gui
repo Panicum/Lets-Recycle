@@ -639,7 +639,7 @@ nodes {
 }
 nodes {
   position {
-    x: 314.0
+    x: 329.0
     y: 164.0
     z: 0.0
     w: 1.0
@@ -670,7 +670,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "UNPAUSE"
+  text: "RETURN"
   font: "score"
   id: "unpause"
   xanchor: XANCHOR_NONE
@@ -702,7 +702,7 @@ nodes {
 }
 nodes {
   position {
-    x: 300.0
+    x: 328.0
     y: 865.0
     z: 0.0
     w: 1.0

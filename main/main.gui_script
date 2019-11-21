@@ -33,7 +33,7 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.score = 0
-	self.lives = 1
+	self.lives = 5
 	self.score_node = gui.get_node("score")
 	self.lives_node = gui.get_node("lives")
 	self.level_node = gui.get_node("level")
