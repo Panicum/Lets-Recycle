@@ -38,6 +38,25 @@ function on_message(self, message_id, message, sender)
 		load_menu(self)
 	end
 	if message_id == hash("play_again") then
-		restart_main(self)
+		--restart_main(self)
+		self.restart = true
+		msg.post("go#main", "disable")
+		msg.post("go#main", "unload")
 	end
+	
+	if message_id == hash("proxy_unloaded") then
+	-- let unloader know
+		if self.restart == true then
+			msg.post("go#main", "load")
+		end
+	end
+
+	if message_id == hash("proxy_loaded") then
+		-- let unloader know
+		if self.restart == true then
+			msg.post("go#main", "enable")
+			self.restart = false
+		end
+	end
+	
 end
