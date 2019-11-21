@@ -27,8 +27,8 @@ background_color {
 }
 nodes {
   position {
-    x: 77.0
-    y: 1079.0
+    x: -197.0
+    y: 1160.0
     z: 0.0
     w: 1.0
   }
@@ -709,9 +709,9 @@ nodes {
 }
 nodes {
   position {
-    x: 595.0
-    y: 983.0
-    z: 0.0
+    x: 106.0
+    y: 1071.0
+    z: 1.0
     w: 1.0
   }
   rotation {
@@ -723,7 +723,7 @@ nodes {
   scale {
     x: 0.3
     y: 0.3
-    z: 0.3
+    z: 2.0
     w: 1.0
   }
   size {
