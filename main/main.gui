@@ -27,8 +27,8 @@ background_color {
 }
 nodes {
   position {
-    x: 72.0
-    y: 1083.0
+    x: 145.0
+    y: 1010.0
     z: 0.0
     w: 1.0
   }
@@ -58,10 +58,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0\n"
-  ""
+  text: "0"
   font: "score"
-  id: "score"
+  id: "score_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -90,8 +89,8 @@ nodes {
 }
 nodes {
   position {
-    x: 588.0
-    y: 1079.0
+    x: 145.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -123,7 +122,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "5"
   font: "score"
-  id: "lives"
+  id: "lives_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -152,8 +151,8 @@ nodes {
 }
 nodes {
   position {
-    x: 204.0
-    y: 1025.0
+    x: 230.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -206,8 +205,8 @@ nodes {
 }
 nodes {
   position {
-    x: 261.0
-    y: 1025.0
+    x: 290.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -260,8 +259,8 @@ nodes {
 }
 nodes {
   position {
-    x: 316.0
-    y: 1025.0
+    x: 350.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -314,8 +313,8 @@ nodes {
 }
 nodes {
   position {
-    x: 374.0
-    y: 1025.0
+    x: 410.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -368,8 +367,8 @@ nodes {
 }
 nodes {
   position {
-    x: 433.0
-    y: 1025.0
+    x: 470.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -530,8 +529,8 @@ nodes {
 }
 nodes {
   position {
-    x: 400.0
-    y: 1098.0
+    x: 145.0
+    y: 940.0
     z: 0.0
     w: 1.0
   }
@@ -564,7 +563,7 @@ nodes {
   text: "1\n"
   ""
   font: "score"
-  id: "level"
+  id: "level_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -593,8 +592,8 @@ nodes {
 }
 nodes {
   position {
-    x: 527.0
-    y: 1077.0
+    x: 60.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -605,14 +604,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.03
-    y: 0.03
-    z: 0.03
+    x: 0.25
+    y: 0.25
+    z: 1.0
     w: 1.0
   }
   size {
-    x: 915.0
-    y: 818.0
+    x: 225.0
+    y: 225.0
     z: 0.0
     w: 1.0
   }
@@ -624,8 +623,8 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "main/heart"
-  id: "box"
+  texture: "main/Lives"
+  id: "lives_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -647,7 +646,7 @@ nodes {
 }
 nodes {
   position {
-    x: 291.0
+    x: 848.0
     y: 1098.0
     z: 0.0
     w: 1.0
@@ -709,8 +708,8 @@ nodes {
 }
 nodes {
   position {
-    x: 532.0
-    y: 949.0
+    x: 560.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -740,7 +739,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "main/help_ic"
+  texture: "main/Menu"
   id: "help"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -760,6 +759,114 @@ nodes {
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 60.0
+    y: 1010.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.25
+    y: 0.25
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 225.0
+    y: 225.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "main/Score"
+  id: "score_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 60.0
+    y: 940.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.25
+    y: 0.25
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 225.0
+    y: 225.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "main/Level"
+  id: "level_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

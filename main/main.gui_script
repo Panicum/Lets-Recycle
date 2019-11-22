@@ -38,9 +38,9 @@ function init(self)
 	self.score = 0
 	self.lives = 5
 	pause_flag = 0
-	self.score_node = gui.get_node("score")
-	self.lives_node = gui.get_node("lives")
-	self.level_node = gui.get_node("level")
+	self.score_node = gui.get_node("score_text")
+	self.lives_node = gui.get_node("lives_text")
+	self.level_node = gui.get_node("level_text")
 	self.glass_node = gui.get_node("glass_prev")
 	self.paper_node = gui.get_node("paper_prev")
 	self.plasmet_node = gui.get_node("plasmet_prev")

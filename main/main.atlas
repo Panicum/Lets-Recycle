@@ -10,6 +10,18 @@ images {
 images {
   image: "/assets/help_ic.png"
 }
+images {
+  image: "/Enviroment/Score.png"
+}
+images {
+  image: "/Enviroment/Menu.png"
+}
+images {
+  image: "/Enviroment/Lives.png"
+}
+images {
+  image: "/Enviroment/Level.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
