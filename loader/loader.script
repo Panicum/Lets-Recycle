@@ -23,6 +23,15 @@ local function restart_main(self)
 	--msg.post("go#main", "enable")
 end
 
+local function load_credits(self)
+	msg.post("go#credits", "load")
+	msg.post("go#credits", "enable")
+end
+
+local function unload_credits(self)
+	msg.post("go#credits", "unload")
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	load_menu(self)
@@ -58,5 +67,19 @@ function on_message(self, message_id, message, sender)
 			self.restart = false
 		end
 	end
-	
-end
+	if message_id == hash("proxy_loaded") then
+		-- let unloader know
+		if self.restart == true then
+			msg.post("go#main", "enable")
+			self.restart = false
+		end
+	end
+	if message_id == hash("credits") then
+		unload_menu(self)
+		load_credits(self)
+	end
+	if message_id == hash("back") then
+		unload_credits(self)
+		load_menu(self)
+	end
+end 

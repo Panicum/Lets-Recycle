@@ -1,3 +1,5 @@
+global_speed = 1
+
 function update_scroll_bar(self)
 	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
 	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
@@ -62,6 +64,9 @@ function on_message(self, message_id, message, sender)
 			gui.set_text(self.level_node, tostring(level))
 			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 			update_scroll_bar(self)
+			if level > 5 then
+				global_speed = global_speed * 1.2
+			end
 		end
 	end
 	if message_id == hash("add_live") then

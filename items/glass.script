@@ -1,10 +1,10 @@
 local score = 100
 --local bad_score = -(score / 2)
-local speed = -150
+local speed = -100
 
 function update(self, dt)
 	local pos = go.get_position()
-	pos.y = pos.y + speed * dt
+	pos.y = pos.y + speed * global_speed * dt
 	if pos.y < -320 then
 		go.delete()
 		msg.post("main#gui", "add_live", {amount = -1})

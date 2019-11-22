@@ -16,4 +16,10 @@ function on_input(self, action_id, action)
 			msg.post("@system:", "exit", {code = 0})
 		end
 	end
+	if(action_id == hash("touch") and action.released == true) then
+		local textCredits = gui.get_node("textCredits")
+		if(gui.pick_node(textCredits, action.x, action.y)) then
+			msg.post("loader:/go#loader", "credits", {code = 0})
+		end
+	end
 end

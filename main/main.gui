@@ -153,7 +153,7 @@ nodes {
 nodes {
   position {
     x: 204.0
-    y: 1023.0
+    y: 1025.0
     z: 0.0
     w: 1.0
   }
@@ -369,7 +369,7 @@ nodes {
 nodes {
   position {
     x: 433.0
-    y: 1024.0
+    y: 1025.0
     z: 0.0
     w: 1.0
   }
