@@ -19,6 +19,10 @@ textures {
   name: "main"
   texture: "/main/main.atlas"
 }
+textures {
+  name: "bgAtlas"
+  texture: "/main/bgAtlas.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -61,8 +65,8 @@ nodes {
   text: "0"
   font: "score"
   id: "score_text"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   outline {
     x: 1.0
@@ -123,8 +127,8 @@ nodes {
   text: "5"
   font: "score"
   id: "lives_text"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   outline {
     x: 1.0
@@ -184,8 +188,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-glass"
   id: "glass_prev"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -238,8 +242,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-paper"
   id: "paper_prev"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -292,8 +296,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-plastic-metal"
   id: "plasmet_prev"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -346,8 +350,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-organic"
   id: "organic_prev"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -400,8 +404,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "player/trashcan-mixed"
   id: "mixed_prev"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -454,10 +458,10 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
   id: "touch_left"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -508,10 +512,10 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
   id: "touch_right"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -564,8 +568,8 @@ nodes {
   ""
   font: "score"
   id: "level_text"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   outline {
     x: 1.0
@@ -625,8 +629,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "main/Lives"
   id: "lives_icon"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -643,68 +647,6 @@ nodes {
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 848.0
-    y: 1098.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "Level"
-  font: "score"
-  id: "level_title"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
 }
 nodes {
   position {
@@ -741,8 +683,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "main/Menu"
   id: "help"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -795,8 +737,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "main/Score"
   id: "score_icon"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -849,8 +791,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   texture: "main/Level"
   id: "level_icon"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   layer: ""

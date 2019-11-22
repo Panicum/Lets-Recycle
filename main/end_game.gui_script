@@ -12,6 +12,8 @@ function init(self)
 	gui.set_enabled(self.play_again_node,false)
 	self.go_to_menu_node = gui.get_node("go_to_menu")
 	gui.set_enabled(self.go_to_menu_node,false)
+	self.bg_node = gui.get_node("box")
+	gui.set_enabled(self.bg_node,false)
 end
 
 function on_message(self, message_id, message, sender)
@@ -27,6 +29,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(self.your_score_node,true)
 		gui.set_enabled(self.play_again_node,true)
 		gui.set_enabled(self.go_to_menu_node,true)
+		gui.set_enabled(self.bg_node,true)
 	end
 end
 
