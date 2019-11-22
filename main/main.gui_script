@@ -1,5 +1,5 @@
 trash_speed = 1
-can_speed = 1
+pause_flag = 0
 
 function update_scroll_bar(self)
 	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
@@ -37,6 +37,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.score = 0
 	self.lives = 5
+	pause_flag = 0
 	self.score_node = gui.get_node("score")
 	self.lives_node = gui.get_node("lives")
 	self.level_node = gui.get_node("level")

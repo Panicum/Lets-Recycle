@@ -17,6 +17,7 @@ end
 function on_message(self, message_id, message, sender)
 	local s = 1.2
 	if message_id == hash("player_lost") then
+		pause_flag = 1
 		self.game_finished = true
 		self.score = message.final_score
 		gui.set_text(self.score_node, tostring(self.score))

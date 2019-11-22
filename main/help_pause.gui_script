@@ -8,9 +8,8 @@ end
 function on_message(self, message_id, message, sender)
 	local s = 1.2
 	if message_id == hash("pause") then
-		trash_speed = 0
-		can_speed = 0
 		self.pause = true
+		pause_flag = 1
 		gui.set_enabled(self.help_dialog, true)
 		msg.post("main#gui", "set_time_step", {factor = 1, mode = 1})
 	end
@@ -24,8 +23,7 @@ function on_input(self, action_id, action)
 		if(action_id == hash("touch") and action.released == true) then
 			local unpause_game_node = gui.get_node("unpause")
 			if(gui.pick_node(unpause_game_node, action.x, action.y)) then
-				trash_speed = 1
-				can_speed = 1
+				pause_flag = 0
 				gui.set_enabled(self.help_dialog, false)
 				self.paused = true
 				msg.post("main#gui", "set_time_step", {factor = 0, mode = 1})

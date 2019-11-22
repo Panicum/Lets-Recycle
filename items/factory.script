@@ -15,25 +15,28 @@ function update(self, dt)
 	else
 		range = range / level
 	end
-		
-	self.timer = self.timer - dt
-	if self.timer <= 0 then
-		self.timer = 1/frequency
-		local p = go.get_position()
-		p.x = vmath.lerp(math.random(), min_x, max_x)
-		rand = math.random(0,100)
-		local component = "#glass-factory"
-		if rand <= range then
-			-- do nothing, glass
-		elseif rand <= (2 * range) then
-			component = "#paper-factory"
-		elseif rand <= (3 * range) then
-			component = "#plastic_metal-factory"
-		elseif rand <= (4 * range) then
-			component = "#organic-factory"
-		else
-			component = "#mixed-factory"
+	if pause_flag == 1 then	
+		-- do nothing
+	else
+		self.timer = self.timer - dt
+		if self.timer <= 0 then
+			self.timer = 1/frequency
+			local p = go.get_position()
+			p.x = vmath.lerp(math.random(), min_x, max_x)
+			rand = math.random(0,100)
+			local component = "#glass-factory"
+			if rand <= range then
+				-- do nothing, glass
+			elseif rand <= (2 * range) then
+				component = "#paper-factory"
+			elseif rand <= (3 * range) then
+				component = "#plastic_metal-factory"
+			elseif rand <= (4 * range) then
+				component = "#organic-factory"
+			else
+				component = "#mixed-factory"
+			end
+			factory.create(component, p)
 		end
-		factory.create(component, p)
 	end
 end
