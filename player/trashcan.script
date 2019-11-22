@@ -43,7 +43,7 @@ function update(self, dt)
 	elseif (pos.x >= max_x and self.speed.x >= 0) then
 		-- do nothing, right edge
 	else
-		pos = pos + self.speed * dt
+		pos = pos + self.speed * can_speed * dt
 		go.set_position(pos)
 		if self.curAnim ~= "run" then
 			--msg.post("#sprite", "play_animation",{ id=hash("run")})
