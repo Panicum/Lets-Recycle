@@ -96,13 +96,10 @@ function on_input(self, action_id, action)
 			else
 				msg.post("help_pause#gui", "pause")
 			end
-			print("PAUSE clicked")
-			print(pause_flag)
 		elseif(gui.pick_node(left_node, action.x, action.y)) then
 			msg.post("paper-trashcan", "CAN_CHANGE_LEFT")
 		elseif(gui.pick_node(right_node, action.x, action.y)) then
 			msg.post("paper-trashcan", "CAN_CHANGE_RIGHT")
-			print("CAN_CHANGE_RIGHT")
 		end
 	end
 	

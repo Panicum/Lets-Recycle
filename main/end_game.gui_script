@@ -1,5 +1,6 @@
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	math.randomseed(os.time())
 	self.score = 0
 	self.game_finished = false
 	self.score_node = gui.get_node("score")
@@ -14,12 +15,15 @@ function init(self)
 	gui.set_enabled(self.go_to_menu_node,false)
 	self.bg_node = gui.get_node("box")
 	gui.set_enabled(self.bg_node,false)
+	self.trivia_node = gui.get_node("trivia")
+	gui.set_enabled(self.trivia_node,false)
 end
 
 function on_message(self, message_id, message, sender)
 	local s = 1.2
 	if message_id == hash("player_lost") then
 		pause_flag = 1
+		set_trivia(self)
 		self.game_finished = true
 		self.score = message.final_score
 		gui.set_text(self.score_node, tostring(self.score))
@@ -30,6 +34,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(self.play_again_node,true)
 		gui.set_enabled(self.go_to_menu_node,true)
 		gui.set_enabled(self.bg_node,true)
+		gui.set_enabled(self.trivia_node,true)
 	end
 end
 
@@ -48,4 +53,15 @@ function on_input(self, action_id, action)
 			end
 		end
 	end
+end
+
+function set_trivia(self)
+	local text
+	local rand = math.random(0,2)
+	if rand == 1 then
+		text = "        Baterie i akumulatory \n sa zaliczane do substancji niebezpiecznych \n i nalezy oddac je w wyznaczonych punktach \n zbiorki, specjalnych pojemnikach na baterie, \n lub przy okazji zbiorki elektroodpadow."
+	elseif rand == 2 then
+		text = "        Miasto Zamosc \n Zostalo zalozone w 1580 roku z inicjatywy \n Hetmana Koronnego Jana Zamoyskiego. \n Jego zaprojektowania podjal sie wloski \n architekt Bernando Morando."
+	end
+	gui.set_text(self.trivia_node, text)
 end

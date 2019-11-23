@@ -32,6 +32,15 @@ local function unload_credits(self)
 	msg.post("go#credits", "unload")
 end
 
+local function load_menuHelp(self)
+	msg.post("go#menu-help", "load")
+	msg.post("go#menu-help", "enable")
+end
+
+local function unload_menuHelp(self)
+	msg.post("go#menu-help", "unload")
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	load_menu(self)
@@ -74,11 +83,19 @@ function on_message(self, message_id, message, sender)
 			self.restart = false
 		end
 	end
+	if message_id == hash("menu_help") then
+		unload_menu(self)
+		load_menuHelp(self)
+	end
+	if message_id == hash("backHelp") then
+		unload_menuHelp(self)
+		load_menu(self)
+	end
 	if message_id == hash("credits") then
 		unload_menu(self)
 		load_credits(self)
 	end
-	if message_id == hash("back") then
+	if message_id == hash("backCredits") then
 		unload_credits(self)
 		load_menu(self)
 	end

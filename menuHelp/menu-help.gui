@@ -1,19 +1,27 @@
-script: "/assets/main_menu/main_menu.gui_script"
-fonts {
-  name: "main_menu"
-  font: "/assets/main_menu/main_menu.font"
-}
+script: "/menuHelp/menu-help.gui_script"
 fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
 textures {
-  name: "bgAtlas"
-  texture: "/main/bgAtlas.atlas"
+  name: "particle_blob"
+  texture: "/builtins/graphics/particle_blob.tilesource"
 }
 textures {
-  name: "logos"
-  texture: "/assets/main_menu/logos.atlas"
+  name: "player"
+  texture: "/player/player.atlas"
+}
+textures {
+  name: "particle_blob1"
+  texture: "/builtins/graphics/particle_blob.tilesource"
+}
+textures {
+  name: "main"
+  texture: "/main/main.atlas"
+}
+textures {
+  name: "bgAtlas"
+  texture: "/main/bgAtlas.atlas"
 }
 background_color {
   x: 0.0
@@ -77,8 +85,8 @@ nodes {
 }
 nodes {
   position {
-    x: 320.0
-    y: 660.0
+    x: 140.0
+    y: 200.0
     z: 0.0
     w: 1.0
   }
@@ -89,8 +97,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.2
-    y: 1.2
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -101,16 +109,16 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.101960786
-    y: 0.2
-    z: 0.6
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Start"
+  text: "BACK"
   font: "score"
-  id: "textStartGame"
+  id: "textBack"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -128,6 +136,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
+  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -136,123 +145,6 @@ nodes {
   template_node_child: false
   text_leading: 1.0
   text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 320.0
-    y: 300.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.2
-    y: 1.2
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.101960786
-    y: 0.2
-    z: 0.6
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "Exit\n"
-  ""
-  font: "score"
-  id: "textExitGame"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 120.0
-    y: 50.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 340.0
-    y: 80.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "logos/loho_ohope"
-  id: "logo"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
@@ -274,7 +166,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 250.0
+    x: 200.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -287,7 +179,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "seGRAgacja"
+  text: "HELP"
   font: "score"
   id: "textTitle"
   xanchor: XANCHOR_NONE
@@ -307,6 +199,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
+  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -319,7 +212,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 420.0
+    y: 600.0
     z: 0.0
     w: 1.0
   }
@@ -330,8 +223,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.2
-    y: 1.2
+    x: 0.8
+    y: 0.8
     z: 1.0
     w: 1.0
   }
@@ -342,17 +235,19 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.101960786
-    y: 0.2
-    z: 0.6
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Credits\n"
-  ""
+  text: "Lorem Ipsum\n"
+  "Neque porro quisquam est qui\n"
+  "dolorem ipsum quia dolor sit \n"
+  "amet, consectetur, adipisci velit..."
   font: "score"
-  id: "textCredits"
+  id: "textCreators"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -370,68 +265,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 320.0
-    y: 540.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.2
-    y: 1.2
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.101960786
-    y: 0.2
-    z: 0.6
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "Help"
-  font: "score"
-  id: "textHelp"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
+  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

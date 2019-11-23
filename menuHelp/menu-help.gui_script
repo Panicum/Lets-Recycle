@@ -7,7 +7,7 @@ function on_input(self, action_id, action)
 	if(action_id == hash("touch") and action.released == true) then
 		local textBack = gui.get_node("textBack")
 		if(gui.pick_node(textBack, action.x, action.y)) then
-			msg.post("loader:/go#loader", "backCredits")
+			msg.post("loader:/go#loader", "backHelp")
 		end
 	end
 end
