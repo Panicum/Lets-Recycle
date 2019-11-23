@@ -56,7 +56,7 @@ function on_message(self, message_id, message, sender)
 		load_menu(self)
 	end
 	if message_id == hash("play_again") then
-		--restart_main(self)
+		-- restart_main(self)
 		self.restart = true
 		msg.post("go#main", "disable")
 		msg.post("go#main", "unload")

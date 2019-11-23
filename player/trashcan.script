@@ -56,7 +56,6 @@ end
 
 function on_input(self, action_id, action)
 	acc.on_input(action)
-	print(action.acc_x)
 
 	-- ACC
 	if action.acc_x then
