@@ -61,13 +61,14 @@ function on_message(self, message_id, message, sender)
 		self.score = self.score + message.amount
 		gui.set_text(self.score_node, tostring(self.score))
 		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
-		if self.score >= (level * 200) then
+		if self.score >= (level/0.1)^2 then
 			level = level + 1
 			gui.set_text(self.level_node, tostring(level))
 			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 			update_scroll_bar(self)
 			if level > 5 then
-				trash_speed = trash_speed * 1.2
+				trash_speed = trash_speed + (0.2 * trash_speed)
+				frequency = frequency*0.95
 			end
 		end
 	end
