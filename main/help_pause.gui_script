@@ -6,9 +6,17 @@ end
 
 function on_message(self, message_id, message, sender)
 	local s = 1.2
+	local music_off_node = gui.get_node("music_off")
+	
 	if message_id == hash("pause") then
 		pause_flag = 1
 		gui.set_enabled(self.help_dialog, true)
+
+		if sound_effect_flag == true then
+			gui.set_enabled(music_off_node, false)
+		else
+			gui.set_enabled(music_off_node, true)
+		end
 	end
 	if message_id == hash("unpause") then
 		pause_flag = 0
@@ -23,13 +31,31 @@ function on_input(self, action_id, action)
 		if(action_id == hash("touch") and action.released == true) then
 			local replay_node = gui.get_node("replay")
 			local menu_node = gui.get_node("menu")
+			local music_node = gui.get_node("music_on")
+			local music_off_node = gui.get_node("music_off")
+			
 			if(gui.pick_node(replay_node, action.x, action.y)) then
 				pause_flag = 0
 				msg.post("loader:/go#loader", "play_again")
 			end
+			
 			if(gui.pick_node(menu_node, action.x, action.y)) then
 				pause_flag = 0
 				msg.post("loader:/go#loader", "open_menu")
+			end
+			
+			if(gui.pick_node(music_node, action.x, action.y)) then
+				if sound_effect_flag == true then
+					print("on->off")
+					sound_effect_flag = false
+					sound.stop("paper-trashcan#sound")
+					gui.set_enabled(music_off_node, true)
+				else
+					print("off->on")
+					sound_effect_flag = true
+					sound.play("paper-trashcan#sound", {delay = 1, gain = 0.3, pan = -1.0, speed = 1})
+					gui.set_enabled(music_off_node, false)
+				end
 			end
 		end
 end
