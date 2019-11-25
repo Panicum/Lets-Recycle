@@ -26,17 +26,23 @@ function init(self)
 	msg.post(can_table[actual_can], "enable")
 
 	acc.calibrate()
+
+	if (sound_effect_flag == true) then
+		sound.play("paper-trashcan#sound", {delay = 1, gain = 0.3, pan = -1.0, speed = 1})
+	end
 end
 
 function final(self)
 	acc.reset()
+
+	sound.stop("paper-trashcan#sound")
+	music_bg_playing_flag = false
 end
 
 function update(self, dt)
 	local pos = go.get_position()
 	
 	local adjusted = acc.adjusted()
-		
 	
 	if (pos.x <= min_x and self.speed.x <= 0) then
 		-- do nothing, left edge

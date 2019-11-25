@@ -22,6 +22,12 @@ images {
 images {
   image: "/Enviroment/Level.png"
 }
+images {
+  image: "/assets/music_ico.png"
+}
+images {
+  image: "/assets/main_menu/iks_ico.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
