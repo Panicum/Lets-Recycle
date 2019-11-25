@@ -1,4 +1,4 @@
-local frequency = 0.35
+frequency = 0.35
 local min_x = -240
 local max_x = 240
 

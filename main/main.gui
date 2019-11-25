@@ -564,8 +564,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "1\n"
-  ""
+  text: "1"
   font: "score"
   id: "level_text"
   xanchor: XANCHOR_LEFT
