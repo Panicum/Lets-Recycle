@@ -7,6 +7,18 @@ fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
+fonts {
+  name: "Baloo"
+  font: "/assets/fonts/Baloo.font"
+}
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
+fonts {
+  name: "MagraRegular"
+  font: "/assets/fonts/MagraRegular.font"
+}
 textures {
   name: "bgAtlas"
   texture: "/main/bgAtlas.atlas"
@@ -112,8 +124,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Start"
-  font: "score"
+  text: "Rozpocznij"
+  font: "MagraBold"
   id: "textStartGame"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -174,9 +186,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Exit\n"
-  ""
-  font: "score"
+  text: "Wyj\305\233cie"
+  font: "MagraBold"
   id: "textExitGame"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -291,8 +302,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "seGRAgacja"
-  font: "score"
+  text: "seGREgacja"
+  font: "MagraBold"
   id: "textTitle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -353,9 +364,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Credits\n"
-  ""
-  font: "score"
+  text: "Tw\303\263rcy"
+  font: "MagraBold"
   id: "textCredits"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -416,8 +426,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Help"
-  font: "score"
+  text: "Pomoc"
+  font: "MagraBold"
   id: "textHelp"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

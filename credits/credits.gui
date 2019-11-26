@@ -3,6 +3,14 @@ fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
+fonts {
+  name: "MagraRegular"
+  font: "/assets/fonts/MagraRegular.font"
+}
 textures {
   name: "particle_blob"
   texture: "/builtins/graphics/particle_blob.tilesource"
@@ -116,8 +124,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BACK"
-  font: "score"
+  text: "POWR\303\223T"
+  font: "MagraBold"
   id: "textBack"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -179,8 +187,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Created by"
-  font: "score"
+  text: "TW\303\223RCY"
+  font: "MagraBold"
   id: "textTitle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -242,10 +250,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Bartlomiej Gac\n"
-  "Jan Gasienica-Jozkowy\n"
-  "Mateusz Kapala"
-  font: "score"
+  text: "Bart\305\202omiej Gac\n"
+  "Jan G\304\205sienica-J\303\263zkowy\n"
+  "Mateusz Kapa\305\202a"
+  font: "MagraRegular"
   id: "textCreators"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

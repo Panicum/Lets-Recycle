@@ -3,6 +3,10 @@ fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
 textures {
   name: "particle_blob"
   texture: "/builtins/graphics/particle_blob.tilesource"
@@ -90,7 +94,7 @@ nodes {
 nodes {
   position {
     x: 325.0
-    y: 520.0
+    y: 521.0
     z: 0.0
     w: 1.0
   }
@@ -725,9 +729,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "HELP\n"
+  text: "POMOC\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "help_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -758,7 +762,7 @@ nodes {
 }
 nodes {
   position {
-    x: 330.0
+    x: 310.0
     y: 757.0
     z: 0.0
     w: 1.0
@@ -770,8 +774,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.65
+    y: 0.65
     z: 1.0E-6
     w: 1.0
   }
@@ -789,10 +793,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Glass\n"
+  text: "Szk\305\202o\n"
   "\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "glass"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -823,7 +827,7 @@ nodes {
 }
 nodes {
   position {
-    x: 330.0
+    x: 310.0
     y: 633.0
     z: 0.0
     w: 1.0
@@ -835,8 +839,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.65
+    y: 0.65
     z: 1.0E-6
     w: 1.0
   }
@@ -854,10 +858,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Paper\n"
+  text: "Papier\n"
   "\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "paper"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -888,8 +892,8 @@ nodes {
 }
 nodes {
   position {
-    x: 330.0
-    y: 520.0
+    x: 310.0
+    y: 516.0
     z: 0.0
     w: 1.0
   }
@@ -900,8 +904,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.65
+    y: 0.65
     z: 1.0E-6
     w: 1.0
   }
@@ -919,10 +923,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Plastic and metal\n"
-  "\n"
-  ""
-  font: "score"
+  text: "Metale i\n"
+  "tworzywa sztuczne"
+  font: "MagraBold"
   id: "plastic_metal"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -953,7 +956,7 @@ nodes {
 }
 nodes {
   position {
-    x: 330.0
+    x: 310.0
     y: 390.0
     z: 0.0
     w: 1.0
@@ -965,8 +968,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.65
+    y: 0.65
     z: 1.0E-6
     w: 1.0
   }
@@ -984,10 +987,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Bio\n"
-  "\n"
-  ""
-  font: "score"
+  text: "Bio"
+  font: "MagraBold"
   id: "bio"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1018,7 +1019,7 @@ nodes {
 }
 nodes {
   position {
-    x: 330.0
+    x: 310.0
     y: 258.0
     z: 0.0
     w: 1.0
@@ -1030,8 +1031,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.65
+    y: 0.65
     z: 1.0E-6
     w: 1.0
   }
@@ -1049,10 +1050,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Mixed\n"
+  text: "Zmieszane\n"
   "\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "mixed"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1095,8 +1096,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.9
+    y: 0.9
     z: 1.0E-6
     w: 1.0
   }
@@ -1114,9 +1115,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "REPLAY\n"
+  text: "ZAGRAJ\n"
+  "PONOWNIE\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "replay"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1159,8 +1161,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.9
+    y: 0.9
     z: 1.0E-6
     w: 1.0
   }
@@ -1180,7 +1182,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "MENU\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

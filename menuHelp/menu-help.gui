@@ -3,6 +3,14 @@ fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
+fonts {
+  name: "MagraRegular"
+  font: "/assets/fonts/MagraRegular.font"
+}
 textures {
   name: "particle_blob"
   texture: "/builtins/graphics/particle_blob.tilesource"
@@ -116,8 +124,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BACK"
-  font: "score"
+  text: "POWR\303\223T"
+  font: "MagraBold"
   id: "textBack"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -179,8 +187,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "HELP"
-  font: "score"
+  text: "POMOC"
+  font: "MagraBold"
   id: "textTitle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -246,8 +254,8 @@ nodes {
   "Neque porro quisquam est qui\n"
   "dolorem ipsum quia dolor sit \n"
   "amet, consectetur, adipisci velit..."
-  font: "score"
-  id: "textCreators"
+  font: "MagraRegular"
+  id: "textHelp"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

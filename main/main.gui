@@ -3,6 +3,10 @@ fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
 textures {
   name: "particle_blob"
   texture: "/builtins/graphics/particle_blob.tilesource"
@@ -63,7 +67,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "0"
-  font: "score"
+  font: "MagraBold"
   id: "score_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -125,7 +129,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "5"
-  font: "score"
+  font: "MagraBold"
   id: "lives_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -565,7 +569,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "1"
-  font: "score"
+  font: "MagraBold"
   id: "level_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP

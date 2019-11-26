@@ -3,6 +3,14 @@ fonts {
   name: "score"
   font: "/assets/fonts/score.font"
 }
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
+fonts {
+  name: "MagraRegular"
+  font: "/assets/fonts/MagraRegular.font"
+}
 textures {
   name: "particle_blob"
   texture: "/builtins/graphics/particle_blob.tilesource"
@@ -148,8 +156,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.9
+    y: 0.9
     z: 1.0E-6
     w: 1.0
   }
@@ -168,7 +176,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "MENU"
-  font: "score"
+  font: "MagraBold"
   id: "go_to_menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
@@ -232,7 +240,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "0\n"
   ""
-  font: "score"
+  font: "MagraBold"
   id: "score"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
@@ -275,8 +283,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.9
+    y: 0.9
     z: 1.0
     w: 1.0
   }
@@ -294,8 +302,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "PLAY AGAIN"
-  font: "score"
+  text: "ZAGRAJ\n"
+  "PONOWNIE"
+  font: "MagraBold"
   id: "play_again"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
@@ -326,8 +335,8 @@ nodes {
 }
 nodes {
   position {
-    x: 79.0
-    y: 521.0
+    x: 80.0
+    y: 480.0
     z: 0.0
     w: 1.0
   }
@@ -338,8 +347,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 0.55
+    y: 0.55
     z: 1.0
     w: 1.0
   }
@@ -362,7 +371,7 @@ nodes {
   " i nalezy oddac je w wyznaczonych punktach\n"
   "zbiorki, specjalnych pojemnikach na baterie,\n"
   "lub przy okazji zbiorki elektroodpadow. "
-  font: "score"
+  font: "MagraRegular"
   id: "trivia"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
@@ -479,8 +488,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "GAME OVER"
-  font: "score"
+  text: "KONIEC GRY"
+  font: "MagraBold"
   id: "you_lost"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
@@ -542,8 +551,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Your score:"
-  font: "score"
+  text: "Wynik: "
+  font: "MagraBold"
   id: "your_score"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
@@ -626,6 +635,69 @@ nodes {
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 330.0
+    y: 590.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.7
+    y: 0.7
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Czy wiesz \305\274e..."
+  font: "MagraRegular"
+  id: "trivia_title"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "end_dialog"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
