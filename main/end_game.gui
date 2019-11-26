@@ -1,9 +1,5 @@
 script: "/main/end_game.gui_script"
 fonts {
-  name: "score"
-  font: "/assets/fonts/score.font"
-}
-fonts {
   name: "MagraBold"
   font: "/assets/fonts/MagraBold.font"
 }
@@ -113,9 +109,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.3019608
-    z: 0.3019608
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
@@ -138,72 +134,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.65
+  alpha: 0.8
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 460.0
-    y: 200.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.9
-    y: 0.9
-    z: 1.0E-6
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "MENU"
-  font: "MagraBold"
-  id: "go_to_menu"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "end_dialog"
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
 }
 nodes {
   position {
@@ -335,8 +268,8 @@ nodes {
 }
 nodes {
   position {
-    x: 80.0
-    y: 480.0
+    x: 88.0
+    y: 466.0
     z: 0.0
     w: 1.0
   }
@@ -347,8 +280,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.55
-    y: 0.55
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -366,11 +299,13 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Baterie i akumulatory\n"
-  "sa zaliczane do substancji niebezpiecznych\n"
-  " i nalezy oddac je w wyznaczonych punktach\n"
-  "zbiorki, specjalnych pojemnikach na baterie,\n"
-  "lub przy okazji zbiorki elektroodpadow. "
+  text: "#5 33.8%\n"
+  "Tyle odpad\303\263w w Polsce zosta\305\202o poddane\n"
+  "recyklingowi w roku 2017. \305\232rednia unijna\n"
+  "wynios\305\202a w tym czasie 46.4%. Najlepiej z\n"
+  "recyklingiem w\305\233r\303\263d pa\305\204stw UE radz\304\205 sobie\n"
+  "Niemcy (67.6%), najgorzej z kolei wypada\n"
+  "Malta z wynikiem zaledwie 6.4%."
   font: "MagraRegular"
   id: "trivia"
   xanchor: XANCHOR_NONE
@@ -650,8 +585,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.7
-    y: 0.7
+    x: 1.2
+    y: 1.2
     z: 1.0
     w: 1.0
   }
@@ -672,6 +607,69 @@ nodes {
   text: "Czy wiesz \305\274e..."
   font: "MagraRegular"
   id: "trivia_title"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "end_dialog"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 460.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.9
+    y: 0.9
+    z: 1.0E-6
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "MENU"
+  font: "MagraBold"
+  id: "go_to_menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
   pivot: PIVOT_CENTER

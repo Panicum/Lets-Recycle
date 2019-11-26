@@ -1,11 +1,11 @@
 script: "/main/main.gui_script"
 fonts {
-  name: "score"
-  font: "/assets/fonts/score.font"
-}
-fonts {
   name: "MagraBold"
   font: "/assets/fonts/MagraBold.font"
+}
+fonts {
+  name: "Magra-Bold-Outline"
+  font: "/assets/fonts/Magra-Bold-Outline.font"
 }
 textures {
   name: "particle_blob"
@@ -67,7 +67,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "0"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "score_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -129,7 +129,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "5"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "lives_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
@@ -569,7 +569,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "1"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "level_text"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP

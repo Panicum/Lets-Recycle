@@ -1,9 +1,5 @@
 script: "/main/help_pause.gui_script"
 fonts {
-  name: "score"
-  font: "/assets/fonts/score.font"
-}
-fonts {
   name: "MagraBold"
   font: "/assets/fonts/MagraBold.font"
 }
@@ -117,9 +113,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.3019608
-    z: 0.3019608
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
@@ -142,7 +138,7 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.65
+  alpha: 0.8
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
 }
@@ -923,8 +919,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Metale i\n"
-  "tworzywa sztuczne"
+  text: "Metale\n"
+  "i tworzywa\n"
+  "sztuczne"
   font: "MagraBold"
   id: "plastic_metal"
   xanchor: XANCHOR_NONE

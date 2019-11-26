@@ -4,20 +4,16 @@ fonts {
   font: "/assets/main_menu/main_menu.font"
 }
 fonts {
-  name: "score"
-  font: "/assets/fonts/score.font"
-}
-fonts {
-  name: "Baloo"
-  font: "/assets/fonts/Baloo.font"
-}
-fonts {
   name: "MagraBold"
   font: "/assets/fonts/MagraBold.font"
 }
 fonts {
   name: "MagraRegular"
   font: "/assets/fonts/MagraRegular.font"
+}
+fonts {
+  name: "Magra-Bold-Outline"
+  font: "/assets/fonts/Magra-Bold-Outline.font"
 }
 textures {
   name: "bgAtlas"
@@ -125,7 +121,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Rozpocznij"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "textStartGame"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -187,7 +183,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Wyj\305\233cie"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "textExitGame"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -303,7 +299,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "seGREgacja"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "textTitle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -365,7 +361,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Tw\303\263rcy"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "textCredits"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -427,7 +423,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Pomoc"
-  font: "MagraBold"
+  font: "Magra-Bold-Outline"
   id: "textHelp"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
