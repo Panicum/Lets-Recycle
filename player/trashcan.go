@@ -163,7 +163,7 @@ embedded_components {
 embedded_components {
   id: "sound"
   type: "sound"
-  data: "sound: \"/assets/hyperfun.wav\"\n"
+  data: "sound: \"/assets/hyperfun.ogg\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
