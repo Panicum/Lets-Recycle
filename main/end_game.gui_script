@@ -3,30 +3,20 @@ function init(self)
 	math.randomseed(os.time())
 	self.score = 0
 
+	self.end_dialog = gui.get_node("end_dialog")
+	gui.set_enabled(self.end_dialog, false)
+	
 	self.score_node = gui.get_node("score")
-	gui.set_enabled(self.score_node,false)
-	self.you_lost_node = gui.get_node("you_lost")
-	gui.set_enabled(self.you_lost_node,false)
-	self.your_score_node = gui.get_node("your_score")
-	gui.set_enabled(self.your_score_node,false)
-	self.play_again_node = gui.get_node("play_again")
-	gui.set_enabled(self.play_again_node,false)
-	self.go_to_menu_node = gui.get_node("go_to_menu")
-	gui.set_enabled(self.go_to_menu_node,false)
-	self.bg_node = gui.get_node("box")
-	gui.set_enabled(self.bg_node,false)
 	self.trivia_node = gui.get_node("trivia")
-	gui.set_enabled(self.trivia_node,false)
 	self.music_off_node = gui.get_node("music_off_end")
-	gui.set_enabled(self.music_off_node,false)
 	self.music_on_node = gui.get_node("music_on_end")
-	gui.set_enabled(self.music_on_node,false)
 
 end
 
 function set_trivia(self)
 	local trivia_text
 	local rand = math.random(1,2)
+	-- Gacu kurwa pajacu tablice zrob i dodaj tych ciekawostek
 	if rand == 1 then
 		trivia_text = "Baterie i akumulatory \nsa zaliczane do substancji niebezpiecznych \ni nalezy oddac je w wyznaczonych punktach \nzbiorki, specjalnych pojemnikach na baterie, \nlub przy okazji zbiorki elektroodpadow."
 	elseif rand == 2 then
@@ -45,16 +35,9 @@ function on_message(self, message_id, message, sender)
 		set_trivia(self)
 		game_finished = true
 		self.score = message.final_score
+		gui.set_enabled(self.end_dialog, true)
 		gui.set_text(self.score_node, tostring(self.score))
 		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
-		gui.set_enabled(self.score_node,true)
-		gui.set_enabled(self.you_lost_node,true)
-		gui.set_enabled(self.your_score_node,true)
-		gui.set_enabled(self.play_again_node,true)
-		gui.set_enabled(self.go_to_menu_node,true)
-		gui.set_enabled(self.bg_node,true)
-		gui.set_enabled(self.trivia_node,true)
-		gui.set_enabled(self.music_on_node,true)
 
 		if sound_effect_flag == true then
 			gui.set_enabled(self.music_off_node, false)
@@ -66,21 +49,22 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if game_finished == true then
+	local go_to_menu = gui.get_node("go_to_menu")
+	local play_again = gui.get_node("play_again")
+	local music_node = gui.get_node("music_on_end")
+	local music_off_node = gui.get_node("music_off_end")
+	
+	if game_finished == true and gui.is_enabled(self.end_dialog) == true then
 		if(action_id == hash("touch") and action.released == true) then
-			local go_to_menu = gui.get_node("go_to_menu")
-			if(gui.pick_node(go_to_menu, action.x, action.y)) then
+			if gui.pick_node(go_to_menu, action.x, action.y) then
 				msg.post("loader:/go#loader", "open_menu")
 			end
 		
-			local play_again = gui.get_node("play_again")
-			if(gui.pick_node( play_again, action.x, action.y)) then
+			if gui.pick_node( play_again, action.x, action.y) then
 				msg.post("loader:/go#loader", "play_again")
 			end
 
-			local music_node = gui.get_node("music_on_end")
-			local music_off_node = gui.get_node("music_off_end")
-			if(gui.pick_node(music_node, action.x, action.y))then
+			if gui.pick_node(music_node, action.x, action.y) then
 				if sound_effect_flag == true then
 					print("on->off")
 					sound_effect_flag = false
