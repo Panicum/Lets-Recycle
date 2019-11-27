@@ -64,6 +64,9 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(self.score_node, tostring(self.score))
 		gui.animate(self.score_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 		if self.score >= (level/0.1)^2 then
+			if (sound_effect_flag == true) then
+				sound.play("gui_sound#sound_level_up", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+			end
 			level = level + 1
 			print("Level: ",tostring(level));
 			gui.set_text(self.level_node, tostring(level))

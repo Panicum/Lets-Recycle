@@ -1,5 +1,4 @@
 -- https://www.youtube.com/watch?v=VFh2mfqmiRU 1:08:00
-sound_effect_flag = true
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -17,24 +16,36 @@ function on_input(self, action_id, action)
 	if(action_id == hash("touch") and action.released == true) then
 		local textStart = gui.get_node("textStartGame")
 		if(gui.pick_node(textStart, action.x, action.y)) then
+			if (sound_effect_flag == true) then
+				sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+			end
 			msg.post("loader:/go#loader", "start_game")
 		end
 
 
 		local textMenuHelp = gui.get_node("textHelp")
 		if(gui.pick_node(textMenuHelp, action.x, action.y)) then
+			if (sound_effect_flag == true) then
+				sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+			end
 			msg.post("loader:/go#loader", "menu_help")
 		end
 
 
 		local textCredits = gui.get_node("textCredits")
 		if(gui.pick_node(textCredits, action.x, action.y)) then
+			if (sound_effect_flag == true) then
+				sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+			end
 			msg.post("loader:/go#loader", "credits")
 		end
 
 	
 		local textExit = gui.get_node("textExitGame")
 		if(gui.pick_node(textExit, action.x, action.y)) then
+			if (sound_effect_flag == true) then
+				sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+			end
 			msg.post("@system:", "exit", {code = 0})
 		end
 
@@ -42,12 +53,18 @@ function on_input(self, action_id, action)
 		local music_off_node = gui.get_node("music_off_menu")
 		if(gui.pick_node(music_node, action.x, action.y))then
 			if sound_effect_flag == true then
+				if (sound_effect_flag == true) then
+					sound.play("gui_sound#sound_ui_switch", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+				end
 				print("on->off")
 				sound_effect_flag = false
 				gui.set_enabled(music_off_node, true)
 			else
 				print("off->on")
 				sound_effect_flag = true
+				if (sound_effect_flag == true) then
+					sound.play("gui_sound#sound_ui_switch", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+				end
 				gui.set_enabled(music_off_node, false)
 			end
 		end
