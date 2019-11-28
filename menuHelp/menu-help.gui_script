@@ -1,6 +1,40 @@
+function reset(self)
+	gui.animate(self.glassPrev_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.paperPrev_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.plasmetPrev_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.organicPrev_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.mixedPrev_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
+	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.plastic_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.bio_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.glassText_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.paperText_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.plasmetText_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.bioText_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	gui.animate(self.mixedText_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+end
+
 -- https://www.youtube.com/watch?v=VFh2mfqmiRU 1:08:00
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	self.glassPrev_node = gui.get_node("glass_prev")
+	self.paperPrev_node = gui.get_node("paper_prev")
+	self.plasmetPrev_node = gui.get_node("plasmet_prev")
+	self.organicPrev_node = gui.get_node("organic_prev")
+	self.mixedPrev_node = gui.get_node("mixed_prev")
+	self.glass_node = gui.get_node("glass")
+	self.paper_node = gui.get_node("paper")
+	self.plastic_node = gui.get_node("plastic_metal")
+	self.bio_node = gui.get_node("bio")
+	self.mixed_node = gui.get_node("mixed")
+	self.glassText_node = gui.get_node("textHelpGlass")
+	self.paperText_node = gui.get_node("textHelpPaper")
+	self.plasmetText_node = gui.get_node("textHelpPlastic")
+	self.bioText_node = gui.get_node("textHelpBio")
+	self.mixedText_node = gui.get_node("textHelpMixed")
+	reset(self)
 end
 
 function on_input(self, action_id, action)
@@ -8,6 +42,36 @@ function on_input(self, action_id, action)
 		local textBack = gui.get_node("textBack")
 		if(gui.pick_node(textBack, action.x, action.y)) then
 			msg.post("loader:/go#loader", "backHelp")
+		end
+		if(gui.pick_node(self.glassPrev_node, action.x, action.y)) then
+			reset(self)
+			gui.animate(self.glassPrev_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.glassText_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+		end
+		if(gui.pick_node(self.paperPrev_node, action.x, action.y)) then
+			reset(self)
+			gui.animate(self.paperPrev_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.paperText_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+		end
+		if(gui.pick_node(self.plasmetPrev_node, action.x, action.y)) then
+			reset(self)
+			gui.animate(self.plasmetPrev_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.plastic_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.plasmetText_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+		end
+		if(gui.pick_node(self.organicPrev_node, action.x, action.y)) then
+			reset(self)
+			gui.animate(self.organicPrev_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.bio_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.bioText_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+		end
+		if(gui.pick_node(self.mixedPrev_node, action.x, action.y)) then
+			reset(self)
+			gui.animate(self.mixedPrev_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
+			gui.animate(self.mixedText_node, "color.w", vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0)
 		end
 	end
 end
