@@ -108,8 +108,14 @@ function on_input(self, action_id, action)
 		if(gui.pick_node(help_node, action.x, action.y)) then
 			if game_finished == false then
 				if pause_flag == 1 then
+					if (sound_effect_flag == true) then
+						sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+					end
 					msg.post("help_pause#gui", "unpause")
 				else
+					if (sound_effect_flag == true) then
+						sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+					end
 					msg.post("help_pause#gui", "pause")
 				end
 			end

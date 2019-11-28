@@ -271,7 +271,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 600.0
+    y: 487.0
     z: 0.0
     w: 1.0
   }
@@ -301,9 +301,21 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Bart\305\202omiej Gac\n"
+  text: "Tw\303\263rcy:\n"
+  "Bart\305\202omiej Gac\n"
   "Jan G\304\205sienica-J\303\263zkowy\n"
-  "Mateusz Kapa\305\202a"
+  "Mateusz Kapa\305\202a\n"
+  "\n"
+  "\n"
+  "\n"
+  "Muzyka:\n"
+  "Kenney (www.kenney.nl)\n"
+  "Licencja: Creative Commons Zero (CC0)\n"
+  "\n"
+  "\"Hyperfun\" by Kevin MacLeod \n"
+  "(https://incompetech.com)\n"
+  "Licencja: CC BY \n"
+  "(http://creativecommons.org/licenses/by/4.0/)"
   font: "MagraRegular"
   id: "textCreators"
   xanchor: XANCHOR_NONE
