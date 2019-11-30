@@ -1,0 +1,100 @@
+script: "/menuHelp/menu_help_control.gui_script"
+fonts {
+  name: "MagraBold"
+  font: "/assets/fonts/MagraBold.font"
+}
+fonts {
+  name: "MagraRegular"
+  font: "/assets/fonts/MagraRegular.font"
+}
+textures {
+  name: "particle_blob"
+  texture: "/builtins/graphics/particle_blob.tilesource"
+}
+textures {
+  name: "player"
+  texture: "/player/player.atlas"
+}
+textures {
+  name: "particle_blob1"
+  texture: "/builtins/graphics/particle_blob.tilesource"
+}
+textures {
+  name: "main"
+  texture: "/main/main.atlas"
+}
+textures {
+  name: "bgAtlas"
+  texture: "/main/bgAtlas.atlas"
+}
+background_color {
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  w: 0.0
+}
+nodes {
+  position {
+    x: 330.0
+    y: 604.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "ZAMO\305\232\304\206 <3"
+  font: "MagraBold"
+  id: "textPlaceholder"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
+max_nodes: 512

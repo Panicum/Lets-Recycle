@@ -113,7 +113,6 @@ function on_message(self, message_id, message, sender)
 	end
 	
 	if message_id == hash("hide_menu") then
-		print("hide")
 		local help_node = gui.get_node("help")
 		gui.set_enabled(help_node, false)
 	end
