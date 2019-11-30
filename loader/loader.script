@@ -1,4 +1,5 @@
 sound_effect_flag = true
+controls_help = true
 
 local function load_menu(self)
 	msg.post("go#main-menu", "load")

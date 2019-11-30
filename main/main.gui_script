@@ -35,6 +35,9 @@ function update_scroll_bar(self)
 end
 
 function init(self)
+	local ui_left = gui.get_node("ui_left") 
+	local ui_center = gui.get_node("ui_center") 
+	local ui_help = gui.get_node("ui_right") 
 	msg.post(".", "acquire_input_focus")
 	self.score = 0
 	self.lives = 5
@@ -48,7 +51,23 @@ function init(self)
 	self.plasmet_node = gui.get_node("plasmet_prev")
 	self.organic_node = gui.get_node("organic_prev")
 	self.mixed_node = gui.get_node("mixed_prev")
-	update_scroll_bar(self)
+
+	if controls_help == true then
+		msg.post("help_controls#gui", "controls_on")
+		gui.set_enabled(ui_left, false)
+		gui.set_enabled(ui_center, false)
+		gui.set_enabled(ui_help, false)
+		gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+		gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+		gui.animate(self.plasmet_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+		gui.animate(self.organic_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+		gui.animate(self.mixed_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
+	else
+		gui.set_enabled(ui_left, true)
+		gui.set_enabled(ui_center, true)
+		gui.set_enabled(ui_help, true)
+		update_scroll_bar(self)
+	end
 	
 end
 
@@ -97,6 +116,18 @@ function on_message(self, message_id, message, sender)
 		print("hide")
 		local help_node = gui.get_node("help")
 		gui.set_enabled(help_node, false)
+	end
+
+	if message_id == hash("controls_off") then
+		local ui_left = gui.get_node("ui_left") 
+		local ui_center = gui.get_node("ui_center") 
+		local ui_help = gui.get_node("ui_right") 
+		gui.set_enabled(ui_left, true)
+		gui.set_enabled(ui_center, true)
+		gui.set_enabled(ui_help, true)
+		update_scroll_bar(self)
+		controls_help = false
+		pause_flag = 0
 	end
 end
 

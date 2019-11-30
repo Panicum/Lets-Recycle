@@ -28,6 +28,36 @@ images {
 images {
   image: "/assets/main_menu/iks_ico.png"
 }
+images {
+  image: "/assets/arrowDown.png"
+}
+images {
+  image: "/assets/arrowDown1.png"
+}
+images {
+  image: "/assets/upRight.png"
+}
+images {
+  image: "/assets/upRight1.png"
+}
+images {
+  image: "/assets/upLeft.png"
+}
+images {
+  image: "/assets/upLeft1.png"
+}
+images {
+  image: "/assets/pointer.png"
+}
+images {
+  image: "/assets/deviceTilt_left.png"
+}
+images {
+  image: "/assets/deviceTilt_right.png"
+}
+images {
+  image: "/assets/arrowUp.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

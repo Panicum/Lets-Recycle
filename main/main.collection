@@ -208,7 +208,7 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 0.0
+    y: -883.0
     z: 10.0
   }
   rotation {
@@ -346,8 +346,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -271.0
-    y: -715.0
+    x: -305.0
+    y: -464.0
     z: -10.0
   }
   rotation {
@@ -381,8 +381,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -271.0
-    y: -715.0
+    x: 1105.0
+    y: -464.0
     z: -10.0
   }
   rotation {
@@ -416,9 +416,44 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -309.0
+    x: 399.0
     y: -470.0
     z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "help_controls"
+  data: "components {\n"
+  "  id: \"gui\"\n"
+  "  component: \"/main/help_controls.gui\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: -1033.0
+    y: -468.0
+    z: 0.0
   }
   rotation {
     x: 0.0

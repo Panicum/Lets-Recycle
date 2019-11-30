@@ -1,0 +1,40 @@
+function init(self)
+	self.controls_dialog = gui.get_node("controls_dialog")
+	self.ui_left = gui.get_node("ui_left")
+	self.ui_center = gui.get_node("ui_center")
+	self.ui_right = gui.get_node("ui_right")
+	gui.set_enabled(self.controls_dialog, false)
+	gui.set_enabled(self.ui_left, false)
+	gui.set_enabled(self.ui_center, false)
+	gui.set_enabled(self.ui_right, false)
+end
+
+function on_message(self, message_id, message, sender)
+	local s = 1.2
+	
+	if message_id == hash("controls_on") then
+		msg.post(".", "acquire_input_focus")
+		pause_flag = 1
+		gui.set_enabled(self.controls_dialog, true)
+		gui.set_enabled(self.ui_left, true)
+		gui.set_enabled(self.ui_center, true)
+		gui.set_enabled(self.ui_right, true)
+	end
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+	end
+end
+
+function on_input(self, action_id, action)
+	if(action_id == hash("touch") and action.released == true) then
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
+		msg.post(".", "release_input_focus")
+		gui.set_enabled(self.controls_dialog, false)
+		gui.set_enabled(self.ui_left, false)
+		gui.set_enabled(self.ui_center, false)
+		gui.set_enabled(self.ui_right, false)
+		msg.post("main#gui", "controls_off")
+	end
+end
