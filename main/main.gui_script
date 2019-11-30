@@ -94,7 +94,8 @@ function on_message(self, message_id, message, sender)
 			if level > 5 then
 				trash_speed = trash_speed * 1.1
 				print("Trash speed: ",tostring(trash_speed));
-				frequency = frequency + (0.35/level)
+				-- frequency = frequency + (0.35/level)
+				frequency = frequency * 1.1
 				print("Trash freq: ", tostring(frequency));
 			end
 		end
