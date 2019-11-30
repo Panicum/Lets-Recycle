@@ -870,7 +870,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Przechyl telefon by sterowa\304\207 koszem"
+  text: "Przechyl telefon aby sterowa\304\207 koszem"
   font: "Magra-Bold-Outline"
   id: "tilttext"
   xanchor: XANCHOR_NONE
@@ -935,8 +935,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Dotknij lew\304\205\n"
   "stron\304\231 ekranu\n"
-  "by zmieni\304\207 kosz\n"
-  "do ty\305\202u"
+  "aby zmieni\304\207 na\n"
+  "poprzedni kosz"
   font: "Magra-Bold-Outline"
   id: "lefttext"
   xanchor: XANCHOR_NONE
@@ -1001,8 +1001,8 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Dotknij praw\304\205\n"
   "stron\304\231 ekranu\n"
-  "by zmieni\304\207 kosz\n"
-  "do przodu"
+  "aby zmieni\304\207 na\n"
+  "nast\304\231pny kosz"
   font: "Magra-Bold-Outline"
   id: "lefttext1"
   xanchor: XANCHOR_NONE
