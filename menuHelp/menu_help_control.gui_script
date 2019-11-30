@@ -1,0 +1,24 @@
+-- https://www.youtube.com/watch?v=VFh2mfqmiRU 1:08:00
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.textPlaceholder = gui.get_node("textPlaceholder")
+	gui.set_enabled(self.textPlaceholder, false)
+end
+
+function on_message(self, message_id, message, sender)
+	local s = 1.2
+	if message_id == hash("switch_on") then
+		gui.set_enabled(self.textPlaceholder, true)
+	end
+	if message_id == hash("switch_off") then
+		gui.set_enabled(self.textPlaceholder, false)
+	end
+end
+
+function on_input(self, action_id, action)
+	if(action_id == hash("touch") and action.released == true) then
+		if(gui.pick_node(self.textPlaceholder, action.x, action.y)) then
+			print("i love zmc")
+		end
+	end
+end

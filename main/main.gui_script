@@ -49,7 +49,6 @@ function init(self)
 	self.organic_node = gui.get_node("organic_prev")
 	self.mixed_node = gui.get_node("mixed_prev")
 	update_scroll_bar(self)
-	
 end
 
 local function scale_down(self, node)
@@ -68,15 +67,12 @@ function on_message(self, message_id, message, sender)
 				sound.play("gui_sound#sound_level_up", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 			end
 			level = level + 1
-			print("Level: ",tostring(level));
 			gui.set_text(self.level_node, tostring(level))
 			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 			update_scroll_bar(self)
 			if level > 5 then
 				trash_speed = trash_speed * 1.1
-				print("Trash speed: ",tostring(trash_speed));
 				frequency = frequency + (0.35/level)
-				print("Trash freq: ", tostring(frequency));
 			end
 		end
 	end
@@ -94,7 +90,6 @@ function on_message(self, message_id, message, sender)
 	end
 	
 	if message_id == hash("hide_menu") then
-		print("hide")
 		local help_node = gui.get_node("help")
 		gui.set_enabled(help_node, false)
 	end

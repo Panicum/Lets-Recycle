@@ -14,21 +14,15 @@ function init(self)
 end
 
 function set_trivia(self)
-	local trivia_text
+	local trivia_text = {
+		"#1 Miasto Zamość\nZostało założone w 1580 roku z inicjatywy\nHetmana Koronnego Jana Zamoyskiego.\nJego zaprojektowania podjął sie włoski\narchitekt Bernando Morando.",
+		"#2 Baterie i akumulatory \nsą zaliczane do substancji niebezpiecznych. \nNależy oddawać je do wyznaczonych punktów \nzbiórki, specjalnych pojemnikach na baterie, \nlub przy okazji zbiórek elektroodpadów.",
+		"#3 Przeterminowane leki \nMają negatywny wpływ na środowisku oraz \nżycie i zdrowie ludzi. Należy je wyrzucać w \ntrakcie specjalnych zbiórek, do spcjalnych \nkoszy w aptekach, lub 'Punktów Selektywnej' \nZbiórki Odpadów Komunalnej.",
+		"#4 Przecięty polak\nProdukuje 315kg rocznie, jest to drugi wynik\nw UE po Rumunii (272kg). Najwięcej śmieci\nprodukują Duńczycy (781kg) i Niemcy (633kg).\nŚrednia unina wynosi 487kg.",
+		"#5 33.8%\nTyle odpadów w Polsce zostało poddane\nrecyklingowi w roku 2017. Średnia unijna\nwyniosła w tym czasie 46.4%. Najlepiej z\nrecyklingiem wśród państw UE radzą sobie\nNiemcy (67.6%), najgorzej z kolei wypada\nMalta z wynikiem zaledwie 6.4%."
+	}
 	local rand = math.random(1,5)
-	-- Gacu kurwa pajacu tablice zrob i dodaj tych ciekawostek
-	if rand == 1 then
-		trivia_text = "#1 Miasto Zamość\nZostało założone w 1580 roku z inicjatywy\nHetmana Koronnego Jana Zamoyskiego.\nJego zaprojektowania podjął sie włoski\narchitekt Bernando Morando."
-	elseif rand == 2 then
-		trivia_text = "#2 Baterie i akumulatory \nsą zaliczane do substancji niebezpiecznych. \nNależy oddawać je do wyznaczonych punktów \nzbiórki, specjalnych pojemnikach na baterie, \nlub przy okazji zbiórek elektroodpadów."
-	elseif rand == 3 then
-		trivia_text = "#3 Przeterminowane leki \nMają negatywny wpływ na środowisku oraz \nżycie i zdrowie ludzi. Należy je wyrzucać w \ntrakcie specjalnych zbiórek, do spcjalnych \nkoszy w aptekach, lub 'Punktów Selektywnej' \nZbiórki Odpadów Komunalnej."
-	elseif rand == 4 then
-		trivia_text = "#4 Przecięty polak\nProdukuje 315kg rocznie, jest to drugi wynik\nw UE po Rumunii (272kg). Najwięcej śmieci\nprodukują Duńczycy (781kg) i Niemcy (633kg).\nŚrednia unina wynosi 487kg."
-	elseif rand == 5 then
-		trivia_text = "#5 33.8%\nTyle odpadów w Polsce zostało poddane\nrecyklingowi w roku 2017. Średnia unijna\nwyniosła w tym czasie 46.4%. Najlepiej z\nrecyklingiem wśród państw UE radzą sobie\nNiemcy (67.6%), najgorzej z kolei wypada\nMalta z wynikiem zaledwie 6.4%."
-	end
-	gui.set_text(self.trivia_node, trivia_text)
+	gui.set_text(self.trivia_node, trivia_text[rand])
 end
 
 function on_message(self, message_id, message, sender)

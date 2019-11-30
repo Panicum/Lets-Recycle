@@ -1,4 +1,4 @@
-script: "/credits/credits.gui_script"
+script: "/menuHelp/menu_help.gui_script"
 fonts {
   name: "MagraBold"
   font: "/assets/fonts/MagraBold.font"
@@ -67,9 +67,9 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "bgAtlas/city_background"
-  id: "box"
+  id: "background"
   xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
+  yanchor: YANCHOR_TOP
   pivot: PIVOT_SW
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
@@ -126,7 +126,6 @@ nodes {
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "box"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -144,7 +143,131 @@ nodes {
 }
 nodes {
   position {
-    x: 195.0
+    x: 200.0
+    y: 820.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+    z: 1.0E-6
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Segregacja"
+  font: "MagraBold"
+  id: "textSegregation"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_N
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 470.0
+    y: 820.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+    z: 1.0E-6
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Sterowanie"
+  font: "MagraBold"
+  id: "textControl"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_N
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 175.0
     y: 150.0
     z: 0.0
     w: 1.0
@@ -195,7 +318,6 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -208,7 +330,7 @@ nodes {
 nodes {
   position {
     x: 330.0
-    y: 865.0
+    y: 880.0
     z: 0.0
     w: 1.0
   }
@@ -238,7 +360,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "TW\303\223RCY"
+  text: "POMOC"
   font: "MagraBold"
   id: "textTitle"
   xanchor: XANCHOR_NONE
@@ -258,84 +380,6 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "box"
-  layer: ""
-  inherit_alpha: true
-  alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
-  template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
-}
-nodes {
-  position {
-    x: 320.0
-    y: 487.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_TEXT
-  blend_mode: BLEND_MODE_ALPHA
-  text: "Tw\303\263rcy:\n"
-  "Bart\305\202omiej Gac\n"
-  "Jan G\304\205sienica-J\303\263zkowy\n"
-  "Mateusz Kapa\305\202a\n"
-  "\n"
-  "\n"
-  "\n"
-  "Muzyka:\n"
-  "Kenney (www.kenney.nl)\n"
-  "Licencja: Creative Commons Zero (CC0)\n"
-  "\n"
-  "\"Hyperfun\" by Kevin MacLeod \n"
-  "(https://incompetech.com)\n"
-  "Licencja: CC BY \n"
-  "(http://creativecommons.org/licenses/by/4.0/)"
-  font: "MagraRegular"
-  id: "textCreators"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

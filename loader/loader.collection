@@ -74,7 +74,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"menu-help\"\n"
   "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/menuHelp/menu-help.collection\\\"\\n"
+  "  data: \"collection: \\\"/menuHelp/menu_help.collection\\\"\\n"
   "exclude: false\\n"
   "\"\n"
   "  position {\n"
