@@ -203,7 +203,7 @@ nodes {
 }
 nodes {
   position {
-    x: 358.0
+    x: 356.0
     y: 791.0
     z: 0.0
     w: 1.0
@@ -234,7 +234,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Your lives, points and level"
+  text: "Twoje \305\274ycia, punkty i poziom"
   font: "Magra-Bold-Outline"
   id: "uitext"
   xanchor: XANCHOR_NONE
@@ -870,7 +870,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Tilt your phone to control trashcan"
+  text: "Przechyl telefon by sterowa\304\207 koszem"
   font: "Magra-Bold-Outline"
   id: "tilttext"
   xanchor: XANCHOR_NONE
@@ -903,7 +903,7 @@ nodes {
 nodes {
   position {
     x: 165.0
-    y: 482.0
+    y: 487.0
     z: 0.0
     w: 1.0
   }
@@ -933,9 +933,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Click left part \n"
-  "of the screen to \n"
-  "change trashcan"
+  text: "Dotknij lew\304\205\n"
+  "stron\304\231 ekranu\n"
+  "by zmieni\304\207 kosz\n"
+  "do ty\305\202u"
   font: "Magra-Bold-Outline"
   id: "lefttext"
   xanchor: XANCHOR_NONE
@@ -968,7 +969,7 @@ nodes {
 nodes {
   position {
     x: 479.0
-    y: 482.0
+    y: 487.0
     z: 0.0
     w: 1.0
   }
@@ -998,9 +999,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Click right part \n"
-  "of the screen to \n"
-  "change trashcan"
+  text: "Dotknij praw\304\205\n"
+  "stron\304\231 ekranu\n"
+  "by zmieni\304\207 kosz\n"
+  "do przodu"
   font: "Magra-Bold-Outline"
   id: "lefttext1"
   xanchor: XANCHOR_NONE
@@ -1338,7 +1340,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Touch anywhere to start the game"
+  text: "Dotknij gdziekolwiek aby rozpocz\304\205\304\207 gr\304\231\n"
+  ""
   font: "Magra-Bold-Outline"
   id: "touchanywhere"
   xanchor: XANCHOR_NONE
@@ -1810,7 +1813,7 @@ nodes {
 nodes {
   position {
     x: 358.0
-    y: 920.0
+    y: 902.0
     z: 0.0
     w: 1.0
   }
@@ -1840,7 +1843,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Trashcan pointer"
+  text: "Wska\305\272nik aktywnego \n"
+  "kosza"
   font: "Magra-Bold-Outline"
   id: "trashcan"
   xanchor: XANCHOR_NONE

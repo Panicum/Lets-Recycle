@@ -35,8 +35,8 @@ background_color {
 }
 nodes {
   position {
-    x: 330.0
-    y: 604.0
+    x: 320.0
+    y: 480.0
     z: 0.0
     w: 1.0
   }
@@ -47,53 +47,45 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.5
-    y: 1.5
-    z: 1.0
+    x: 0.47
+    y: 0.47
+    z: 0.47
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 742.0
+    y: 1210.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
-  type: TYPE_TEXT
+  type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  text: "ZAMO\305\232\304\206 <3"
-  font: "MagraBold"
-  id: "textPlaceholder"
+  texture: "main/help"
+  id: "controls"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: false
   layer: ""
   inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
   alpha: 1.0
-  outline_alpha: 1.0
-  shadow_alpha: 1.0
   template_node_child: false
-  text_leading: 1.0
-  text_tracking: 0.0
+  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
