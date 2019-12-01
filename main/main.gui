@@ -144,7 +144,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 0.0
+    y: 1136.0
     z: -1.0
     w: 1.0
   }
@@ -178,7 +178,7 @@ nodes {
   id: "ui_left"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_NW
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
   inherit_alpha: true
@@ -198,7 +198,7 @@ nodes {
 nodes {
   position {
     x: 145.0
-    y: 1010.0
+    y: -131.0
     z: 0.0
     w: 1.0
   }
@@ -261,7 +261,7 @@ nodes {
 nodes {
   position {
     x: 145.0
-    y: 1080.0
+    y: -61.0
     z: 0.0
     w: 1.0
   }
@@ -324,7 +324,7 @@ nodes {
 nodes {
   position {
     x: 145.0
-    y: 940.0
+    y: -201.0
     z: 0.0
     w: 1.0
   }
@@ -387,7 +387,7 @@ nodes {
 nodes {
   position {
     x: 60.0
-    y: 1080.0
+    y: -61.0
     z: 0.0
     w: 1.0
   }
@@ -442,7 +442,7 @@ nodes {
 nodes {
   position {
     x: 60.0
-    y: 1010.0
+    y: -131.0
     z: 0.0
     w: 1.0
   }
@@ -497,7 +497,7 @@ nodes {
 nodes {
   position {
     x: 60.0
-    y: 940.0
+    y: -201.0
     z: 0.0
     w: 1.0
   }
@@ -551,8 +551,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 344.0
+    y: 1136.0
     z: -1.0
     w: 1.0
   }
@@ -586,7 +586,7 @@ nodes {
   id: "ui_center"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_N
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
   inherit_alpha: true
@@ -605,8 +605,8 @@ nodes {
 }
 nodes {
   position {
-    x: 230.0
-    y: 1080.0
+    x: -120.0
+    y: -64.0
     z: 0.0
     w: 1.0
   }
@@ -660,8 +660,8 @@ nodes {
 }
 nodes {
   position {
-    x: 290.0
-    y: 1080.0
+    x: -60.0
+    y: -64.0
     z: 0.0
     w: 1.0
   }
@@ -715,8 +715,8 @@ nodes {
 }
 nodes {
   position {
-    x: 350.0
-    y: 1080.0
+    x: 0.0
+    y: -64.0
     z: 0.0
     w: 1.0
   }
@@ -770,8 +770,8 @@ nodes {
 }
 nodes {
   position {
-    x: 410.0
-    y: 1080.0
+    x: 60.0
+    y: -64.0
     z: 0.0
     w: 1.0
   }
@@ -825,8 +825,8 @@ nodes {
 }
 nodes {
   position {
-    x: 470.0
-    y: 1080.0
+    x: 120.0
+    y: -64.0
     z: 0.0
     w: 1.0
   }
@@ -880,8 +880,8 @@ nodes {
 }
 nodes {
   position {
-    x: 639.0
-    y: 0.0
+    x: 640.0
+    y: 1136.0
     z: -1.0
     w: 1.0
   }
@@ -915,7 +915,7 @@ nodes {
   id: "ui_right"
   xanchor: XANCHOR_LEFT
   yanchor: YANCHOR_TOP
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_NW
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
   inherit_alpha: true
@@ -935,7 +935,7 @@ nodes {
 nodes {
   position {
     x: -66.0
-    y: 1078.0
+    y: -63.0
     z: 0.0
     w: 1.0
   }
