@@ -421,7 +421,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Dominika"
+  text: "Dominika Juraszczyk\n"
+  ""
   font: "MagraRegular"
   id: "textGraphics"
   xanchor: XANCHOR_NONE

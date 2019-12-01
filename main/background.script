@@ -1,0 +1,40 @@
+function init(self)
+	-- jakas slaba proba:
+	--do skryptu od rendera:
+	-- local current_width = render.get_window_width()
+	-- local current_height = render.get_window_height()
+	-- local original_width = render.get_width()
+	-- local original_height = render.get_height()
+	-- scale_x = current_width/original_width
+	-- scale_y = current_height/original_height
+	-- 
+	-- To tutaj moze i by zadzialalo ale nie wiem
+	-- print(scale_x, " ", scale_y)
+	-- local s = vmath.vector3(scale_x, scale_y, 1.0)
+	-- go.set_scale(s)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
