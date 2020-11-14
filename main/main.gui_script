@@ -1,7 +1,12 @@
 trash_speed = 3
 pause_flag = 0
 game_finished = false
-
+unlocked_items_glass = {}
+table.insert(unlocked_items_glass, "#glass-factory")
+unlocked_items_paper = {}
+unlocked_items_plastic = {}
+unlocked_items_organic = {}
+unlocked_items_mixed = {}
 function update_scroll_bar(self)
 	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
 	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
@@ -87,7 +92,35 @@ function on_message(self, message_id, message, sender)
 			if (sound_effect_flag == true) then
 				sound.play("gui_sound#sound_level_up", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 			end
+			print("GLASS SIZE", table.getn(unlocked_items_glass))
 			level = level + 1
+			level_mod_5 = level % 5
+			if level_mod_5 == 1 then
+				rand = math.random(1,5)
+				s = table.getn(unlocked_items_glass)
+				print("G size", s)
+				table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
+			elseif level_mod_5 == 2 then
+				rand = math.random(1,5)
+				s = table.getn(unlocked_items_paper)
+				print("PAP size", s)
+				table.insert(unlocked_items_paper, "#paper-factory" .. tostring(rand))
+			elseif level_mod_5 == 3 then
+				rand = math.random(1,5)
+				s = table.getn(unlocked_items_plastic)
+				print("PLA size", s)
+				table.insert(unlocked_items_plastic, "#plastic_metal-factory" .. tostring(rand))
+			elseif level_mod_5 == 4 then
+				rand = math.random(1,5)
+				s = table.getn(unlocked_items_organic)
+				print("ORG size", s)
+				table.insert(unlocked_items_organic, "#organic-factory" .. tostring(rand))
+			elseif level_mod_5 == 0 then
+				rand = math.random(1,5)
+				s = table.getn(unlocked_items_mixed)
+				print("MIX size", s)
+				table.insert(unlocked_items_mixed, "#mixed-factory" .. tostring(rand))
+			end
 			print("Level: ",tostring(level));
 			gui.set_text(self.level_node, tostring(level))
 			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
