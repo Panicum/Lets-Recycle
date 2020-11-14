@@ -1,6 +1,90 @@
 sound_effect_flag = true
 controls_help = true
 
+
+-- List ids for all platforms.
+local admob_ids = {
+	-- ['iPhone OS'] = {
+	-- 	banner = 'ca-app-pub-3940256099942544/2934735716',
+	-- 	interstitial = 'ca-app-pub-3940256099942544/5135589807',
+	-- 	rewarded = 'ca-app-pub-3940256099942544/1712485313'
+	-- },
+	Android = {
+		banner ='ca-app-pub-4904724253591504/7895114389',
+		interstitial = 'ca-app-pub-4904724253591504/6403242778',
+		-- rewarded = 'ca-app-pub-3940256099942544/5224354917'
+	}
+}
+
+local system_name = sys.get_sys_info().system_name
+-- Leave only current system ids
+admob_ids = admob_ids[system_name] or {}
+
+local function load_interstitial_pressed(self)
+	print('load_interstitial_pressed')
+	admob.load{
+		type = 'interstitial',
+		id = admob_ids.interstitial,
+		immersive = true,
+		keywords = {'puzzle', 'game'},
+		non_personalized = true
+	}
+end
+
+
+local function show_interstitial_pressed(self)
+	print('show_interstitial_pressed')
+	admob.show('interstitial')
+end
+
+
+local function load_banner_pressed(self)
+	print('load_banner_pressed')
+	admob.load{
+		type = 'banner',
+		id = 'ca-app-pub-4904724253591504/7895114389',
+		size = 'smart',
+		position = 'bottom',
+		keywords = {'puzzle', 'game'}
+	}
+end
+
+local function hide_banner_pressed(self)
+	print('hide_banner_pressed')
+	admob.hide_banner()
+end
+
+local function init_pressed(self)
+	print('init_pressed')
+	-- Admob events handler.
+	local function listener(event)
+		print('admob listener')
+		print('admob event type', event.type)
+		print('admob error phase', event.phase)
+		print('admob event is_error', event.is_error)
+		print('admob error code', event.error_code)
+		if event.phase == 'init' then -- Admob has been initialized, now it's safe to load a banner.
+			print('admob load')
+			admob.load{
+				type = 'banner',
+				id = 'ca-app-pub-4904724253591504/7895114389',
+				size = 'smart',
+				position = 'bottom',
+				keywords = {'puzzle', 'game'}
+			}
+		elseif event.phase == 'rewarded' then
+			print('reward received')
+		end
+	end
+
+	-- Init Admob.
+	admob.init{
+		test = true, -- ALWAYS use test ads, only disable when submitting to the stores.
+		listener = listener
+	}
+end
+
+
 local function load_menu(self)
 	msg.post("go#main-menu", "load")
 	msg.post("go#main-menu", "enable")
@@ -47,20 +131,24 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	load_menu(self)
+	init_pressed(self)
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("start_game") then
 		unload_menu(self)
 		load_main(self)
+		load_interstitial_pressed(self)
 	end
 	if message_id == hash("open_menu") then
+		show_interstitial_pressed(self)
 		unload_main(self)
 		load_menu(self)
 	end
 	if message_id == hash("play_again") then
 		-- restart_main(self)
 		self.restart = true
+		show_interstitial_pressed(self)
 		msg.post("go#main", "disable")
 		msg.post("go#main", "unload")
 	end

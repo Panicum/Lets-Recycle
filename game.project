@@ -1,6 +1,8 @@
 [project]
 title = Let's Recycle
-dependencies = https://github.com/rgrams/rendercam/archive/v1.0.1.zip
+dependencies = https://github.com/rgrams/rendercam/archive/v1.0.1.zip,https://github.com/Lerg/extension-admob/archive/legacy.zip
+version = 1.01
+bundle_resources = /res
 
 [bootstrap]
 main_collection = /loader/loader.collectionc
@@ -60,4 +62,8 @@ gravity_y = -10.0
 scale = 1.0
 debug = 0
 gravity_x = 0.0
+
+[admob]
+ios_app_id = ca-app-pub-3940256099942544~1458002511
+android_app_id = ca-app-pub-3940256099942544~3347511713
 

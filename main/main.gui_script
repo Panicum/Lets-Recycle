@@ -39,6 +39,7 @@ function init(self)
 	local ui_center = gui.get_node("ui_center") 
 	local ui_help = gui.get_node("ui_right") 
 	msg.post(".", "acquire_input_focus")
+	
 	self.score = 0
 	self.lives = 5
 	pause_flag = 0
