@@ -1,4 +1,4 @@
-trash_speed = 1
+trash_speed = 3
 pause_flag = 0
 game_finished = false
 
