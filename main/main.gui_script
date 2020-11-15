@@ -1,12 +1,24 @@
-trash_speed = 3
+trash_speed = 3.3
 pause_flag = 0
 game_finished = false
 unlocked_items_glass = {}
-table.insert(unlocked_items_glass, "#glass-factory")
+tg = {}
+table.insert(unlocked_items_glass, "#glass-factory0")
+table.insert(tg, 0 )
 unlocked_items_paper = {}
+tpap = {}
 unlocked_items_plastic = {}
+tpla = {}
 unlocked_items_organic = {}
+to = {}
 unlocked_items_mixed = {}
+tm = {}
+counter_t = {}
+counter_t[0] = 1
+counter_t[1] = 0
+counter_t[2] = 0
+counter_t[3] = 0
+counter_t[4] = 0
 function update_scroll_bar(self)
 	gui.animate(self.glass_node, "color.w", vmath.vector4(1, 1, 1, 0.35), gui.EASING_OUT, 0)
 	gui.animate(self.paper_node, "color.w", vmath.vector4(1, 1, 1, 0), gui.EASING_OUT, 0)
@@ -82,6 +94,16 @@ local function scale_down(self, node)
 	gui.animate(node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.05)
 end
 
+math.randomseed( os.time() ) -- first, sets a seed for the pseudo-random generator
+
+local  function my_random (t,from, to)  -- second, exclude duplicates
+	local num = math.random (from, to)
+	if t[num] then  num = my_random (t, from, to)   end
+	t[num]=num 
+	return num
+end
+
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("add_score") then
 		local s = 1.2
@@ -92,45 +114,88 @@ function on_message(self, message_id, message, sender)
 			if (sound_effect_flag == true) then
 				sound.play("gui_sound#sound_level_up", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 			end
-			print("GLASS SIZE", table.getn(unlocked_items_glass))
+			-- print("GLASS SIZE", table.getn(unlocked_items_glass))
 			level = level + 1
-			level_mod_5 = level % 5
-			if level_mod_5 == 1 then
-				rand = math.random(1,5)
-				s = table.getn(unlocked_items_glass)
-				print("G size", s)
-				table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
-			elseif level_mod_5 == 2 then
-				rand = math.random(1,5)
-				s = table.getn(unlocked_items_paper)
-				print("PAP size", s)
-				table.insert(unlocked_items_paper, "#paper-factory" .. tostring(rand))
-			elseif level_mod_5 == 3 then
-				rand = math.random(1,5)
-				s = table.getn(unlocked_items_plastic)
-				print("PLA size", s)
-				table.insert(unlocked_items_plastic, "#plastic_metal-factory" .. tostring(rand))
-			elseif level_mod_5 == 4 then
-				rand = math.random(1,5)
-				s = table.getn(unlocked_items_organic)
-				print("ORG size", s)
-				table.insert(unlocked_items_organic, "#organic-factory" .. tostring(rand))
-			elseif level_mod_5 == 0 then
-				rand = math.random(1,5)
-				s = table.getn(unlocked_items_mixed)
-				print("MIX size", s)
-				table.insert(unlocked_items_mixed, "#mixed-factory" .. tostring(rand))
-			end
-			print("Level: ",tostring(level));
+			-- print("Level: ",tostring(level));
 			gui.set_text(self.level_node, tostring(level))
 			gui.animate(self.level_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 			update_scroll_bar(self)
 			if level > 5 then
-				trash_speed = trash_speed * 1.1
+				if trash_speed < 5 then
+					trash_speed = trash_speed * 1.05
+				end
 				print("Trash speed: ",tostring(trash_speed));
 				-- frequency = frequency + (0.35/level)
 				frequency = frequency * 1.1
 				print("Trash freq: ", tostring(frequency));
+				
+				level_mod_5 = math.random(0,4)
+				if level_mod_5 == 1 and counter_t[0] < 6 then
+					-- Rand without repeats
+					rand = my_random(tg, 1, 5)
+					counter_t[0] = counter_t[0] + 1
+					print("NEW LEVEL - GLASS", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[0])
+					table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
+				elseif level_mod_5 == 2 and counter_t[1] < 6 then
+					rand = my_random (tpap, 0, 5)
+					counter_t[1] = counter_t[1] + 1
+					print("NEW LEVEL - PAPER", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[1])
+					table.insert(unlocked_items_paper, "#paper-factory" .. tostring(rand))
+				elseif level_mod_5 == 3 and counter_t[2] < 7 then
+					rand = my_random (tpla, 0, 6)
+					counter_t[2] = counter_t[2] + 1
+					print("NEW LEVEL - PLASTIC", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[2])
+					table.insert(unlocked_items_plastic, "#plastic_metal-factory" .. tostring(rand))
+				elseif level_mod_5 == 4 and counter_t[3] < 6 then
+					rand = my_random (to, 0, 5)
+					counter_t[3] = counter_t[3] + 1
+					print("NEW LEVEL - ORGANIC", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[3])
+					table.insert(unlocked_items_organic, "#organic-factory" .. tostring(rand))
+				elseif level_mod_5 == 0 and counter_t[4] < 5 then
+					rand = my_random (tm, 0, 4)
+					counter_t[4] = counter_t[4] + 1
+					print("NEW LEVEL - MIXED", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[4])
+					table.insert(unlocked_items_mixed, "#mixed-factory" .. tostring(rand))
+				end
+			else
+				level_mod_5 = level % 5
+				if level_mod_5 == 1 and counter_t[0] < 6 then
+					-- Rand without repeats
+					rand = my_random(tg, 1, 5)
+					counter_t[0] = counter_t[0] + 1
+					print("NEW LEVEL - GLASS", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[0])
+					table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
+				elseif level_mod_5 == 2 and counter_t[1] < 6 then
+					rand = my_random (tpap, 0, 5)
+					counter_t[1] = counter_t[1] + 1
+					print("NEW LEVEL - PAPER", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[1])
+					table.insert(unlocked_items_paper, "#paper-factory" .. tostring(rand))
+				elseif level_mod_5 == 3 and counter_t[2] < 7 then
+					rand = my_random (tpla, 0, 6)
+					counter_t[2] = counter_t[2] + 1
+					print("NEW LEVEL - PLASTIC", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[2])
+					table.insert(unlocked_items_plastic, "#plastic_metal-factory" .. tostring(rand))
+				elseif level_mod_5 == 4 and counter_t[3] < 6 then
+					rand = my_random (to, 0, 5)
+					counter_t[3] = counter_t[3] + 1
+					print("NEW LEVEL - ORGANIC", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[3])
+					table.insert(unlocked_items_organic, "#organic-factory" .. tostring(rand))
+				elseif level_mod_5 == 0 and counter_t[4] < 5 then
+					rand = my_random (tm, 0, 4)
+					counter_t[4] = counter_t[4] + 1
+					print("NEW LEVEL - MIXED", rand)
+					print("UNIQUE RANDOM COUNTER",counter_t[4])
+					table.insert(unlocked_items_mixed, "#mixed-factory" .. tostring(rand))
+				end
 			end
 		end
 	end

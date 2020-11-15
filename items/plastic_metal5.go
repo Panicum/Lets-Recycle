@@ -62,7 +62,7 @@ embedded_components {
   id: "plastic_metal"
   type: "sprite"
   data: "tile_set: \"/items/objects.atlas\"\n"
-  "default_animation: \"plastic_metal_bottle\"\n"
+  "default_animation: \"plastic5\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

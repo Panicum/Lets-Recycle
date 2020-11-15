@@ -1,6 +1,6 @@
 frequency = 0.35
-local min_x = -240
-local max_x = 240
+local min_x = -220
+local max_x = 220
 function init(self)
 	self.timer = 1/frequency
 	-- make the game deterministic
@@ -23,30 +23,25 @@ function update(self, dt)
 			local p = go.get_position()
 			p.x = vmath.lerp(math.random(), min_x, max_x)
 			rand = math.random(0,100)
-			local component = "#glass-factory"
+			local component = "#glass-factory0"
 			if rand <= range then
 				g_rand = math.random(0,table.getn(unlocked_items_glass)-1)
-				print("G rand", g_rand)
+				-- print("G rand", g_rand)
 				component = unlocked_items_glass[g_rand + 1]
-				-- do nothing, glass
 			elseif rand <= (2 * range) then
 				paper_rand = math.random(0,table.getn(unlocked_items_paper)-1)
-				print("paper_rand", paper_rand)
 				component = unlocked_items_paper[paper_rand + 1]
 			elseif rand <= (3 * range) then
 				plastic_rand = math.random(0,table.getn(unlocked_items_plastic)-1)
-				print("plastic_rand", plastic_rand)
 				component = unlocked_items_plastic[plastic_rand + 1]
 			elseif rand <= (4 * range) then
 				organic_rand = math.random(0,table.getn(unlocked_items_organic)-1)
-				print("organic_rand", organic_rand)
 				component = unlocked_items_organic[organic_rand + 1]
 			else
 				mixed_rand = math.random(0,table.getn(unlocked_items_mixed)-1)
-				print("mixed_rand", mixed_rand)
 				component = unlocked_items_mixed[mixed_rand + 1]
 			end
-			print(component)
+			-- print(component)
 			factory.create(component, p)
 		end
 	end

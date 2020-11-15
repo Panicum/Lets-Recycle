@@ -14,9 +14,9 @@ components {
   }
 }
 embedded_components {
-  id: "glass-factory"
+  id: "glass-factory0"
   type: "factory"
-  data: "prototype: \"/items/glass.go\"\n"
+  data: "prototype: \"/items/glass0.go\"\n"
   "load_dynamically: false\n"
   ""
   position {
@@ -32,9 +32,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "paper-factory"
+  id: "paper-factory0"
   type: "factory"
-  data: "prototype: \"/items/paper.go\"\n"
+  data: "prototype: \"/items/paper0.go\"\n"
   "load_dynamically: false\n"
   ""
   position {
@@ -50,9 +50,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "plastic_metal-factory"
+  id: "plastic_metal-factory0"
   type: "factory"
-  data: "prototype: \"/items/plastic_metal.go\"\n"
+  data: "prototype: \"/items/plastic_metal0.go\"\n"
   "load_dynamically: false\n"
   ""
   position {
@@ -68,9 +68,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "mixed-factory"
+  id: "mixed-factory0"
   type: "factory"
-  data: "prototype: \"/items/mixed.go\"\n"
+  data: "prototype: \"/items/mixed0.go\"\n"
   "load_dynamically: false\n"
   ""
   position {
@@ -86,9 +86,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "organic-factory"
+  id: "organic-factory0"
   type: "factory"
-  data: "prototype: \"/items/organic.go\"\n"
+  data: "prototype: \"/items/organic0.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

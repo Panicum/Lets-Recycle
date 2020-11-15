@@ -1,7 +1,7 @@
 local acc = require "in.accelerometer"
 
-local min_x = -240
-local max_x = 240
+local min_x = -200
+local max_x = 200
 actual_can = 1
 level = 1
 local can_table = {"#glass-trashcan", "#paper-trashcan", "#plastic-metal-trashcan", "#organic-trashcan", "#mixed-trashcan"}
