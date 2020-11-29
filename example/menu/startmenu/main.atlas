@@ -1,0 +1,66 @@
+images {
+  image: "/assets/app_icons/icon_180.png"
+}
+images {
+  image: "/assets/background.png"
+}
+images {
+  image: "/assets/heart.png"
+}
+images {
+  image: "/assets/help_ic.png"
+}
+images {
+  image: "/Enviroment/Score.png"
+}
+images {
+  image: "/Enviroment/Menu.png"
+}
+images {
+  image: "/Enviroment/Lives.png"
+}
+images {
+  image: "/Enviroment/Level.png"
+}
+images {
+  image: "/assets/music_ico.png"
+}
+images {
+  image: "/assets/main_menu/iks_ico.png"
+}
+images {
+  image: "/assets/arrowDown.png"
+}
+images {
+  image: "/assets/arrowDown1.png"
+}
+images {
+  image: "/assets/upRight.png"
+}
+images {
+  image: "/assets/upRight1.png"
+}
+images {
+  image: "/assets/upLeft.png"
+}
+images {
+  image: "/assets/upLeft1.png"
+}
+images {
+  image: "/assets/pointer.png"
+}
+images {
+  image: "/assets/deviceTilt_left.png"
+}
+images {
+  image: "/assets/deviceTilt_right.png"
+}
+images {
+  image: "/assets/arrowUp.png"
+}
+images {
+  image: "/assets/help.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

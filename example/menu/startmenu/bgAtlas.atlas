@@ -1,0 +1,12 @@
+images {
+  image: "/Enviroment/city_background.png"
+}
+images {
+  image: "/Enviroment/cloud_1.png"
+}
+images {
+  image: "/Enviroment/cloud_2.png"
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0

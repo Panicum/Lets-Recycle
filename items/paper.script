@@ -10,7 +10,7 @@ function update(self, dt)
 		pos.y = pos.y + speed * trash_speed * dt
 		if pos.y < -320 then
 			go.delete()
-			msg.post("main#gui", "add_live", {amount = -1})
+			msg.post("mainG#gui", "add_live", {amount = -1})
 			if (sound_effect_flag == true) then
 				sound.play("#sound_bad", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 			end
@@ -22,7 +22,7 @@ end
 function on_message(self, message_id, message, sender)
 	if (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan") 
 	and actual_can == 2) then --paper trashcan
-		msg.post("main#gui", "add_score", {amount = score})
+		msg.post("mainG#gui", "add_score", {amount = score})
 		--particlefx.play("#pickup")
 		if (sound_effect_flag == true) then
 			sound.play("#sound_paper", {delay = 0, gain = 1, pan = -1.0, speed = 1})
@@ -30,7 +30,7 @@ function on_message(self, message_id, message, sender)
 		go.delete()
 	elseif (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan")) then
 		--msg.post("main#gui", "add_score", {amount = bad_score})
-		msg.post("main#gui", "add_live", {amount = -1})
+		msg.post("mainG#gui", "add_live", {amount = -1})
 		--particlefx.play("#pickup")
 		if (sound_effect_flag == true) then
 			sound.play("#sound_bad", {delay = 0, gain = 1, pan = -1.0, speed = 1})

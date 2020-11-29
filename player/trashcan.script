@@ -97,7 +97,7 @@ function on_input(self, action_id, action)
 				actual_can = 1
 			end
 			msg.post(can_table[actual_can], "enable")
-			msg.post("main#gui", "change_can")
+			msg.post("mainG#gui", "change_can")
 		end
 		
 		-- ARROW DOWN - CHANGE CAN, DECREMENT INDEX
@@ -112,7 +112,7 @@ function on_input(self, action_id, action)
 				end
 			end
 			msg.post(can_table[actual_can], "enable")
-			msg.post("main#gui", "change_can")
+			msg.post("mainG#gui", "change_can")
 		end
 	end
 end
@@ -130,7 +130,7 @@ function on_message(self, message_id, message, sender)
 				end
 			end
 			msg.post(can_table[actual_can], "enable")
-			msg.post("main#gui", "change_can")
+			msg.post("mainG#gui", "change_can")
 		end
 
 		if message_id == hash("CAN_CHANGE_RIGHT") then
@@ -140,7 +140,7 @@ function on_message(self, message_id, message, sender)
 				actual_can = 1
 			end
 			msg.post(can_table[actual_can], "enable")
-			msg.post("main#gui", "change_can")
+			msg.post("mainG#gui", "change_can")
 		end
 	end
 end

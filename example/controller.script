@@ -1,0 +1,339 @@
+local flow = require "ludobits.m.flow"
+local playfab = require "PlayFab.PlayFabClientApi"
+local IPlayFabHttps = require("PlayFab.IPlayFabHttps")
+local PlayFabHttps_Defold = require("PlayFab.PlayFabHttps_Defold")
+
+local util = require "example.playfab.util"
+local authentication = require "example.playfab.authentication"
+local user_data = require "example.playfab.user_data"
+local leaderboard = require "example.playfab.leaderboard"
+
+-- Uncomment this to debug http requests
+--[[local http_request = http.request
+http.request = function(url, method, callback, headers, post_data, options)
+	print(url)
+	pprint(post_data)
+	http_request(url, method, function(self, id, response)
+		pprint(response)
+		callback(self, id, response)
+	end, headers, post_data, options)
+end--]]
+
+------------------------------ ADMOB - START ------------------------------
+
+-- List ids for all platforms.
+local admob_ids = {
+	-- ['iPhone OS'] = {
+	-- 	banner = 'ca-app-pub-3940256099942544/2934735716',
+	-- 	interstitial = 'ca-app-pub-3940256099942544/5135589807',
+	-- 	rewarded = 'ca-app-pub-3940256099942544/1712485313'
+	-- },
+	Android = {
+		banner ='ca-app-pub-4904724253591504/7895114389',
+		interstitial = 'ca-app-pub-4904724253591504/6403242778',
+		-- rewarded = 'ca-app-pub-3940256099942544/5224354917'
+	}
+}
+
+local system_name = sys.get_sys_info().system_name
+-- Leave only current system ids
+admob_ids = admob_ids[system_name] or {}
+
+local function load_interstitial_pressed(self)
+	print('load_interstitial_pressed')
+	admob.load{
+		type = 'interstitial',
+		id = admob_ids.interstitial,
+		immersive = true,
+		keywords = {'puzzle', 'game'},
+		non_personalized = true
+	}
+end
+
+
+local function show_interstitial_pressed(self)
+	print('show_interstitial_pressed')
+	admob.show('interstitial')
+end
+
+
+local function load_banner_pressed(self)
+	print('load_banner_pressed')
+	admob.load{
+		type = 'banner',
+		id = 'ca-app-pub-4904724253591504/7895114389',
+		size = 'smart',
+		position = 'bottom',
+		keywords = {'puzzle', 'game'}
+	}
+end
+
+local function hide_banner_pressed(self)
+	print('hide_banner_pressed')
+	admob.hide_banner()
+end
+
+local function init_pressed(self)
+	print('ADMOB init_pressed')
+	-- Admob events handler.
+	local function listener(event)
+		print('admob listener')
+		print('admob event type', event.type)
+		print('admob error phase', event.phase)
+		print('admob event is_error', event.is_error)
+		print('admob error code', event.error_code)
+		if event.phase == 'init' then -- Admob has been initialized, now it's safe to load a banner.
+		print('admob load')
+		admob.load{
+			type = 'banner',
+			id = 'ca-app-pub-4904724253591504/7895114389',
+			size = 'smart',
+			position = 'bottom',
+			keywords = {'puzzle', 'game'}
+		}
+	elseif event.phase == 'rewarded' then
+		print('reward received')
+	end
+end
+
+-- Init Admob.
+admob.init{
+	test = true, -- ALWAYS use test ads, only disable when submitting to the stores.
+	listener = listener
+}
+end
+
+
+------------------------------ ADMOB - END ------------------------------
+
+
+
+
+local function show_spinner()
+	msg.post("main:/spinner#spinner", "show")
+	print("SHOW SPINNER")
+end
+
+local function hide_spinner()
+	msg.post("main:/spinner#spinner", "hide")
+end
+
+local function unload_all(self)
+	for proxy,_ in pairs(self.loaded_collections) do
+		self.loaded_collections[proxy] = nil
+		flow.unload(proxy)
+	end
+end
+
+local function unload(self, proxy)
+	if self.loaded_collections[proxy] then
+		self.loaded_collections[proxy] = nil
+		flow.unload(proxy)
+	end
+end
+
+local function load(self, proxy)
+	if self.loaded_collections[proxy] then
+		return
+	end
+	self.loaded_collections[proxy] = true
+	flow.load(proxy)
+end
+
+local function show_popup(self, message)
+	flow(function()
+		show_spinner()
+		load(self, "#popup_proxy")
+		hide_spinner()
+		flow.frames(1)
+		msg.post("popup:/popup", "show", { text = message })
+	end)
+end
+
+local function hide_popup(self, message)
+	flow(function()
+		show_spinner()
+		unload(self, "#popup_proxy")
+		hide_spinner()
+	end)
+end
+
+local function show_startmenu(self, no_spinner)
+	flow(function()
+		if not no_spinner then show_spinner() end
+		authentication.listeners.add(msg.url())
+		authentication.login()
+		unload_all(self)
+		load(self, "#startmenu_proxy")
+		load_banner_pressed()
+		if not no_spinner then hide_spinner() end
+	end)
+end
+
+local function show_login(self, message)
+	flow.start(function()
+		show_spinner()
+		unload_all(self)
+		hide_banner_pressed()
+		load(self, "#login_proxy")
+		if message then show_popup(self, message) end
+		hide_spinner()
+	end)
+end
+
+local function show_register(self)
+	flow(function()
+		show_spinner()
+		unload_all(self)
+		hide_banner_pressed()
+		load(self, "#register_proxy")
+		hide_spinner()
+	end)
+end
+
+local function show_help(self)
+	flow(function()
+		show_spinner()
+		load_interstitial_pressed(self)
+		unload_all(self)
+		load(self, "#help_proxy")
+		hide_spinner()
+	end)
+end
+
+local function show_credits(self)
+	flow(function()
+		show_spinner()
+		load_interstitial_pressed(self)
+		unload_all(self)
+		load(self, "#credits_proxy")
+		hide_spinner()
+	end)
+end
+
+local function show_leaderboard(self)
+	show_interstitial_pressed(self)
+	flow(function()
+		show_spinner()
+		unload_all(self)
+		load(self, "#leaderboard_proxy")
+		-- hide_spinner()
+	end)
+end
+
+local function show_game(self)
+	flow(function()
+		show_spinner()
+		load_interstitial_pressed(self)
+		unload_all(self)
+		load(self, "#right_game_proxy")
+		hide_spinner()
+	end)
+end
+
+local function play_again(self)
+	print("PLAY AGAIN PRESSED!")
+	-- self.restart = true
+	-- show_interstitial_pressed(self)
+	-- msg.post("go#mainG", "disable")
+	-- msg.post("go#mainG", "unload")
+	show_interstitial_pressed(self)
+	flow(function()
+		show_spinner()
+		unload_all(self)
+		load(self, "#right_game_proxy")
+		hide_spinner()
+	end)
+end
+
+-- if message_id == hash("proxy_unloaded") then
+-- 	-- let unloader know
+-- 	if self.restart == true then
+-- 		msg.post("go#mainG", "load")
+-- 	end
+-- end
+-- 
+-- if message_id == hash("proxy_loaded") then
+-- 	-- let unloader know
+-- 	if self.restart == true then
+-- 		msg.post("go#mainG", "enable")
+-- 		self.restart = false
+-- 	end
+-- end
+-- if message_id == hash("proxy_loaded") then
+-- 	-- let unloader know
+-- 	if self.restart == true then
+-- 		msg.post("go#mainG", "enable")
+-- 		self.restart = false
+-- 	end
+-- end
+
+local function init_playfab()
+	playfab.settings.titleId = "979BE"
+	IPlayFabHttps.SetHttp(PlayFabHttps_Defold)
+	util.flow_apis()
+end
+
+function init(self)
+	math.randomseed(os.time())
+	msg.post("@render:", "set_zoom", { zoom = 1 })
+	msg.post("@render:", "clear_color", { color = vmath.vector4(95 /256, 129 / 256, 161 / 256, 1 ) })
+	msg.post(".", "acquire_input_focus")
+	init_playfab()
+	init_pressed(self)
+	
+	self.loaded_collections = {}
+	
+	flow(function()
+		show_startmenu(self, true)
+		show_spinner(self)
+		-- authentication.listeners.add(msg.url())
+		-- authentication.login()
+		hide_spinner(self)
+	end)
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+	authentication.listeners.remove(msg.url())
+end
+
+function on_message(self, message_id, message, sender)
+	flow.on_message(message_id, message, sender)
+	if message_id == authentication.LOGIN_SUCCESS then
+		-- user_data.refresh()
+		-- leaderboard.refresh()
+	elseif message_id == authentication.LOGIN_FAILED then
+		-- user_data.clear()
+		-- leaderboard.clear()
+	elseif message_id == authentication.LOGOUT_SUCCESS then
+		-- user_data.clear()
+		-- leaderboard.clear()
+	elseif message_id == hash("show_game") then
+		show_game(self)
+	elseif message_id == hash("play_again") then
+		play_again(self)
+	elseif message_id == hash("show_login") then
+		show_login(self, message.text)
+	elseif message_id == hash("show_register") then
+		print("SHOW REGISTER")
+		show_register(self)
+	elseif message_id == hash("show_startmenu") then
+		show_startmenu(self)
+	elseif message_id == hash("show_help") then
+		show_help(self)
+	elseif message_id == hash("show_credits") then
+		show_credits(self)
+	elseif message_id == hash("show_leaderboard") then
+		show_leaderboard(self)
+	elseif message_id == hash("show_popup") then
+		show_popup(self, message.text)
+	elseif message_id == hash("hide_popup") then
+		hide_popup(self)
+	end
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

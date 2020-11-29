@@ -95,16 +95,16 @@ local function unload_menu(self)
 end
 
 local function load_main(self)
-	msg.post("go#main", "load")
-	msg.post("go#main", "enable")
+	msg.post("go#mainG", "load")
+	msg.post("go#mainG", "enable")
 end
 
 local function unload_main(self)
-	msg.post("go#main", "unload")
+	msg.post("go#mainG", "unload")
 end
 
 local function restart_main(self)
-	msg.post("go#main","reset")
+	msg.post("go#mainG","reset")
 	--msg.post("go#main", "unload")
 	--msg.post("go#main", "load")
 	--msg.post("go#main", "enable")
@@ -149,28 +149,28 @@ function on_message(self, message_id, message, sender)
 		-- restart_main(self)
 		self.restart = true
 		show_interstitial_pressed(self)
-		msg.post("go#main", "disable")
-		msg.post("go#main", "unload")
+		msg.post("go#mainG", "disable")
+		msg.post("go#mainG", "unload")
 	end
 	
 	if message_id == hash("proxy_unloaded") then
 	-- let unloader know
 		if self.restart == true then
-			msg.post("go#main", "load")
+			msg.post("go#mainG", "load")
 		end
 	end
 
 	if message_id == hash("proxy_loaded") then
 		-- let unloader know
 		if self.restart == true then
-			msg.post("go#main", "enable")
+			msg.post("go#mainG", "enable")
 			self.restart = false
 		end
 	end
 	if message_id == hash("proxy_loaded") then
 		-- let unloader know
 		if self.restart == true then
-			msg.post("go#main", "enable")
+			msg.post("go#mainG", "enable")
 			self.restart = false
 		end
 	end

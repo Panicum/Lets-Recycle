@@ -21,7 +21,7 @@ textures {
 }
 textures {
   name: "main"
-  texture: "/main/main.atlas"
+  texture: "/main/mainG.atlas"
 }
 textures {
   name: "particle_blob2"

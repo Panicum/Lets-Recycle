@@ -1,4 +1,4 @@
-frequency = 0.35
+frequency = 0.4
 local min_x = -220
 local max_x = 220
 function init(self)

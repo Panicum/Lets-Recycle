@@ -1,3 +1,7 @@
+local flow = require "ludobits.m.flow"
+local leaderboard = require "example.playfab.leaderboard"
+local navigate = require "example.navigate"
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.time())
@@ -25,10 +29,20 @@ function set_trivia(self)
 	gui.set_text(self.trivia_node, trivia_text[rand])
 end
 
+local function game_over(self)
+	self.game_over = true
+	flow.start(function()
+		-- msg.post("game:/game#hud", "game_over")
+		leaderboard.update(self.score)
+		leaderboard.set_last_score(self.score)
+		navigate.leaderboard()
+	end)
+end
+
 function on_message(self, message_id, message, sender)
 	local s = 1.2
 	if message_id == hash("player_lost") then
-		msg.post("main#gui", "hide_menu")
+		msg.post("mainG#gui", "hide_menu")
 		sound.stop("paper-trashcan#sound")
 
 		pause_flag = 1
@@ -46,7 +60,8 @@ function on_message(self, message_id, message, sender)
 		else
 			gui.set_enabled(self.music_off_node, true)
 		end
-		
+
+		game_over(self)
 	end
 end
 
@@ -62,7 +77,8 @@ function on_input(self, action_id, action)
 				if (sound_effect_flag == true) then
 					sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 				end
-				msg.post("loader:/go#loader", "open_menu")
+				navigate.startmenu()
+				-- msg.post("loader:/go#loader", "open_menu")
 			end
 		
 			if gui.pick_node( play_again, action.x, action.y) then
