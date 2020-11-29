@@ -100,7 +100,9 @@ function M.login(username, password)
 			Username = auth.username,
 			Password = auth.password,
 		}
+		print("DEBUG - NO INTERNET USER PASWD")
 		local response, error = playfab.LoginWithPlayFab.flow(request)
+		print("DEBUG - NO INTERNET USER PASWD AFTER")
 		if error then
 			auth.username = nil
 			auth.password = nil
@@ -119,7 +121,9 @@ function M.login(username, password)
 			CustomId = auth.id,
 			CreateAccount = true,
 		}
+		print("DEBUG - NO INTERNET ID")
 		local response, error = playfab.LoginWithCustomID.flow(request)
+		print("DEBUG - NO INTERNET ID AFTER")
 		if error then
 			auth.id = nil
 			M.listeners.trigger(M.LOGIN_FAILED, error)
@@ -130,6 +134,20 @@ function M.login(username, password)
 		end
 		savetable.open("auth").save(auth)
 		return response, error
+
+		-- local response, error = playfab.LoginWithCustomID.flow(request,
+		-- function(response)
+		-- 	print("LOGIN ID")
+		-- 	auth.response = response
+		-- 	M.listeners.trigger(M.LOGIN_SUCCESS, response)
+		-- end,
+		-- function(error)
+		-- 	print("DEBUG - NO INTERNET ID AFTER")
+		-- 	auth.id = nil
+		-- 	M.listeners.trigger(M.LOGIN_FAILED, error)
+		-- end)
+		-- savetable.open("auth").save(auth)
+		-- return response, error
 	end
 end
 

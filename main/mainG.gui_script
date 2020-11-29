@@ -220,25 +220,23 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(self.lives_node, tostring(self.lives))
 		gui.animate(self.lives_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 		if self.lives == 0 then
-			show_message(self, "GAME OVER")
-			sound.stop("paper-trashcan#sound")
-			pause_flag = 1
-			end_game_flag = true
-			game_finished = true
-			-- if sound_effect_flag == true then
-			-- 	sound.play("gui_sound#sound_game_over", {delay = 0, gain = 1, pan = -1.0, speed = 1})
-			-- 	gui.set_enabled(self.music_off_node, false)
-			-- else
-			-- 	gui.set_enabled(self.music_off_node, true)
-			-- end
-			-- msg.post("end_game#gui", "player_lost", {final_score = self.score})
-			flow.start(function()
-				flow.delay(3)
-				-- msg.post("game:/game#hud", "game_over")
-				leaderboard.update(self.score)
-				leaderboard.set_last_score(self.score)
-				navigate.leaderboard()
-			end)
+			if not offline_mode then 
+				show_message(self, "GAME OVER")
+				sound.stop("paper-trashcan#sound")
+				pause_flag = 1
+				end_game_flag = true
+				game_finished = true
+				-- 
+				flow.start(function()
+					flow.delay(3)
+					-- msg.post("game:/game#hud", "game_over")
+					leaderboard.update(self.score)
+					leaderboard.set_last_score(self.score)
+					navigate.leaderboard()
+				end)
+			else
+				msg.post("end_game#gui", "player_lost", {final_score = self.score})
+			end
 		end
 	end
 	if message_id == hash("change_can") then

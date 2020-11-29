@@ -8,6 +8,10 @@ local authentication = require "example.playfab.authentication"
 local user_data = require "example.playfab.user_data"
 local leaderboard = require "example.playfab.leaderboard"
 
+offline_mode = false
+sound_effect_flag = true
+controls_help = true
+
 -- Uncomment this to debug http requests
 --[[local http_request = http.request
 http.request = function(url, method, callback, headers, post_data, options)
@@ -18,6 +22,7 @@ http.request = function(url, method, callback, headers, post_data, options)
 		callback(self, id, response)
 	end, headers, post_data, options)
 end--]]
+
 
 ------------------------------ ADMOB - START ------------------------------
 
@@ -161,8 +166,11 @@ end
 local function show_startmenu(self, no_spinner)
 	flow(function()
 		if not no_spinner then show_spinner() end
-		authentication.listeners.add(msg.url())
-		authentication.login()
+		print("OFFLINE MODE", offline_mode)
+		if not offline_mode then 
+			authentication.listeners.add(msg.url())
+			authentication.login()
+		end
 		unload_all(self)
 		load(self, "#startmenu_proxy")
 		load_banner_pressed()
@@ -275,11 +283,26 @@ local function init_playfab()
 end
 
 function init(self)
+
+	local connection_state = sys.get_connectivity()
+
+
 	math.randomseed(os.time())
 	msg.post("@render:", "set_zoom", { zoom = 1 })
 	msg.post("@render:", "clear_color", { color = vmath.vector4(95 /256, 129 / 256, 161 / 256, 1 ) })
 	msg.post(".", "acquire_input_focus")
-	init_playfab()
+	if connection_state == sys.NETWORK_DISCONNECTED then
+		offline_mode = true
+		print("I'm not connected")
+	elseif connection_state == sys.NETWORK_CONNECTED_CELLULAR then
+		print("I'm connected using a cellular carrier")
+	elseif connection_state == sys.NETWORK_CONNECTED then
+		print("I'm connected using a wifi or wired connection")
+	end
+	print("OFFLINE MODE", offline_mode)
+	if not offline_mode then 
+		init_playfab()
+	end
 	init_pressed(self)
 	
 	self.loaded_collections = {}
@@ -301,14 +324,14 @@ end
 function on_message(self, message_id, message, sender)
 	flow.on_message(message_id, message, sender)
 	if message_id == authentication.LOGIN_SUCCESS then
-		-- user_data.refresh()
-		-- leaderboard.refresh()
+		user_data.refresh()
+		leaderboard.refresh()
 	elseif message_id == authentication.LOGIN_FAILED then
-		-- user_data.clear()
-		-- leaderboard.clear()
+		user_data.clear()
+		leaderboard.clear()
 	elseif message_id == authentication.LOGOUT_SUCCESS then
-		-- user_data.clear()
-		-- leaderboard.clear()
+		user_data.clear()
+		leaderboard.clear()
 	elseif message_id == hash("show_game") then
 		show_game(self)
 	elseif message_id == hash("play_again") then

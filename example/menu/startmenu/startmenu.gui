@@ -3,6 +3,10 @@ fonts {
   name: "larryfont"
   font: "/dirtylarry/larryfont.font"
 }
+fonts {
+  name: "MagraRegular"
+  font: "/assets/fonts/MagraRegular.font"
+}
 textures {
   name: "bgAtlas"
   texture: "/example/menu/startmenu/bgAtlas.atlas"
@@ -884,7 +888,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 180.0
+    y: 150.0
     z: 0.0
     w: 1.0
   }
@@ -902,7 +906,7 @@ nodes {
   }
   size {
     x: 640.0
-    y: 80.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -916,7 +920,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\n"
   ""
-  font: "larryfont"
+  font: "MagraRegular"
   id: "account_info"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1433,6 +1437,116 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 623.0
+    y: 1119.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.15
+    y: 0.15
+    z: 0.15
+    w: 1.0
+  }
+  size {
+    x: 512.0
+    y: 512.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "bgAtlas/iks_ico"
+  id: "music_off_menu"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NE
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "box"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.6
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 607.0
+    y: 1106.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.1
+    y: 0.1
+    z: 0.1
+    w: 1.0
+  }
+  size {
+    x: 512.0
+    y: 512.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "bgAtlas/music_ico"
+  id: "music_on_menu"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NE
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "box"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
 }
 layers {
   name: "below"

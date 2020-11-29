@@ -5,16 +5,20 @@ local navigate = require "example.navigate"
 local flow = require "ludobits.m.flow"
 
 local function is_authenticated()
-	return playfab.IsClientLoggedIn()
+	return true
 end
 
 local function update_account_info(self)
-	if not is_authenticated() then
-		gui.set_text(gui.get_node("account_info"), "Not logged in")
+	if not offline_mode then 
+		if not is_authenticated() then
+			gui.set_text(gui.get_node("account_info"), "Not logged in")
+		else
+			local user_id = authentication.user_id()
+			local username = authentication.username() or "anonymous"
+			gui.set_text(gui.get_node("account_info"), ("Logged in as:\n %s (%s)"):format(username, user_id))
+		end
 	else
-		local user_id = authentication.user_id()
-		local username = authentication.username() or "anonymous"
-		gui.set_text(gui.get_node("account_info"), ("Logged in as:\n %s (%s)"):format(username, user_id))
+		gui.set_text(gui.get_node("account_info"), "Jesteś w trybie OFFLINE,\n niektóre funkcje są niedostępne!\n (Tablica najlepszych wyników)\n Połącz się z internetem i zrestartuj gre,\n aby przejść w tryb ONLINE")
 	end
 end
 
@@ -28,17 +32,17 @@ local function update_button_visibility(self)
 	end
 
 	update_button(self.play, is_authenticated())
-	update_button(self.leaderboard, is_authenticated())
+	update_button(self.leaderboard, is_authenticated() and not offline_mode)
 	update_button(self.help, is_authenticated())
 	update_button(self.credits, is_authenticated())
-	update_button(self.login, is_authenticated() and not authentication.has_username_and_password())
-	update_button(self.register, is_authenticated() and not authentication.has_username_and_password())
+	update_button(self.login, is_authenticated() and not authentication.has_username_and_password() and not offline_mode)
+	update_button(self.register, is_authenticated() and not authentication.has_username_and_password() and not offline_mode)
 	update_button(self.exit, is_authenticated())
-	update_button(self.logout, is_authenticated() and authentication.has_username_and_password())
+	update_button(self.logout, is_authenticated() and authentication.has_username_and_password() and not offline_mode)
 	
 	local height = 100
 	local spacing = 16
-	local y = 700 + (height + spacing) / 2 + #buttons * (height + spacing) / 2
+	local y = 640 + (height + spacing) / 2 + #buttons * (height + spacing) / 2
 	for i=1,#buttons do
 		local pos = gui.get_position(buttons[i])
 		pos.y = y - i * (height + spacing)
@@ -59,7 +63,15 @@ function init(self)
 	self.exit = gui.get_node("exit/larrybutton")
 	update_button_visibility(self)
 	update_account_info(self)
-	authentication.listeners.add(msg.url())
+	if not offline_mode then 
+		authentication.listeners.add(msg.url())
+	end
+	local music_off_node = gui.get_node("music_off_menu")
+	if sound_effect_flag == true then
+		gui.set_enabled(music_off_node, false)
+	else
+		gui.set_enabled(music_off_node, true)
+	end
 	print("Auth init: ", authentication.user_id(), authentication.username())
 end
 
@@ -69,10 +81,14 @@ function final(self)
 end
 
 function on_input(self, action_id, action)
+	if(action_id == hash("touch") and action.pressed == true) then
+		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+	end
 	dirtylarry:button("play", action_id, action, function()
 		navigate.game()
 	end)
 	dirtylarry:button("help", action_id, action, function()
+		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 		navigate.help()
 	end)
 	dirtylarry:button("credits", action_id, action, function()
@@ -99,6 +115,27 @@ function on_input(self, action_id, action)
 		end
 		msg.post("@system:", "exit", {code = 0})
 	end)
+	if(action_id == hash("touch") and action.released == true) then
+		local music_node = gui.get_node("music_on_menu")
+		local music_off_node = gui.get_node("music_off_menu")
+		if(gui.pick_node(music_node, action.x, action.y))then
+			if sound_effect_flag == true then
+				if (sound_effect_flag == true) then
+					sound.play("gui_sound#sound_ui_switch", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+				end
+				print("on->off")
+				sound_effect_flag = false
+				gui.set_enabled(music_off_node, true)
+			else
+				print("off->on")
+				sound_effect_flag = true
+				if (sound_effect_flag == true) then
+					sound.play("gui_sound#sound_ui_switch", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+				end
+				gui.set_enabled(music_off_node, false)
+			end
+		end
+	end
 end
 
 function on_message(self, message_id, message, sender)

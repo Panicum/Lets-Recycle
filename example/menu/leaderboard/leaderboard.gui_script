@@ -64,6 +64,9 @@ end
 
 function on_input(self, action_id, action)
 	-- button.on_input(action_id, action)
+	if(action_id == hash("touch") and action.pressed == true) then
+		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+	end
 	dirtylarry:hit("menu/larrylabel", action_id, action, function()
 		navigate.startmenu()
 		leaderboard.set_last_score(0)

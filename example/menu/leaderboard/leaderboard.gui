@@ -28,7 +28,7 @@ background_color {
 nodes {
   position {
     x: 460.0
-    y: 120.0
+    y: 170.0
     z: 0.0
     w: 1.0
   }
@@ -187,7 +187,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 568.0
+    y: 618.0
     z: 0.0
     w: 1.0
   }
@@ -259,7 +259,7 @@ nodes {
   }
   size {
     x: 576.0
-    y: 576.0
+    y: 676.0
     z: 0.0
     w: 1.0
   }
@@ -430,7 +430,7 @@ nodes {
 nodes {
   position {
     x: 180.0
-    y: 120.0
+    y: 170.0
     z: 0.0
     w: 1.0
   }
