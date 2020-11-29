@@ -183,8 +183,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -202,7 +202,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "PLAY"
+  text: "NOWA GRA"
   font: "larryfont"
   id: "play/larrylabel"
   xanchor: XANCHOR_NONE
@@ -228,8 +228,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 1
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -348,8 +346,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -367,7 +365,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "REGISTER"
+  text: "REEJSTRACJA"
   font: "larryfont"
   id: "register/larrylabel"
   xanchor: XANCHOR_NONE
@@ -393,7 +391,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -510,8 +507,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -529,7 +526,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "HELP"
+  text: "POMOC"
   font: "larryfont"
   id: "help/larrylabel"
   xanchor: XANCHOR_NONE
@@ -555,7 +552,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -672,8 +668,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -691,7 +687,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "HIGHSCORES"
+  text: "NAJLEPSZE WYNIKI"
   font: "larryfont"
   id: "leaderboard/larrylabel"
   xanchor: XANCHOR_NONE
@@ -717,7 +713,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -834,8 +829,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -853,7 +848,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "LOGOUT"
+  text: "WYLOGUJ SIE"
   font: "larryfont"
   id: "logout/larrylabel"
   xanchor: XANCHOR_NONE
@@ -879,7 +874,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -1061,8 +1055,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -1106,8 +1100,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 1
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -1224,8 +1216,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -1243,8 +1235,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "LOGIN\n"
-  ""
+  text: "ZALOGUJ SI\304\230"
   font: "larryfont"
   id: "login/larrylabel"
   xanchor: XANCHOR_NONE
@@ -1270,7 +1261,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -1387,8 +1377,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.6
-    y: 1.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -1406,7 +1396,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "EXIT"
+  text: "WYJ\305\232CIE"
   font: "larryfont"
   id: "exit/larrylabel"
   xanchor: XANCHOR_NONE
@@ -1432,7 +1422,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0

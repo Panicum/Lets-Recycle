@@ -84,7 +84,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 220.0
+    x: 320.0
     y: 88.0
     z: 0.0
     w: 1.0
@@ -153,7 +153,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "PLAY AGAIN"
+  text: "ZAGRAJ PONOWNIE"
   font: "larryfont"
   id: "play_again/larrylabel"
   xanchor: XANCHOR_NONE
@@ -429,7 +429,7 @@ nodes {
 }
 nodes {
   position {
-    x: 180.0
+    x: 140.0
     y: 170.0
     z: 0.0
     w: 1.0
@@ -581,8 +581,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 3
-  overridden_fields: 4
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
