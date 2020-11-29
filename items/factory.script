@@ -19,6 +19,10 @@ function update(self, dt)
 	else
 		self.timer = self.timer - dt
 		if self.timer <= 0 then
+			uniq_factor = math.random (0, 10) - 5
+			uniq_factor = uniq_factor / 10
+			uniq_trash_speed = trash_speed + uniq_factor
+			print("UNIQ TRASH SPEED", uniq_trash_speed, trash_speed)
 			self.timer = 1/frequency
 			local p = go.get_position()
 			p.x = vmath.lerp(math.random(), min_x, max_x)

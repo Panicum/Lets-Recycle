@@ -61,7 +61,7 @@ function init(self)
 	local ui_help = gui.get_node("ui_right") 
 	msg.post(".", "acquire_input_focus")
 	self.score = 0
-	self.lives = 1
+	self.lives = 5
 	pause_flag = 0
 	end_game_flag = false
 	self.score_node = gui.get_node("score_text")

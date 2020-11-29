@@ -7,7 +7,7 @@ function update(self, dt)
 		--do nothing
 	else
 		local pos = go.get_position()
-		pos.y = pos.y + speed * trash_speed * dt
+		pos.y = pos.y + speed * uniq_trash_speed * dt
 		if pos.y < -320 then
 			go.delete()
 			msg.post("mainG#gui", "add_live", {amount = -1})

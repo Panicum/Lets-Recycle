@@ -20,7 +20,8 @@ M.leaderboard = {}
 
 local function get_for_player()
 	local request = {
-		StatisticName = "score"
+		StatisticName = "score",
+		MaxResultsCount	= 15,
 	}
 	local response, error = client.GetLeaderboardAroundPlayer(
 		request,
@@ -37,7 +38,8 @@ end
 
 local function get_for_player_2(f1,f2)
 	local request = {
-		StatisticName = "score"
+		StatisticName = "score",
+		MaxResultsCount	= 15,
 	}
 	local response, error = client.GetLeaderboardAroundPlayer(request,f1,f2)
 	-- function(response)
