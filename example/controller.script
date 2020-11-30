@@ -103,7 +103,7 @@ end
 
 -- Init Admob.
 admob.init{
-	test = true, -- ALWAYS use test ads, only disable when submitting to the stores.
+	test = false, -- ALWAYS use test ads, only disable when submitting to the stores.
 	listener = listener
 }
 end
