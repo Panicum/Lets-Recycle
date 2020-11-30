@@ -11,6 +11,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_render_order(15)
 		gui.set_enabled(self.spinner_node, true)
 		gui.set_enabled(self.bg_node, true)
+		print("KREC SIE!")
 		gui.animate(self.spinner_node, "rotation.z", -360, gui.EASING_LINEAR, 1, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 	elseif message_id == hash("hide") then
 		msg.post(".", "release_input_focus")

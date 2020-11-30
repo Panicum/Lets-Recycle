@@ -165,7 +165,7 @@ end
 
 local function show_startmenu(self, no_spinner)
 	flow(function()
-		if not no_spinner then show_spinner() end
+		if no_spinner then show_spinner() end
 		print("OFFLINE MODE", offline_mode)
 		if not offline_mode then 
 			authentication.listeners.add(msg.url())
@@ -232,8 +232,8 @@ end
 local function show_game(self)
 	flow(function()
 		show_spinner()
-		load_interstitial_pressed(self)
 		unload_all(self)
+		load_interstitial_pressed(self)
 		load(self, "#right_game_proxy")
 		hide_spinner()
 	end)
@@ -241,40 +241,14 @@ end
 
 local function play_again(self)
 	print("PLAY AGAIN PRESSED!")
-	-- self.restart = true
-	-- show_interstitial_pressed(self)
-	-- msg.post("go#mainG", "disable")
-	-- msg.post("go#mainG", "unload")
-	show_interstitial_pressed(self)
 	flow(function()
 		show_spinner()
+		show_interstitial_pressed(self)
 		unload_all(self)
 		load(self, "#right_game_proxy")
 		hide_spinner()
 	end)
 end
-
--- if message_id == hash("proxy_unloaded") then
--- 	-- let unloader know
--- 	if self.restart == true then
--- 		msg.post("go#mainG", "load")
--- 	end
--- end
--- 
--- if message_id == hash("proxy_loaded") then
--- 	-- let unloader know
--- 	if self.restart == true then
--- 		msg.post("go#mainG", "enable")
--- 		self.restart = false
--- 	end
--- end
--- if message_id == hash("proxy_loaded") then
--- 	-- let unloader know
--- 	if self.restart == true then
--- 		msg.post("go#mainG", "enable")
--- 		self.restart = false
--- 	end
--- end
 
 local function init_playfab()
 	playfab.settings.titleId = "979BE"
@@ -309,9 +283,11 @@ function init(self)
 	
 	flow(function()
 		show_startmenu(self, true)
-		show_spinner(self)
-		-- authentication.listeners.add(msg.url())
-		-- authentication.login()
+		-- show_spinner(self)
+		-- if not offline_mode then 
+		-- 	authentication.listeners.add(msg.url())
+		-- 	authentication.login()
+		-- end
 		hide_spinner(self)
 	end)
 end
@@ -325,7 +301,7 @@ function on_message(self, message_id, message, sender)
 	flow.on_message(message_id, message, sender)
 	if message_id == authentication.LOGIN_SUCCESS then
 		user_data.refresh()
-		leaderboard.refresh()
+		-- leaderboard.refresh()
 	elseif message_id == authentication.LOGIN_FAILED then
 		user_data.clear()
 		leaderboard.clear()
