@@ -1,6 +1,6 @@
 components {
-  id: "script-glass"
-  component: "/items/glass.script"
+  id: "script-life"
+  component: "/items/life.script"
   position {
     x: 0.0
     y: 0.0
@@ -59,10 +59,10 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "paper"
+  id: "life"
   type: "sprite"
   data: "tile_set: \"/items/objects.atlas\"\n"
-  "default_animation: \"glass4\"\n"
+  "default_animation: \"live_small\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -79,31 +79,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "sound_glass"
+  id: "sound_life"
   type: "sound"
-  data: "sound: \"/assets/sounds/impact_glass.ogg\"\n"
-  "looping: 0\n"
-  "group: \"master\"\n"
-  "gain: 1.0\n"
-  "pan: 0.0\n"
-  "speed: 1.0\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "sound_bad"
-  type: "sound"
-  data: "sound: \"/assets/sounds/bad_item.ogg\"\n"
+  data: "sound: \"/assets/sounds/jump.wav\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

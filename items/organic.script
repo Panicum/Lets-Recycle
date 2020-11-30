@@ -30,7 +30,7 @@ function on_message(self, message_id, message, sender)
 		go.delete()
 	elseif (message_id == hash("collision_response") and message.other_id == hash ("/paper-trashcan")) then
 		-- msg.post("main#gui", "add_score", {amount = bad_score})
-		msg.post("mainG#gui", "add_live", {amount = -1})
+		msg.post("mainG#gui", "add_live", {amount = -1, correct_trash='organic'})
 		--particlefx.play("#pickup")
 		if (sound_effect_flag == true) then
 			sound.play("#sound_bad", {delay = 0, gain = 1, pan = -1.0, speed = 1})

@@ -1,3 +1,4 @@
+
 function init(self)
 	self.controls_dialog = gui.get_node("controls_dialog")
 	self.ui_left = gui.get_node("ui_left")

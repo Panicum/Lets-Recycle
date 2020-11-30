@@ -7,8 +7,8 @@ pause_flag = 0
 game_finished = false
 unlocked_items_glass = {}
 tg = {}
-table.insert(unlocked_items_glass, "#glass-factory0")
-table.insert(tg, 0 )
+-- table.insert(unlocked_items_glass, "#glass-factory0")
+-- table.insert(tg, 0 )
 unlocked_items_paper = {}
 tpap = {}
 unlocked_items_plastic = {}
@@ -18,7 +18,7 @@ to = {}
 unlocked_items_mixed = {}
 tm = {}
 counter_t = {}
-counter_t[0] = 1
+counter_t[0] = 0
 counter_t[1] = 0
 counter_t[2] = 0
 counter_t[3] = 0
@@ -55,15 +55,35 @@ function update_scroll_bar(self)
 	end
 end
 
+
+local  function my_random (t,from, to)  -- second, exclude duplicates
+	local num = math.random(from, to)
+	if t[num] then  num = my_random(t, from, to)   end
+	t[num]=num 
+	return num
+end
+
 function init(self)
+	math.randomseed( os.time()) -- first, sets a seed for the pseudo-random generator
+	math.random(0, 1)
 	local ui_left = gui.get_node("ui_left") 
 	local ui_center = gui.get_node("ui_center") 
 	local ui_help = gui.get_node("ui_right") 
-	msg.post(".", "acquire_input_focus")
+
+
 	self.score = 0
 	self.lives = 5
 	pause_flag = 0
 	end_game_flag = false
+
+	msg.post(".", "acquire_input_focus")
+	print("OS TIME",os.time())
+	-- Rand without repeats
+	rand = my_random(tg,0, 5)
+	counter_t[0] = counter_t[0] + 1
+	print("NEW LEVEL - GLASS", rand)
+	print("UNIQUE RANDOM COUNTER",counter_t[0])
+	table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
 	self.score_node = gui.get_node("score_text")
 	self.lives_node = gui.get_node("lives_text")
 	self.level_node = gui.get_node("level_text")
@@ -73,7 +93,9 @@ function init(self)
 	self.organic_node = gui.get_node("organic_prev")
 	self.mixed_node = gui.get_node("mixed_prev")
 	self.message_node = gui.get_node("message")
+	self.wrong_can_node = gui.get_node("wrong_can")
 	gui.set_enabled(self.message_node, false)
+	gui.set_enabled(self.wrong_can_node, false)
 	if controls_help == true then
 		msg.post("help_controls#gui", "controls_on")
 		gui.set_enabled(ui_left, false)
@@ -97,24 +119,15 @@ local function scale_down(self, node)
 	gui.animate(node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.05)
 end
 
-math.randomseed( os.time() ) -- first, sets a seed for the pseudo-random generator
-
-local  function my_random (t,from, to)  -- second, exclude duplicates
-	local num = math.random (from, to)
-	if t[num] then  num = my_random (t, from, to)   end
-	t[num]=num 
-	return num
-end
-
 local function show_message(self, message)
 	print("show_message", message)
 	flow.start(function()
 		gui.set_enabled(self.message_node, true)
 		gui.set_text(self.message_node, message)
-		gui.set_color(self.message_node, vmath.vector4(0.5, 0, 0.5, 0))
-		flow.gui_animate(self.message_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(0.5, 0, 0.5, 1), gui.EASING_INCUBIC, 1)
+		gui.set_color(self.message_node, vmath.vector4( 0,0,0, 0))
+		flow.gui_animate(self.message_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4( 0,0,0, 1), gui.EASING_INCUBIC, 1)
 		flow.delay(2)
-		flow.gui_animate(self.message_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(0.5, 0, 0.5, 1), gui.EASING_INCUBIC, 1)
+		flow.gui_animate(self.message_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4( 0,0,0, 1), gui.EASING_INCUBIC, 1)
 	end)
 end
 
@@ -147,7 +160,7 @@ function on_message(self, message_id, message, sender)
 				level_mod_5 = math.random(0,4)
 				if level_mod_5 == 1 and counter_t[0] < 6 then
 					-- Rand without repeats
-					rand = my_random(tg, 1, 5)
+					rand = my_random(tg, 0, 5)
 					counter_t[0] = counter_t[0] + 1
 					print("NEW LEVEL - GLASS", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[0])
@@ -181,7 +194,7 @@ function on_message(self, message_id, message, sender)
 				level_mod_5 = level % 5
 				if level_mod_5 == 1 and counter_t[0] < 6 then
 					-- Rand without repeats
-					rand = my_random(tg, 1, 5)
+					rand = my_random(tg, 0, 5)
 					counter_t[0] = counter_t[0] + 1
 					print("NEW LEVEL - GLASS", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[0])
@@ -219,6 +232,57 @@ function on_message(self, message_id, message, sender)
 		self.lives = self.lives + message.amount
 		gui.set_text(self.lives_node, tostring(self.lives))
 		gui.animate(self.lives_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+		local wrong_can_pos = gui.get_position(self.wrong_can_node)
+		if message.amount == -1 then
+			correct_can = message.correct_trash
+			print("CORRECT CAN: ", correct_can)
+			if correct_can == "glass" then
+				flow.start(function()
+					wrong_can_pos.x = -120
+					gui.set_position(self.wrong_can_node, wrong_can_pos)
+					gui.set_enabled(self.wrong_can_node, true)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 1), gui.EASING_INCUBIC, 1)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), gui.EASING_INCUBIC, 1)
+					gui.set_enabled(self.wrong_can_node, false)
+				end)
+			elseif correct_can =="mixed" then
+				flow.start(function()
+					wrong_can_pos.x = 120
+					gui.set_position(self.wrong_can_node, wrong_can_pos)
+					gui.set_enabled(self.wrong_can_node, true)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 1), gui.EASING_INCUBIC, 1)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), gui.EASING_INCUBIC, 1)
+					gui.set_enabled(self.wrong_can_node, false)
+				end)
+			elseif correct_can =="organic" then
+				flow.start(function()
+					wrong_can_pos.x = 60
+					gui.set_position(self.wrong_can_node, wrong_can_pos)
+					gui.set_enabled(self.wrong_can_node, true)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 1), gui.EASING_INCUBIC, 1)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), gui.EASING_INCUBIC, 1)
+					gui.set_enabled(self.wrong_can_node, false)
+				end)
+			elseif correct_can =="paper" then
+				flow.start(function()
+					wrong_can_pos.x = -60
+					gui.set_position(self.wrong_can_node, wrong_can_pos)
+					gui.set_enabled(self.wrong_can_node, true)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 1), gui.EASING_INCUBIC, 1)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), gui.EASING_INCUBIC, 1)
+					gui.set_enabled(self.wrong_can_node, false)
+				end)
+			elseif correct_can =="plastic" then
+				flow.start(function()
+					wrong_can_pos.x = 0
+					gui.set_position(self.wrong_can_node, wrong_can_pos)
+					gui.set_enabled(self.wrong_can_node, true)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 1), gui.EASING_INCUBIC, 1)
+					flow.gui_animate(self.wrong_can_node, gui.PROP_COLOR, gui.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), gui.EASING_INCUBIC, 1)
+					gui.set_enabled(self.wrong_can_node, false)
+				end)
+			end
+		end
 		if self.lives == 0 then
 			if not offline_mode then 
 				show_message(self, "GAME OVER")

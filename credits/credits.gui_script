@@ -1,18 +1,29 @@
 -- https://www.youtube.com/watch?v=VFh2mfqmiRU 1:08:00
 local navigate = require "example.navigate"
+local dirtylarry = require "dirtylarry/dirtylarry"
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 end
 
 function on_input(self, action_id, action)
 	if(action_id == hash("touch") and action.released == true) then
-		local textBack = gui.get_node("textBack")
-		if(gui.pick_node(textBack, action.x, action.y)) then
+		-- local textBack = gui.get_node("textBack")
+		-- if(gui.pick_node(textBack, action.x, action.y)) then
+		-- 	if (sound_effect_flag == true) then
+		-- 		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		-- 	end
+		-- 	show_spinner()
+		-- 	navigate.startmenu()
+		-- 	-- msg.post("loader:/go#loader", "backCredits")
+		-- end
+		dirtylarry:button("menu", action_id, action, function ()
 			if (sound_effect_flag == true) then
 				sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 			end
+			-- msg.post("loader:/go#loader", "backHelp")
+			show_spinner()
 			navigate.startmenu()
-			-- msg.post("loader:/go#loader", "backCredits")
-		end
+		end)
 	end
 end

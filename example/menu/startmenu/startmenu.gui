@@ -1024,7 +1024,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "CREDITS"
+  text: "TW\303\223RCY"
   font: "MagraRegular"
   id: "credits/larrylabel"
   xanchor: XANCHOR_NONE

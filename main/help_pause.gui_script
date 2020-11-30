@@ -53,6 +53,7 @@ function on_input(self, action_id, action)
 					sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 				end
 				pause_flag = 0
+				show_spinner()
 				navigate.startmenu()
 				-- msg.post("loader:/go#loader", "open_menu")
 			end

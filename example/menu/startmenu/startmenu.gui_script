@@ -69,8 +69,10 @@ function init(self)
 		authentication.listeners.add(msg.url())
 	end
 	local music_off_node = gui.get_node("music_off_menu")
+
 	if sound_effect_flag == true then
 		gui.set_enabled(music_off_node, false)
+		sound.play("gui_sound#main_music", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 	else
 		gui.set_enabled(music_off_node, true)
 	end
@@ -84,31 +86,49 @@ end
 
 function on_input(self, action_id, action)
 	if(action_id == hash("touch") and action.pressed == true) then
-		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 	end
 	dirtylarry:button("play", action_id, action, function()
 		navigate.game()
 	end)
 	dirtylarry:button("help", action_id, action, function()
-		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 		navigate.help()
 	end)
 	dirtylarry:button("credits", action_id, action, function()
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 		navigate.credits()
 	end)
 	dirtylarry:button("register", action_id, action, function()
-		print("DB NAV REG")
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 		if is_authenticated() and not authentication.has_username_and_password() then
 			navigate.register()
 		end
 	end)
 	dirtylarry:button("leaderboard", action_id, action, function()
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 		navigate.leaderboard()
 	end)
 	dirtylarry:button("logout", action_id, action, function()
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 		flow(authentication.logout)
 	end)
 	dirtylarry:button("login", action_id, action, function()
+		if (sound_effect_flag == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
 		navigate.login()
 	end)
 	dirtylarry:button("exit", action_id, action, function()
@@ -127,6 +147,7 @@ function on_input(self, action_id, action)
 				end
 				print("on->off")
 				sound_effect_flag = false
+				sound.stop("gui_sound#main_music")
 				gui.set_enabled(music_off_node, true)
 			else
 				print("off->on")

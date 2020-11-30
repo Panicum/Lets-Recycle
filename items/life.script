@@ -1,0 +1,31 @@
+local score = 0
+--local bad_score = -(score / 2)
+local speed = -100
+
+function update(self, dt)
+	if pause_flag == 1 then
+		--do nothing
+	else
+		local pos = go.get_position()
+		pos.y = pos.y + speed * uniq_trash_speed * dt
+		if pos.y < -320 then
+			go.delete()
+			--msg.post("mainG#gui", "add_live", {amount = -1})
+			-- if (sound_effect_flag == true) then
+			-- 	sound.play("#sound_bad", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+			-- end
+		end 
+		go.set_position(pos)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") and message.other_id == hash("/paper-trashcan")  then --glass trashcan
+		msg.post("mainG#gui", "add_live", {amount = 1})
+		--particlefx.play("#pickup")
+		if (sound_effect_flag == true) then
+			sound.play("#sound_life", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
+		go.delete()
+	end
+end
