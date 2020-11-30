@@ -11,14 +11,15 @@ end
 local function update_account_info(self)
 	if not offline_mode then 
 		if not is_authenticated() then
-			gui.set_text(gui.get_node("account_info"), "Not logged in")
+			gui.set_text(gui.get_node("account_info"), "TRYB OFFLINE")
 		else
 			local user_id = authentication.user_id()
-			local username = authentication.username() or "anonymous"
-			gui.set_text(gui.get_node("account_info"), ("Logged in as:\n %s (%s)"):format(username, user_id))
+			local username = authentication.username() or "UNKNOWN"
+			print("ZALOGOWANY", username, user_id)
+			gui.set_text(gui.get_node("account_info"), ("Jesteś zalogowany jako:\n %s (%s)"):format(username, user_id:sub(10)))
 		end
 	else
-		gui.set_text(gui.get_node("account_info"), "Jesteś w trybie OFFLINE,\n niektóre funkcje są niedostępne!\n (Tablica najlepszych wyników)\n Połącz się z internetem i zrestartuj gre,\n aby przejść w tryb ONLINE")
+		gui.set_text(gui.get_node("account_info"), "Jesteś w trybie OFFLINE,\n Twoje wyniki nie będą zapisywane!")
 	end
 end
 
@@ -37,12 +38,13 @@ local function update_button_visibility(self)
 	update_button(self.credits, is_authenticated())
 	update_button(self.login, is_authenticated() and not authentication.has_username_and_password() and not offline_mode)
 	update_button(self.register, is_authenticated() and not authentication.has_username_and_password() and not offline_mode)
-	update_button(self.exit, is_authenticated())
 	update_button(self.logout, is_authenticated() and authentication.has_username_and_password() and not offline_mode)
+	update_button(self.exit, is_authenticated())
+
 	
 	local height = 100
 	local spacing = 16
-	local y = 640 + (height + spacing) / 2 + #buttons * (height + spacing) / 2
+	local y = 540 + (height + spacing) / 2 + #buttons * (height + spacing) / 2
 	for i=1,#buttons do
 		local pos = gui.get_position(buttons[i])
 		pos.y = y - i * (height + spacing)
