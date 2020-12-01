@@ -1,6 +1,6 @@
 [project]
 title = Lets Recycle
-version = 0.3
+version = 0.5
 dependencies = https://api.playfab.com/sdks/download/defold,https://github.com/andsve/dirtylarry/archive/master.zip,https://github.com/britzl/ludobits/archive/6.7.1.zip,https://github.com/britzl/platypus/archive/3.5.0.zip,https://github.com/britzl/defold-orthographic/archive/2.9.2.zip,https://github.com/britzl/defold-input/archive/2.4.1.zip,https://github.com/rgrams/rendercam/archive/v1.0.1.zip,https://github.com/Lerg/extension-admob/archive/legacy.zip
 
 [bootstrap]
@@ -53,6 +53,6 @@ app_icon_72x72 = /assets/app_icons/icon_72.png
 app_icon_96x96 = /assets/app_icons/icon_96.png
 app_icon_144x144 = /assets/app_icons/icon_144.png
 app_icon_192x192 = /assets/app_icons/icon_192.png
-version_code = 4
+version_code = 5
 package = com.eco.letsrecycle
 
