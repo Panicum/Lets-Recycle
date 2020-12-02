@@ -91,7 +91,8 @@ function on_input(self, action_id, action)
 		end
 	end
 	dirtylarry:button("play", action_id, action, function()
-		navigate.game()
+		--navigate.game()
+		navigate.choose_mode()
 	end)
 	dirtylarry:button("help", action_id, action, function()
 		if (sound_effect_flag == true) then

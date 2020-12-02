@@ -1,0 +1,46 @@
+local flow = require "ludobits.m.flow"
+local authentication = require "example.playfab.authentication"
+local user_data = require "example.playfab.user_data"
+local leaderboard = require "example.playfab.leaderboard"
+local navigate = require "example.navigate"
+local client = require "PlayFab.PlayFabClientApi"
+local dirtylarry = require "dirtylarry/dirtylarry"
+
+easy_mode_enabled = false
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	easy_mode_enabled = false
+end
+
+function on_input(self, action_id, action)
+	dirtylarry:button("easy", action_id, action, function ()
+		if(action_id == hash("touch") and action.pressed == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
+		easy_mode_enabled = true
+		navigate.game()
+	end)
+	dirtylarry:button("hard", action_id, action, function ()
+		if(action_id == hash("touch") and action.pressed == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
+		navigate.game()
+	end)
+	dirtylarry:button("menu", action_id, action, function ()
+		if(action_id == hash("touch") and action.pressed == true) then
+			sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+		end
+		show_spinner()
+		navigate.startmenu()
+	end)
+end
+
+function on_message(self, message_id, message, sender)
+	
+end
+	
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end

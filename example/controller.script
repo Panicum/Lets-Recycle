@@ -199,6 +199,15 @@ local function show_register(self)
 	end)
 end
 
+local function show_choose_mode(self)
+	flow(function()
+		show_spinner()
+		unload_all(self)
+		load(self, "#choose_mode_proxy")
+		hide_spinner()
+	end)
+end
+
 local function show_help(self)
 	flow(function()
 		show_spinner()
@@ -317,6 +326,8 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("show_register") then
 		print("SHOW REGISTER")
 		show_register(self)
+	elseif message_id == hash("choose_mode") then
+		show_choose_mode(self)
 	elseif message_id == hash("show_startmenu") then
 		show_startmenu(self)
 	elseif message_id == hash("show_help") then

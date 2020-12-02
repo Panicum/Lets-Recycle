@@ -6,6 +6,10 @@ function M.startmenu()
 	msg.post(M.CONTROLLER, "show_startmenu")
 end
 
+function M.choose_mode()
+	msg.post(M.CONTROLLER, "choose_mode")
+end
+
 function M.game()
 	msg.post(M.CONTROLLER, "show_game")
 end
