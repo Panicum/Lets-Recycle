@@ -45,6 +45,11 @@ end
 
 function init(self)
 	button.acquire()
+	if easy_mode_enabled then
+		gui.set_text(gui.get_node("mode_info_txt"), "NAJLEPSZE WYNIKI - TRYB ŁATWY")
+	else 
+		gui.set_text(gui.get_node("mode_info_txt"), "NAJLEPSZE WYNIKI - TRYB TRUNDY")
+	end
 	-- leaderboard.refresh() 
 	-- print("leaderboard gui msg.url", msg.url())
 	load_leaderboard()

@@ -89,8 +89,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.2
+    y: 1.2
     z: 1.0
     w: 1.0
   }
@@ -297,7 +297,7 @@ nodes {
   }
   size {
     x: 400.0
-    y: 48.0
+    y: 64.0
     z: 0.0
     w: 1.0
   }
@@ -353,7 +353,7 @@ nodes {
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 120.0
     z: 0.0
     w: 1.0
   }
@@ -365,7 +365,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "WYBIERZ TRYB"
+  text: "WYBIERZ TRYB GRY"
   font: "larryfont"
   id: "title/larrylabel"
   xanchor: XANCHOR_NONE
@@ -391,6 +391,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 4
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -398,7 +399,7 @@ nodes {
 }
 nodes {
   position {
-    x: 140.0
+    x: 160.0
     y: 170.0
     z: 0.0
     w: 1.0
@@ -410,8 +411,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.2
+    y: 1.2
     z: 1.0
     w: 1.0
   }
@@ -570,8 +571,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.2
+    y: 1.2
     z: 1.0
     w: 1.0
   }

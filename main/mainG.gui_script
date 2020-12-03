@@ -69,10 +69,18 @@ function init(self)
 	local ui_left = gui.get_node("ui_left") 
 	local ui_center = gui.get_node("ui_center") 
 	local ui_help = gui.get_node("ui_right") 
-
+	
+	if easy_mode_enabled then
+		trash_speed = 2
+		frequency = 0.25
+		self.lives = 10
+	else
+		trash_speed = 3.3
+		frequency = 0.4
+		self.lives = 5
+	end
 
 	self.score = 0
-	self.lives = 5
 	pause_flag = 0
 	end_game_flag = false
 

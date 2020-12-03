@@ -19,11 +19,18 @@ M.REFRESH_FAILED = hash("LEADERBOARD_REFRESH_FAILED")
 M.leaderboard = {}
 
 local function get_for_player()
-	local request = {
-		--StatisticName = "score",
-		StatisticName = "score_easy",
-		MaxResultsCount	= 15,
-	}
+	local request = {}
+	if easy_mode_enabled then
+		request = {
+			StatisticName = "score_easy",
+			MaxResultsCount	= 15,
+		}
+	else
+		request = {
+			StatisticName = "score",
+			MaxResultsCount	= 15,
+		}
+	end
 	local response, error = client.GetLeaderboardAroundPlayer(
 		request,
 		function(response)
@@ -38,10 +45,18 @@ local function get_for_player()
 end
 
 local function get_for_player_2(f1,f2)
-	local request = {
-		StatisticName = "score_easy",
-		MaxResultsCount	= 15,
-	}
+	local request = {}
+	if easy_mode_enabled then
+		request = {
+			StatisticName = "score_easy",
+			MaxResultsCount	= 15,
+		}
+	else
+		request = {
+			StatisticName = "score",
+			MaxResultsCount	= 15,
+		}
+	end
 	local response, error = client.GetLeaderboardAroundPlayer(request,f1,f2)
 	-- function(response)
 	-- 	print("M.leaderboard get_for_player2, success!", response)
@@ -109,17 +124,33 @@ function M.update(score)
 	if current_score > score then
 		return true
 	end
-	
-	local request = {
-		Statistics = {
-			{
-				StatisticName = "score_easy",
-				Value = score,
-			},
+	local request = {}
+	if easy_mode_enabled then
+		request = {
+			Statistics = {
+				{
+					StatisticName = "score_easy",
+					Value = score,
+				},
+			}
 		}
-	}
+	else
+		request = {
+			Statistics = {
+				{
+					StatisticName = "score",
+					Value = score,
+				},
+			}
+		}
+	end
+	print("SCORE UPDATE REQUEST", request['StatisticName'])
 	local response, error = client.UpdatePlayerStatistics.flow(request)
 	if error then
+		print("SCORE UPDATE ERROR", error)
+		for index, data in ipairs(error) do
+			print(index, data)
+		end
 		return false, error
 	end
 	return get_for_player()
