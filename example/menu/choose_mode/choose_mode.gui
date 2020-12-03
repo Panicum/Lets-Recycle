@@ -153,7 +153,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "easy"
   layer: ""
   inherit_alpha: true
@@ -168,6 +168,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -222,7 +223,7 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   line_break: false
   parent: "easy/larrybutton"
   layer: ""
@@ -232,6 +233,7 @@ nodes {
   shadow_alpha: 1.0
   overridden_fields: 4
   overridden_fields: 8
+  overridden_fields: 17
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -314,7 +316,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "title"
   layer: ""
   inherit_alpha: true
@@ -329,6 +331,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -635,7 +638,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "hard"
   layer: ""
   inherit_alpha: true
@@ -650,6 +653,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -704,7 +708,7 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   line_break: false
   parent: "hard/larrybutton"
   layer: ""
@@ -714,6 +718,7 @@ nodes {
   shadow_alpha: 1.0
   overridden_fields: 4
   overridden_fields: 8
+  overridden_fields: 17
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0

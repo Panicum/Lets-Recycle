@@ -73,13 +73,12 @@ function init(self)
 	if easy_mode_enabled then
 		trash_speed = 2
 		frequency = 0.25
-		self.lives = 10
 	else
 		trash_speed = 3.3
 		frequency = 0.4
-		self.lives = 5
 	end
 
+	self.lives = 5
 	self.score = 0
 	pause_flag = 0
 	end_game_flag = false
@@ -300,7 +299,7 @@ function on_message(self, message_id, message, sender)
 				game_finished = true
 				-- 
 				flow.start(function()
-					flow.delay(1.5)
+					flow.delay(3)
 					-- msg.post("game:/game#hud", "game_over")
 					leaderboard.update(self.score)
 					leaderboard.set_last_score(self.score)

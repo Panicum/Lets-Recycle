@@ -149,7 +149,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "username"
   layer: ""
   inherit_alpha: true
@@ -163,6 +163,7 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -419,7 +420,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "password"
   layer: ""
   inherit_alpha: true
@@ -433,6 +434,7 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -688,7 +690,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "login"
   layer: ""
   inherit_alpha: true
@@ -703,6 +705,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -848,7 +851,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "title"
   layer: ""
   inherit_alpha: true
@@ -863,6 +866,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
@@ -1008,7 +1012,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "menu"
   layer: ""
   inherit_alpha: true
@@ -1023,6 +1027,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 4
+  overridden_fields: 17
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
 }
