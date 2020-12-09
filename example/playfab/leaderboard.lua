@@ -114,7 +114,8 @@ end
 -- @return success
 -- @return error
 function M.update(score)
-	local user_id = authentication.user_id()
+	user_id = authentication.user_id()
+	
 	print("Best score update for", user_id, score)
 	if not user_id then
 		return false, "No user id"

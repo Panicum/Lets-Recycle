@@ -182,6 +182,7 @@ function M.register(username, password, email)
 		M.listeners.trigger(M.REGISTRATION_FAILED, error)
 	else
 		pprint(response)
+		auth.response = response
 		auth.username = username
 		auth.password = password
 		savetable.open("auth").save(auth)

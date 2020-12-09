@@ -62,9 +62,15 @@ function on_input(self, action_id, action)
 				navigate.hide_spinner()
 				return
 			end
-			
-			navigate.hide_spinner()
-			navigate.startmenu()
+			print("REGISTER - LAST SCORE", leaderboard.get_last_score())
+			if leaderboard.get_last_score() ~= 0 then
+				leaderboard.update(leaderboard.get_last_score())
+				navigate.hide_spinner()
+				navigate.leaderboard()
+			else
+				navigate.hide_spinner()
+				navigate.startmenu()
+			end
 		end)
 	end)
 	

@@ -15,7 +15,7 @@ local can_table = {"#glass-trashcan", "#paper-trashcan", "#plastic-metal-trashca
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.runSpeed = 150
-	self.accRunSpeed = 800
+	self.accRunSpeed = 1400
 	self.curAnim = "idle"
 	--msg.post("#paper-trashcan", "play_animation", {id = hash("trashcan_organic")})
 	self.speed = vmath.vector3()
