@@ -4,9 +4,12 @@ local flow = require "ludobits.m.flow"
 local navigate = require "example.navigate"
 local dirtylarry = require "dirtylarry/dirtylarry"
 local authentication = require "example.playfab.authentication"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
+
 -- self.current_score = 0
 local function refresh_leaderboard(self)
-	local s = "Najlepsze wyniki:\n"
+	local s = translate("HIGHSCORE_LEADERBOARD")
 	local entries = leaderboard.get()
 	local playerBestResult = 0
 -- DEBUG
@@ -23,7 +26,7 @@ local function refresh_leaderboard(self)
 -- 		end
 -- 	end
 	if #entries == 0 then
-		s = s .. "Wczytywanie..."
+		s = s .. translate("HIGHSCORE_LOADING")
 	else
 		for _,entry in ipairs(entries or {}) do
 			print("user id: ",  authentication.user_id())
@@ -43,12 +46,17 @@ local function refresh_leaderboard(self)
 	-- end
 end
 
+local function update_translation(self)
+	gui.set_text(gui.get_node("play_again/larrylabel"), translate("HIGHSCORE_PLAY_AGAIN"))
+	gui.set_text(gui.get_node("add_nick/larrylabel"), translate("HIGHSCORE_ADD_NICK"))
+end
+
 function init(self)
 	button.acquire()
 	if easy_mode_enabled then
-		gui.set_text(gui.get_node("mode_info_txt"), "NAJLEPSZE WYNIKI - TRYB ŁATWY")
+		gui.set_text(gui.get_node("mode_info_txt"), translate("HIGHSCORE_EASY_MODE"))
 	else 
-		gui.set_text(gui.get_node("mode_info_txt"), "NAJLEPSZE WYNIKI - TRYB TRUNDY")
+		gui.set_text(gui.get_node("mode_info_txt"), translate("HIGHSCORE_HARD_MODE"))
 	end
 	last_score = leaderboard.get_last_score()
 	if authentication.has_username_and_password() or last_score == 0 then
@@ -63,8 +71,10 @@ function init(self)
 
 	print("Last score", last_score)
 	if last_score ~= 0 then
-		gui.set_text(gui.get_node("player_result"), "Twój wynik:" .. last_score)
+		gui.set_text(gui.get_node("player_result"), translate("HIGHSCORE_YOUR_SCORE") .. last_score)
 	end
+
+	update_translation(self)
 end
 
 function final(self)

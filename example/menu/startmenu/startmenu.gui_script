@@ -3,6 +3,11 @@ local playfab = require "PlayFab.PlayFabClientApi"
 local dirtylarry = require "dirtylarry/dirtylarry"
 local navigate = require "example.navigate"
 local flow = require "ludobits.m.flow"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
+
+local LANGUAGES = { "en", "pl" }
+language_index = 0
 
 local function is_authenticated()
 	return true
@@ -11,18 +16,28 @@ end
 local function update_account_info(self)
 	if not offline_mode then 
 		if not is_authenticated() then
-			gui.set_text(gui.get_node("account_info"), "TRYB OFFLINE")
+			gui.set_text(gui.get_node("account_info"), translate("OFFLINE_MODE"))
 		else
 			local user_id = authentication.user_id()
 			local username = authentication.username() or "UNKNOWN"
 			print("ZALOGOWANY", username, user_id)
-			gui.set_text(gui.get_node("account_info"), ("Jesteś zalogowany jako:\n %s (%s)"):format(username, user_id:sub(10)))
+			gui.set_text(gui.get_node("account_info"), (translate("LOGIN_AS") .. "\n %s (%s)"):format(username, user_id:sub(10)))
 		end
 	else
 		gui.set_text(gui.get_node("account_info"), "Jesteś w trybie OFFLINE,\n Twoje wyniki nie będą zapisywane!")
 	end
 end
 
+local function update_translation(self)
+	gui.set_text(gui.get_node("play/larrylabel"), translate("BTN_PLAY"))
+	gui.set_text(gui.get_node("register/larrylabel"), translate("BTN_REGISTER"))
+	gui.set_text(gui.get_node("help/larrylabel"), translate("BTN_HELP"))
+	gui.set_text(gui.get_node("leaderboard/larrylabel"), translate("BTN_BEST_SCORE"))
+	gui.set_text(gui.get_node("logout/larrylabel"), translate("BTN_LOGOUT"))
+	gui.set_text(gui.get_node("credits/larrylabel"), translate("BTN_CREDITS"))
+	gui.set_text(gui.get_node("login/larrylabel"), translate("BTN_LOGIN"))
+	gui.set_text(gui.get_node("exit/larrylabel"), translate("BTN_EXIT"))
+end
 
 local function update_button_visibility(self)	
 	local buttons = {}
@@ -41,7 +56,7 @@ local function update_button_visibility(self)
 	update_button(self.logout, is_authenticated() and authentication.has_username_and_password() and not offline_mode)
 	update_button(self.exit, is_authenticated())
 
-	
+	update_translation(self)
 	local height = 100
 	local spacing = 16
 	local y = 540 + (height + spacing) / 2 + #buttons * (height + spacing) / 2
@@ -63,8 +78,10 @@ function init(self)
 	self.logout = gui.get_node("logout/larrybutton")
 	self.login = gui.get_node("login/larrybutton")
 	self.exit = gui.get_node("exit/larrybutton")
+	translate.set_default_language()
 	update_button_visibility(self)
 	update_account_info(self)
+	translate.add_translations(translations)
 	if not offline_mode then 
 		authentication.listeners.add(msg.url())
 	end

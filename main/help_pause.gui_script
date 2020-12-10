@@ -1,9 +1,20 @@
 local navigate = require "example.navigate"
 local dirtylarry = require "dirtylarry/dirtylarry"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
+
+local function update_translation(self)
+	gui.set_text(gui.get_node("help_title"), translate("PAUSE_HELP_TITLE"))
+	gui.set_text(gui.get_node("replay/larrylabel"), translate("PAUSE_HELP_PLAY_AGIAN"))
+	gui.set_text(gui.get_node("continue/larrylabel"), translate("PAUSE_HELP_CONTINOUE"))
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.help_dialog = gui.get_node("help_dialog")
 	gui.set_enabled(self.help_dialog, false)
+
+	update_translation(self)
 end
 
 function on_message(self, message_id, message, sender)

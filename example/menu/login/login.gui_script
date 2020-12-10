@@ -2,6 +2,8 @@ local flow = require "ludobits.m.flow"
 local authentication = require "example.playfab.authentication"
 local navigate = require "example.navigate"
 local dirtylarry = require "dirtylarry/dirtylarry"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
 
 
 local function validate(self)
@@ -13,6 +15,11 @@ local function validate(self)
 	return valid
 end 
 
+local function update_translation(self)
+	gui.set_text(gui.get_node("title/larrylabel"), translate("LOGIN_TITLE"))
+	gui.set_text(gui.get_node("register/larrylabel"), translate("LOGIN_SIGN_IN"))
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_text(gui.get_node("username/content"), "")
@@ -20,6 +27,8 @@ function init(self)
 	self.username = ""
 	self.password = ""
 	validate(self)
+
+	update_translation(self)
 end
 
 function final(self)

@@ -3,6 +3,8 @@ local authentication = require "example.playfab.authentication"
 local user_data = require "example.playfab.user_data"
 local leaderboard = require "example.playfab.leaderboard"
 local navigate = require "example.navigate"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
 
 local client = require "PlayFab.PlayFabClientApi"
 
@@ -19,6 +21,10 @@ local function validate(self)
 	return valid
 end 
 
+local function update_translation(self)
+	gui.set_text(gui.get_node("title/larrylabel"), translate("REGISTER_TITLE"))
+	gui.set_text(gui.get_node("register/larrylabel"), translate("REGISTER_SIGN_UP"))
+end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -29,6 +35,8 @@ function init(self)
 	gui.set_text(gui.get_node("password/content"), self.password)
 	gui.set_text(gui.get_node("email/content"), self.email)
 	validate(self)
+
+	update_translation(self)
 end
 
 function final(self)

@@ -1,3 +1,14 @@
+local translate = require "localization.translate"
+local translations = require "localization.translations"
+
+local function update_translation(self)
+	gui.set_text(gui.get_node("trashcan"), translate("HELP_CONTROLS_TRASH"))
+	gui.set_text(gui.get_node("uitext"), translate("HELP_CONTROLS_UI_ICONS"))
+	gui.set_text(gui.get_node("lefttext"), translate("HELP_CONTROLS_LEFT_SIDE"))
+	gui.set_text(gui.get_node("lefttext1"), translate("HELP_CONTROLS_RIGHT_SIDE"))
+	gui.set_text(gui.get_node("tilttext"), translate("HELP_CONTROLS_TLIT"))
+	gui.set_text(gui.get_node("touchanywhere"), translate("HELP_CONTROLS_START_GAME"))
+end
 
 function init(self)
 	self.controls_dialog = gui.get_node("controls_dialog")
@@ -8,6 +19,8 @@ function init(self)
 	gui.set_enabled(self.ui_left, false)
 	gui.set_enabled(self.ui_center, false)
 	gui.set_enabled(self.ui_right, false)
+
+	update_translation(self)
 end
 
 function on_message(self, message_id, message, sender)

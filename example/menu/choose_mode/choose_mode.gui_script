@@ -5,12 +5,21 @@ local leaderboard = require "example.playfab.leaderboard"
 local navigate = require "example.navigate"
 local client = require "PlayFab.PlayFabClientApi"
 local dirtylarry = require "dirtylarry/dirtylarry"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
 
 easy_mode_enabled = false
+
+local function update_translation(self)
+	gui.set_text(gui.get_node("title/larrylabel"), translate("CHOOSE_MODE_TITLE"))
+	gui.set_text(gui.get_node("easy/larrylabel"), translate("CHOOSE_MODE_EASY"))
+	gui.set_text(gui.get_node("hard/larrylabel"), translate("CHOOSE_MODE_HARD"))
+end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	easy_mode_enabled = false
+	update_translation(self)
 end
 
 function on_input(self, action_id, action)
