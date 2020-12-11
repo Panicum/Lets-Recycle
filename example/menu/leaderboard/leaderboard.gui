@@ -28,7 +28,7 @@ background_color {
 nodes {
   position {
     x: 460.0
-    y: 70.0
+    y: 175.0
     z: 0.0
     w: 1.0
   }
@@ -179,6 +179,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 1
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -187,7 +188,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 568.0
+    y: 625.0
     z: 0.0
     w: 1.0
   }
@@ -205,7 +206,7 @@ nodes {
   }
   size {
     x: 600.0
-    y: 1000.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -367,7 +368,7 @@ nodes {
 nodes {
   position {
     x: 140.0
-    y: 70.0
+    y: 175.0
     z: 0.0
     w: 1.0
   }
@@ -518,6 +519,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 4
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
@@ -643,7 +645,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 170.0
+    y: 300.0
     z: 0.0
     w: 1.0
   }
@@ -794,6 +796,7 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
+  overridden_fields: 1
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0

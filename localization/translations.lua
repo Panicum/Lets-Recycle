@@ -59,7 +59,7 @@ return {
 		BTN_LOGOUT = "WYLOGUJ SIĘ",
 		BTN_EXIT = "WYJŚCIE",
 
-		OFFLINE_MODE = "TRYB OFFLINE",
+		OFFLINE_MODE = "WYBIERZ TRYB",
 		LOGIN_AS = "Jesteś zalogowany jako:",
 		LOGIN_OFFLINE = "Jesteś w trybie OFFLINE,\n Twoje wyniki nie będą zapisywane!",
 
