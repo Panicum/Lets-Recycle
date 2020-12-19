@@ -232,28 +232,31 @@ function on_message(self, message_id, message, sender)
 					print("UNIQUE RANDOM COUNTER",counter_t[0])
 					table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
 				elseif level_mod_5 == 2 and counter_t[1] < 6 then
-					show_help_message(self, translate("HELP_MSG_1"))
+					if controls_help then
+						show_help_message(self, translate("HELP_MSG_1"))
+						controls_help = false
+					end
 					rand = my_random (tpap, 0, 5)
 					counter_t[1] = counter_t[1] + 1
 					print("NEW LEVEL - PAPER", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[1])
 					table.insert(unlocked_items_paper, "#paper-factory" .. tostring(rand))
 				elseif level_mod_5 == 3 and counter_t[2] < 7 then
-					show_help_message(self,  translate("HELP_MSG_2"))
+					--show_help_message(self,  translate("HELP_MSG_2"))
 					rand = my_random (tpla, 0, 6)
 					counter_t[2] = counter_t[2] + 1
 					print("NEW LEVEL - PLASTIC", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[2])
 					table.insert(unlocked_items_plastic, "#plastic_metal-factory" .. tostring(rand))
 				elseif level_mod_5 == 4 and counter_t[3] < 6 then
-					show_help_message(self,  translate("HELP_MSG_2"))
+					--show_help_message(self,  translate("HELP_MSG_2"))
 					rand = my_random (to, 0, 5)
 					counter_t[3] = counter_t[3] + 1
 					print("NEW LEVEL - ORGANIC", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[3])
 					table.insert(unlocked_items_organic, "#organic-factory" .. tostring(rand))
 				elseif level_mod_5 == 0 and counter_t[4] < 5 then
-					show_help_message(self,  translate("HELP_MSG_2"))
+					--show_help_message(self,  translate("HELP_MSG_2"))
 					rand = my_random (tm, 0, 4)
 					counter_t[4] = counter_t[4] + 1
 					print("NEW LEVEL - MIXED", rand)
@@ -344,6 +347,11 @@ function on_message(self, message_id, message, sender)
 			end
 		end
 	end
+	if message_id == hash("add_score_bonus") then
+		xp_factor = xp_factor + 0.3
+		gui.set_text(self.score_factor_node, tostring(xp_factor))
+		gui.animate(self.score_factor_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
+	end
 	if message_id == hash("change_can") then
 		update_scroll_bar(self)
 	end
@@ -361,7 +369,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(ui_center, true)
 		gui.set_enabled(ui_help, true)
 		update_scroll_bar(self)
-		controls_help = false
+		-- controls_help = false
 		pause_flag = 0
 		show_help_message(self,  translate("HELP_MSG_0"))
 	end

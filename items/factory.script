@@ -4,6 +4,7 @@ local max_x = 220
 function init(self)
 	self.timer = 1/frequency
 	self.timer_extra_life = 1/0.15
+	self.timer_extra_bonus = 1/0.17
 	-- make the game deterministic
 	math.randomseed(os.time())
 end
@@ -20,6 +21,7 @@ function update(self, dt)
 	else
 		self.timer = self.timer - dt
 		self.timer_extra_life = self.timer_extra_life - dt
+		self.timer_extra_bonus = self.timer_extra_bonus - dt
 		if self.timer_extra_life <= 0 then
 			if math.random (0, 10) == 7 then
 				local p = go.get_position()
@@ -27,7 +29,16 @@ function update(self, dt)
 				print("GENERATE EXTRA LIFE")
 				factory.create("#life-factory", p)
 			end
-			self.timer_extra_life = 1/0.1
+			self.timer_extra_life = 1/0.15
+		end
+		if self.timer_extra_bonus <= 0 then
+			if math.random (0, 10) == 7 then
+				local p = go.get_position()
+				p.x = vmath.lerp(math.random(), min_x, max_x)
+				print("GENERATE EXTRA BONUS")
+				factory.create("#score-bonus-factory", p)
+			end
+			self.timer_extra_bonus = 1/0.17
 		end
 		if self.timer <= 0 then
 			uniq_factor = math.random (0, 10) - 5

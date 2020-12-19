@@ -571,3 +571,21 @@ embedded_components {
     w: 1.0
   }
 }
+embedded_components {
+  id: "score-bonus-factory"
+  type: "factory"
+  data: "prototype: \"/items/score_bonus.go\"\n"
+  "load_dynamically: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
