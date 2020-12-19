@@ -50,7 +50,7 @@ local function load_interstitial_pressed(self)
 		type = 'interstitial',
 		id = admob_ids.interstitial,
 		immersive = true,
-		keywords = {'puzzle', 'game'},
+		keywords = {'game', 'recycling', 'eco','casual'},
 		non_personalized = true
 	}
 end
@@ -69,7 +69,7 @@ local function load_banner_pressed(self)
 		id = 'ca-app-pub-4904724253591504/7895114389',
 		size = 'smart',
 		position = 'bottom',
-		keywords = {'puzzle', 'game'}
+		keywords = {'game', 'recycling', 'eco','casual'}
 	}
 end
 
@@ -94,7 +94,7 @@ local function init_admob(self)
 			id = 'ca-app-pub-4904724253591504/7895114389',
 			size = 'smart',
 			position = 'bottom',
-			keywords = {'puzzle', 'game'}
+			keywords = {'game', 'recycling', 'eco','casual'}
 		}
 	elseif event.phase == 'rewarded' then
 		print('reward received')
