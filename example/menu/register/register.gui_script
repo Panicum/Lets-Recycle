@@ -14,7 +14,6 @@ local dirtylarry = require "dirtylarry/dirtylarry"
 local function validate(self)
 	local valid = self.username and self.username ~= ""
 		and self.password and self.password ~= ""
-		and self.email and self.email ~= ""
 		
 	gui.set_enabled(gui.get_node("register/larrybutton"), valid)
 	
@@ -26,14 +25,27 @@ local function update_translation(self)
 	gui.set_text(gui.get_node("register/larrylabel"), translate("REGISTER_SIGN_UP"))
 end
 
+local function generate_email()
+		--[[for _,a in ipairs(sys.get_ifaddrs()) do
+		if a.up and a.running then
+			return a.mac
+		end
+	end--]]
+	local id = ""
+	for i=1,20 do
+		id = id .. string.char(math.random(97, 122))
+	end
+	print("GENERATED ID", id)
+	return id
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.username = ""
 	self.password = ""
-	self.email = ""
+	self.email = generate_email() .. "@gmail.com"
 	gui.set_text(gui.get_node("username/content"), self.username)
 	gui.set_text(gui.get_node("password/content"), self.password)
-	gui.set_text(gui.get_node("email/content"), self.email)
 	validate(self)
 
 	update_translation(self)
@@ -48,9 +60,8 @@ function on_input(self, action_id, action)
 	if(action_id == hash("touch") and action.pressed == true) then
 		sound.play("gui_sound#sound_ui_click", {delay = 0, gain = 1, pan = -1.0, speed = 1})
 	end
-	self.username = dirtylarry:input("username", action_id, action, gui.KEYBOARD_TYPE_DEFAULT, "Username...")
-	self.password = dirtylarry:input("password", action_id, action, gui.KEYBOARD_TYPE_PASSWORD, "Password...")
-	self.email = dirtylarry:input("email", action_id, action, gui.KEYBOARD_TYPE_EMAIL, "E-mail...")
+	self.username = dirtylarry:input("username", action_id, action, gui.KEYBOARD_TYPE_DEFAULT, "Nick...")
+	self.password = dirtylarry:input("password", action_id, action, gui.KEYBOARD_TYPE_PASSWORD, translate("REGISTER_PASSWORD"))
 
 	dirtylarry:button("menu", action_id, action, function ()
 		show_spinner()
