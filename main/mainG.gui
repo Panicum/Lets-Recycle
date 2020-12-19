@@ -724,7 +724,7 @@ nodes {
 nodes {
   position {
     x: -120.0
-    y: -64.0
+    y: -80.0
     z: 0.0
     w: 1.0
   }
@@ -779,7 +779,7 @@ nodes {
 nodes {
   position {
     x: -60.0
-    y: -64.0
+    y: -80.0
     z: 0.0
     w: 1.0
   }
@@ -834,7 +834,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: -64.0
+    y: -80.0
     z: 0.0
     w: 1.0
   }
@@ -889,7 +889,7 @@ nodes {
 nodes {
   position {
     x: 60.0
-    y: -64.0
+    y: -80.0
     z: 0.0
     w: 1.0
   }
@@ -944,7 +944,7 @@ nodes {
 nodes {
   position {
     x: 120.0
-    y: -64.0
+    y: -80.0
     z: 0.0
     w: 1.0
   }
@@ -999,7 +999,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: -130.0
+    y: -150.0
     z: 0.0
     w: 1.0
   }
@@ -1108,7 +1108,7 @@ nodes {
 nodes {
   position {
     x: -66.0
-    y: -63.0
+    y: -80.0
     z: 0.0
     w: 1.0
   }
@@ -1119,9 +1119,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.3
-    y: 0.3
-    z: 0.3
+    x: 0.4
+    y: 0.4
+    z: 0.4
     w: 1.0
   }
   size {

@@ -78,7 +78,7 @@ local function hide_banner_pressed(self)
 	admob.hide_banner()
 end
 
-local function init_pressed(self)
+local function init_admob(self)
 	print('ADMOB init_pressed')
 	-- Admob events handler.
 	local function listener(event)
@@ -173,7 +173,6 @@ local function show_startmenu(self, no_spinner)
 		end
 		unload_all(self)
 		load(self, "#startmenu_proxy")
-		load_banner_pressed()
 		if not no_spinner then hide_spinner() end
 	end)
 end
@@ -286,12 +285,13 @@ function init(self)
 	if not offline_mode then 
 		init_playfab()
 	end
-	init_pressed(self)
+	init_admob(self)
 	
 	self.loaded_collections = {}
 	
 	flow(function()
 		show_startmenu(self, true)
+		load_banner_pressed()
 		-- show_spinner(self)
 		-- if not offline_mode then 
 		-- 	authentication.listeners.add(msg.url())
