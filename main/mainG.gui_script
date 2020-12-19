@@ -1,6 +1,8 @@
 local flow = require "ludobits.m.flow"
 local leaderboard = require "example.playfab.leaderboard"
 local navigate = require "example.navigate"
+local translate = require "localization.translate"
+local translations = require "localization.translations"
 
 trash_speed = 2.5
 xp_factor = 1
@@ -230,28 +232,28 @@ function on_message(self, message_id, message, sender)
 					print("UNIQUE RANDOM COUNTER",counter_t[0])
 					table.insert(unlocked_items_glass, "#glass-factory" .. tostring(rand))
 				elseif level_mod_5 == 2 and counter_t[1] < 6 then
-					show_help_message(self, "New recycling bin unlocked!\n Tap the screen to change the bin!")
+					show_help_message(self, translate("HELP_MSG_1"))
 					rand = my_random (tpap, 0, 5)
 					counter_t[1] = counter_t[1] + 1
 					print("NEW LEVEL - PAPER", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[1])
 					table.insert(unlocked_items_paper, "#paper-factory" .. tostring(rand))
 				elseif level_mod_5 == 3 and counter_t[2] < 7 then
-					show_help_message(self, "New recycling bin unlocked!")
+					show_help_message(self,  translate("HELP_MSG_2"))
 					rand = my_random (tpla, 0, 6)
 					counter_t[2] = counter_t[2] + 1
 					print("NEW LEVEL - PLASTIC", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[2])
 					table.insert(unlocked_items_plastic, "#plastic_metal-factory" .. tostring(rand))
 				elseif level_mod_5 == 4 and counter_t[3] < 6 then
-					show_help_message(self, "New recycling bin unlocked!")
+					show_help_message(self,  translate("HELP_MSG_2"))
 					rand = my_random (to, 0, 5)
 					counter_t[3] = counter_t[3] + 1
 					print("NEW LEVEL - ORGANIC", rand)
 					print("UNIQUE RANDOM COUNTER",counter_t[3])
 					table.insert(unlocked_items_organic, "#organic-factory" .. tostring(rand))
 				elseif level_mod_5 == 0 and counter_t[4] < 5 then
-					show_help_message(self, "New recycling bin unlocked!")
+					show_help_message(self,  translate("HELP_MSG_2"))
 					rand = my_random (tm, 0, 4)
 					counter_t[4] = counter_t[4] + 1
 					print("NEW LEVEL - MIXED", rand)
@@ -361,7 +363,7 @@ function on_message(self, message_id, message, sender)
 		update_scroll_bar(self)
 		controls_help = false
 		pause_flag = 0
-		show_help_message(self, "Tilt the phone to control the \nrecycling bin")
+		show_help_message(self,  translate("HELP_MSG_0"))
 	end
 end
 

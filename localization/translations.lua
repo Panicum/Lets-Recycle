@@ -49,6 +49,12 @@ return {
 		HELP_CONTROLS_RIGHT_SIDE = "Touch right\nside of screen\nto change bin\n to the next one",
 		HELP_CONTROLS_TLIT = "Tilt the phone to control the recycling bin",
 		HELP_CONTROLS_START_GAME = "Touch anywhere to start the game",
+
+		HELP_MSG_0 = "Tilt the phone to control the \nrecycling bin",
+		HELP_MSG_1 = "New recycling bin unlocked!\n Tap the screen to change the bin!",
+		HELP_MSG_2 = "New recycling bin unlocked!",
+		
+		
 	},
 	["pl"] = {
 		BTN_PLAY = "NOWA GRA",
@@ -98,5 +104,9 @@ return {
 		HELP_CONTROLS_RIGHT_SIDE = "Dotknij prawą\nstronę ekranu\naby zmienić na\nnastępny kosz",
 		HELP_CONTROLS_TLIT = "Przechyl telefon aby sterować koszem",
 		HELP_CONTROLS_START_GAME = "Dotknij gdziekolwiek aby rozpocząć grę",
+
+		HELP_MSG_0 = "Przechylaj telefon aby sterować koszem",
+		HELP_MSG_1 = "Nowy kosz odblokowany!\n Stuknij w ekran, aby zmienić kosz!",
+		HELP_MSG_2 = "Nowy kosz odblokowany!",
 	}
 }
