@@ -172,7 +172,7 @@ function on_message(self, message_id, message, sender)
 			gui.set_text(self.score_factor_node, tostring(xp_factor))
 			gui.animate(self.score_factor_node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_OUT, 0.1, 0.0, scale_down)
 			if (sound_effect_flag == true) then
-				sound.play("gui_sound#sound_level_up", {delay = 0, gain = 1, pan = -1.0, speed = 1})
+				sound.play("gui_sound#sound_level_up", {delay = 0, gain = 0.75, pan = -1.0, speed = 1})
 			end
 			-- print("GLASS SIZE", table.getn(unlocked_items_glass))
 			level = level + 1
